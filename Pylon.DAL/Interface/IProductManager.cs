@@ -1,4 +1,7 @@
-﻿namespace Pylon.DAL.Interface
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace Pylon.DAL.Interface
 {
     public interface IProductManager
     {
@@ -7,5 +10,6 @@
         void Update(Product product);
         void Delete<TKey>(TKey id);
         void Delete(Product product);
+        Task<List<Product>> GetAll();
     }
 }
