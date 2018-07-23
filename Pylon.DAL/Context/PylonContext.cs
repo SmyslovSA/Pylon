@@ -8,5 +8,7 @@ namespace Pylon.DAL.Context
         public PylonContext(string connectionString) : base(connectionString) { }
 
         public DbSet<Profile> Profile { get; set; }
+
+        public DbSet<Product> Products { get; set; }
     }
 }

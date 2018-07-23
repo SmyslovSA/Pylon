@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Pylon.DAL
@@ -14,5 +15,7 @@ namespace Pylon.DAL
         public string LastName { get; set; }
 
         public virtual User User { get; set; }
+
+        public List<Product> Products { get; set; }
     }
 }

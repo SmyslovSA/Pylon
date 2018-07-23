@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Pylon.DAL.Context;
 using Pylon.DAL.Interface;
 using Pylon.DAL.UserManager;
@@ -18,8 +19,22 @@ namespace Pylon.DAL.UoW
         {
             _pylonContext = new PylonContext(connectionString);
             UserManager = new PylonUserManager(new UserStore<User>(_pylonContext));
+            UserManager.UserValidator = new UserValidator<User>(UserManager)
+            {
+                AllowOnlyAlphanumericUserNames = false,
+                RequireUniqueEmail = true
+            };
+            UserManager.PasswordValidator = new PasswordValidator
+            {
+                RequiredLength = 6,
+                RequireNonLetterOrDigit = false,
+                RequireDigit = true,
+                RequireLowercase = true,
+                RequireUppercase = true,
+            };
             RoleManager = new PylonRoleManager(new RoleStore<Role>(_pylonContext));
             ProfileManager = new ProfileManager(_pylonContext);
+            ProductManager = new ProductManager(_pylonContext);
         }
 
         public PylonUserManager UserManager { get; set; }
@@ -27,6 +42,8 @@ namespace Pylon.DAL.UoW
         public PylonRoleManager RoleManager { get; set; }
 
         public IProfileManager ProfileManager { get; set; }
+
+        public IProductManager ProductManager { get; set; }
 
         public async Task SaveChanges()
         {

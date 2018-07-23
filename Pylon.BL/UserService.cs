@@ -28,7 +28,10 @@ namespace Pylon.BL
                 if (result.Errors.Count() > 0)
                     return new OperationDetails(false, result.Errors.FirstOrDefault(), "");
                 // добавляем роль
-                await _unitOfWork.UserManager.AddToRoleAsync(user.Id, userDto.Role);
+                await SetInitialData(new List<string> { "admin", "customer", "saler" });
+               // await _unitOfWork.UserManager.AddToRoleAsync(user.Id, "admin");
+                await _unitOfWork.UserManager.AddToRoleAsync(user.Id, "saler");
+                await _unitOfWork.UserManager.AddToRoleAsync(user.Id, "customer");
                 // создаем профиль клиента
                 Profile clientProfile = new Profile { Id = user.Id, FirstName = userDto.FirstName, LastName = userDto.LastName };
                 _unitOfWork.ProfileManager.Create(clientProfile);
@@ -54,7 +57,7 @@ namespace Pylon.BL
         }
 
         // начальная инициализация бд
-        public async Task SetInitialData(UserDTO adminDto, List<string> roles)
+        private async Task SetInitialData(List<string> roles)
         {
             foreach (string roleName in roles)
             {
@@ -65,7 +68,6 @@ namespace Pylon.BL
                     await _unitOfWork.RoleManager.CreateAsync(role);
                 }
             }
-            await Create(adminDto);
         }
 
         public void Dispose()

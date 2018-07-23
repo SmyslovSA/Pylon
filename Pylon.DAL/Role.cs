@@ -4,6 +4,5 @@ namespace Pylon.DAL
 {
     public class Role : IdentityRole
     {
-
     }
 }
