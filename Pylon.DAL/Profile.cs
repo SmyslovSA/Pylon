@@ -15,7 +15,5 @@ namespace Pylon.DAL
         public string LastName { get; set; }
 
         public virtual User User { get; set; }
-
-        public List<Product> Products { get; set; }
     }
 }

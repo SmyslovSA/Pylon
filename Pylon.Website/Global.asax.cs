@@ -1,4 +1,10 @@
-﻿using System;
+﻿using Ninject;
+using Ninject.Modules;
+using Ninject.Web.Mvc;
+using Pylon.BL.Ninject;
+using Pylon.Website.Ninject;
+using Rocket.Web;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,7 +21,14 @@ namespace Pylon.Website
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            MapperConfig.Initialize();
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            NinjectModule orderModule = new UiModule();
+            NinjectModule serviceModule = new BlModule();
+            var kernel = new StandardKernel(orderModule, serviceModule);
+            kernel.Unbind<ModelValidatorProvider>();
+            DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
         }
     }
 }

@@ -18,7 +18,13 @@ namespace Pylon.Website.Controllers
         public ActionResult GetAll()
         {
             var list = _productService.GetAllProducts();
-            return View(list);
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult AddProduct()
+        {
+            return View();
         }
 
         [HttpPost]
@@ -30,10 +36,10 @@ namespace Pylon.Website.Controllers
                     Price = model.Price,
                     Description = model.Description,
                     PartNumber = model.PartNumber,
-                    Maker = model.Maker
+                    Maker = model.Maker,
                 };
             var result = _productService.AddProduct(productDTO);
-            return View(result);
+            return View("GetAll");
         }
     }
 }

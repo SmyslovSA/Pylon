@@ -65,6 +65,22 @@
     <Compile Include="Migrations\201807241500260_newmigr.Designer.cs">
       <DependentUpon>201807241500260_newmigr.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807241620425_nnnnn.cs" />
+    <Compile Include="Migrations\201807241620425_nnnnn.Designer.cs">
+      <DependentUpon>201807241620425_nnnnn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807241623067_mmm.cs" />
+    <Compile Include="Migrations\201807241623067_mmm.Designer.cs">
+      <DependentUpon>201807241623067_mmm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807241632220_prod.cs" />
+    <Compile Include="Migrations\201807241632220_prod.Designer.cs">
+      <DependentUpon>201807241632220_prod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807241634421_ppp.cs" />
+    <Compile Include="Migrations\201807241634421_ppp.Designer.cs">
+      <DependentUpon>201807241634421_ppp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Role.cs" />
@@ -87,6 +103,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807241500260_newmigr.resx">
       <DependentUpon>201807241500260_newmigr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807241620425_nnnnn.resx">
+      <DependentUpon>201807241620425_nnnnn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807241623067_mmm.resx">
+      <DependentUpon>201807241623067_mmm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807241632220_prod.resx">
+      <DependentUpon>201807241632220_prod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807241634421_ppp.resx">
+      <DependentUpon>201807241634421_ppp.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
