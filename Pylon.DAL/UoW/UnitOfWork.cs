@@ -15,9 +15,9 @@ namespace Pylon.DAL.UoW
         //private PylonRoleManager _pylonRoleManager;
         //private IProfileManager _profileManager;
 
-        public UnitOfWork(string connectionString)
+        public UnitOfWork()
         {
-            _pylonContext = new PylonContext(connectionString);
+            _pylonContext = new PylonContext();
             UserManager = new PylonUserManager(new UserStore<User>(_pylonContext));
             UserManager.UserValidator = new UserValidator<User>(UserManager)
             {

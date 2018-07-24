@@ -7,7 +7,7 @@ namespace Pylon.BL
     {
         public IUserService CreateUserService(string connection)
         {
-            return new UserService(new UnitOfWork(connection));
+            return new UserService(new UnitOfWork());
         }
     }
 }
