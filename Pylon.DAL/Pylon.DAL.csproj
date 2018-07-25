@@ -81,6 +81,10 @@
     <Compile Include="Migrations\201807241634421_ppp.Designer.cs">
       <DependentUpon>201807241634421_ppp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807241840563_nmnn.cs" />
+    <Compile Include="Migrations\201807241840563_nmnn.Designer.cs">
+      <DependentUpon>201807241840563_nmnn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Role.cs" />
@@ -115,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807241634421_ppp.resx">
       <DependentUpon>201807241634421_ppp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807241840563_nmnn.resx">
+      <DependentUpon>201807241840563_nmnn.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

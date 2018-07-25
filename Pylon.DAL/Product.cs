@@ -16,6 +16,8 @@
 
         public decimal Price { get; set; }
 
-        public virtual User User { get; set; }
+        public virtual Profile Profile { get; set; }
+
+        public string ProfileId { get; set; }
     }
 }

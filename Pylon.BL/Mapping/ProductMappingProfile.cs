@@ -1,9 +1,4 @@
 ﻿using Pylon.DAL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Pylon.BL.Mapping
 {
@@ -18,6 +13,7 @@ namespace Pylon.BL.Mapping
                 .ForMember(dbe => dbe.Maker, e => e.MapFrom(src => src.Maker))
                 .ForMember(dbe => dbe.PartNumber, e => e.MapFrom(src => src.PartNumber))
                 .ForMember(dbe => dbe.Price, e => e.MapFrom(src => src.Price))
+                .ForMember(dbe => dbe.ProfileId, e => e.MapFrom(src => src.ProfileID))
                 .ReverseMap();
         }
     }

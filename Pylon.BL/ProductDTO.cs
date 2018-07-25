@@ -21,5 +21,7 @@ namespace Pylon.BL
         public string Image { get; set; }
 
         public decimal Price { get; set; }
+
+        public string ProfileID { get; set;}
     }
 }
