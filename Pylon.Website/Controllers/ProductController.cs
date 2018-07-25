@@ -19,7 +19,7 @@ namespace Pylon.Website.Controllers
         public ActionResult GetAll()
         {
             var list = _productService.GetAllProducts();
-            return View();
+            return View(list);
         }
 
         [HttpGet]
@@ -29,9 +29,8 @@ namespace Pylon.Website.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddProduct(ProductViewModel model)
+        public RedirectToRouteResult AddProduct(ProductViewModel model)
         {
-
             ProductDTO productDTO = new ProductDTO
             {
                 Name = model.Name,
@@ -41,8 +40,14 @@ namespace Pylon.Website.Controllers
                 Maker = model.Maker,
                 ProfileID = User.GetUserId()
                 };
-            var result = _productService.AddProduct(productDTO);
-            return View("GetAll");
+            _productService.AddProduct(productDTO);
+            return RedirectToAction("GetAll");
+        }
+
+        public RedirectToRouteResult RemoveProduct(int id)
+        {
+            _productService.DeleteProduct(id);
+            return RedirectToAction("GetAll");
         }
     }
 }

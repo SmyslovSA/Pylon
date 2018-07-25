@@ -10,6 +10,6 @@ namespace Pylon.DAL.Interface
         void Update(Product product);
         void Delete<TKey>(TKey id);
         void Delete(Product product);
-        Task<List<Product>> GetAll();
+        IEnumerable<Product> Get();
     }
 }

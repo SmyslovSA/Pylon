@@ -24,9 +24,9 @@ namespace Pylon.BL.Sevices
             return prod.Id;
         }
 
-        public void DeleteProduct(ProductDTO product)
+        public void DeleteProduct(int id)
         {
-            _unitOfWork.ProductManager.Delete(AutoMapper.Mapper.Map<Product>(product));
+            _unitOfWork.ProductManager.Delete(id);
         }
 
         public ProductDTO GetProduct(int id)
@@ -47,7 +47,7 @@ namespace Pylon.BL.Sevices
 
         public List<ProductDTO> GetAllProducts()
         {
-            var list = _unitOfWork.ProductManager.GetAll();
+            var list = _unitOfWork.ProductManager.Get();
             return AutoMapper.Mapper.Map<List<ProductDTO>>(list);
         }
     }

@@ -2,6 +2,7 @@
 using Pylon.DAL.Interface;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Pylon.DAL.UserManager
@@ -46,9 +47,10 @@ namespace Pylon.DAL.UserManager
             _pylonContext.SaveChanges();
         }
 
-        public async Task<List<Product>> GetAll()
-        {
-            return await _pylonContext.Set<Product>().ToListAsync();
-        }
+        public IEnumerable<Product> Get()
+            {
+            IQueryable<Product> query = _pylonContext.Set<Product>();
+            return query.ToList();
+            }
     }
 }

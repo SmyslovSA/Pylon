@@ -11,7 +11,7 @@ namespace Pylon.BL.Interface
         ProductDTO GetProduct(int id);
         int AddProduct(ProductDTO product);
         void UpdateProduct(ProductDTO product);
-        void DeleteProduct(ProductDTO product);
+        void DeleteProduct(int id);
         List<ProductDTO> GetAllProducts();
     }
 }
