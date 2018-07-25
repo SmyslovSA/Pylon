@@ -11,14 +11,5 @@
     <h4>@product.Name 
     @product.Description 
     @product.Price.ToString("c")</h4>  
-    @using (Html.BeginForm("RemoveProduct", "Product"))
-    { 
-        @Html.Hidden("id", product.Id)
-    <input class="btn btn-sm btn-warning" type="submit" value="Remove">
-    }
 </div>
 }
-    @Html.RouteLink("AddProduct",new {
-        Controller = "Product",
-        Action = "AddProduct"
-        })

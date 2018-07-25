@@ -1,11 +1,7 @@
 ﻿using Pylon.BL.Interface;
 using Pylon.DAL;
 using Pylon.DAL.Interface;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Pylon.BL.Sevices
 {
@@ -21,12 +17,14 @@ namespace Pylon.BL.Sevices
         {
             var prod = AutoMapper.Mapper.Map<Product>(product);
             _unitOfWork.ProductManager.Insert(prod);
+            _unitOfWork.SaveChanges();
             return prod.Id;
         }
 
         public void DeleteProduct(int id)
         {
             _unitOfWork.ProductManager.Delete(id);
+            _unitOfWork.SaveChanges();
         }
 
         public ProductDTO GetProduct(int id)
@@ -43,11 +41,18 @@ namespace Pylon.BL.Sevices
             prod.Maker = product.Maker;
             prod.PartNumber = product.PartNumber;
             _unitOfWork.ProductManager.Update(prod);
+            _unitOfWork.ProductManager.SaveChanges();
         }
 
         public List<ProductDTO> GetAllProducts()
         {
             var list = _unitOfWork.ProductManager.Get();
+            return AutoMapper.Mapper.Map<List<ProductDTO>>(list);
+        }
+
+        public List<ProductDTO> GetProducts(string id)
+        {
+            var list = _unitOfWork.ProductManager.Get(f => f.ProfileId == id);
             return AutoMapper.Mapper.Map<List<ProductDTO>>(list);
         }
     }

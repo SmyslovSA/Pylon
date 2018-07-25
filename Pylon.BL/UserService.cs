@@ -35,7 +35,7 @@ namespace Pylon.BL
                 // создаем профиль клиента
                 Profile clientProfile = new Profile { Id = user.Id, FirstName = userDto.FirstName, LastName = userDto.LastName };
                 _unitOfWork.ProfileManager.Create(clientProfile);
-                await _unitOfWork.SaveChanges();
+                _unitOfWork.SaveChanges();
                 return new OperationDetails(true, "Регистрация успешно пройдена", "");
             }
             else

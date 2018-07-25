@@ -23,6 +23,13 @@ namespace Pylon.Website.Controllers
         }
 
         [HttpGet]
+        public ActionResult GetSalerProducts()
+        {
+            var list = _productService.GetProducts(User.GetUserId());
+            return View(list);
+        }
+
+        [HttpGet]
         public ActionResult AddProduct()
         {
             return View();

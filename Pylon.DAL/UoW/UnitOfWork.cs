@@ -4,16 +4,13 @@ using Pylon.DAL.Context;
 using Pylon.DAL.Interface;
 using Pylon.DAL.UserManager;
 using System;
-using System.Threading.Tasks;
 
 namespace Pylon.DAL.UoW
 {
     public class UnitOfWork : IUnitOfWork
     {
+        private bool _disposed;
         private PylonContext _pylonContext;
-        //private PylonUserManager _pylonUserManager;
-        //private PylonRoleManager _pylonRoleManager;
-        //private IProfileManager _profileManager;
 
         public UnitOfWork()
         {
@@ -34,7 +31,12 @@ namespace Pylon.DAL.UoW
             };
             RoleManager = new PylonRoleManager(new RoleStore<Role>(_pylonContext));
             ProfileManager = new ProfileManager(_pylonContext);
-            ProductManager = new ProductManager(_pylonContext);
+            ProductManager = new ProductRepository(_pylonContext);
+        }
+
+        ~UnitOfWork()
+        {
+            Dispose(false);
         }
 
         public PylonUserManager UserManager { get; set; }
@@ -43,32 +45,30 @@ namespace Pylon.DAL.UoW
 
         public IProfileManager ProfileManager { get; set; }
 
-        public IProductManager ProductManager { get; set; }
+        public IProductRepository ProductManager { get; set; }
 
-        public async Task SaveChanges()
+        public void SaveChanges()
         {
-            await _pylonContext.SaveChangesAsync();
+             _pylonContext.SaveChanges();
         }
 
         public void Dispose()
         {
             Dispose(true);
-            GC.SuppressFinalize(this);
         }
-        private bool disposed = false;
 
-        public virtual void Dispose(bool disposing)
+        protected virtual void Dispose(bool disposing)
         {
-            if (!this.disposed)
+            if (_disposed) return;
+
+            if (disposing)
             {
-                if (disposing)
-                {
-                    UserManager.Dispose();
-                    RoleManager.Dispose();
-                    ProfileManager.Dispose();
-                }
-                this.disposed = true;
+                GC.SuppressFinalize(this);
             }
+
+            _pylonContext?.Dispose();
+            _pylonContext = null;
+            _disposed = true;
         }
     }
 }

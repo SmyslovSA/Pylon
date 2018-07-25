@@ -12,8 +12,8 @@ namespace Pylon.DAL.Interface
 
         IProfileManager ProfileManager { get; set; }
 
-        IProductManager ProductManager { get; set; }
+        IProductRepository ProductManager { get; set; }
 
-        Task SaveChanges();
+        void SaveChanges();
     }
 }
