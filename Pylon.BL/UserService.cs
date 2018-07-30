@@ -51,8 +51,8 @@ namespace Pylon.BL
             User user = await _unitOfWork.UserManager.FindAsync(userDto.Email, userDto.Password);
             // авторизуем его и возвращаем объект ClaimsIdentity
             if (user != null)
-                claim = await _unitOfWork.UserManager.CreateIdentityAsync(user,
-                                            DefaultAuthenticationTypes.ApplicationCookie);
+                claim = await _unitOfWork.UserManager.CreateIdentityAsync(
+                    user, DefaultAuthenticationTypes.ApplicationCookie);
             return claim;
         }
 

@@ -8,6 +8,7 @@ namespace Pylon.BL.Sevices
     {
         private IUnitOfWork _unitOfWork;
         private readonly PylonUserManager _userManager;
+ 
         public ProfileService(IUnitOfWork unitOfWork, PylonUserManager userManager)
         {
             _unitOfWork = unitOfWork;

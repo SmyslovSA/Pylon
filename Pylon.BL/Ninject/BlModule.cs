@@ -1,13 +1,11 @@
-﻿using Ninject.Modules;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Ninject.Modules;
 using Ninject.Web.Common;
+using Pylon.DAL;
 using Pylon.DAL.Interface;
 using Pylon.DAL.UoW;
 using Pylon.DAL.UserManager;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Pylon.BL.Ninject
 {
@@ -17,6 +15,7 @@ namespace Pylon.BL.Ninject
         {
             Bind<IUnitOfWork>().To<UnitOfWork>();
             Bind<PylonUserManager>().ToSelf().InRequestScope();
+            Bind<IUserStore<User>>().To<UserStore<User>>();
         }
     }
 }
