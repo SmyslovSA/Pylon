@@ -56,6 +56,7 @@
     <Compile Include="Context\PylonContext.cs" />
     <Compile Include="Image.cs" />
     <Compile Include="Interface\IBaseRepository.cs" />
+    <Compile Include="Interface\IOrderRepository.cs" />
     <Compile Include="Interface\IProductRepository.cs" />
     <Compile Include="Interface\IProfileRepository.cs" />
     <Compile Include="Interface\IUnitOfWork.cs" />
@@ -91,7 +92,12 @@
     <Compile Include="Migrations\201807300828113_imageMigration.Designer.cs">
       <DependentUpon>201807300828113_imageMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807301003145_OrderMigration.cs" />
+    <Compile Include="Migrations\201807301003145_OrderMigration.Designer.cs">
+      <DependentUpon>201807301003145_OrderMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Order.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Role.cs" />
     <Compile Include="UoW\UnitOfWork.cs" />
@@ -99,6 +105,7 @@
     <Compile Include="Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserManager\BaseRepository.cs" />
+    <Compile Include="UserManager\OrderRepository.cs" />
     <Compile Include="UserManager\ProductRepository.cs" />
     <Compile Include="UserManager\ProfileRepository.cs" />
     <Compile Include="UserManager\PylonRoleManager.cs" />
@@ -132,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807300828113_imageMigration.resx">
       <DependentUpon>201807300828113_imageMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807301003145_OrderMigration.resx">
+      <DependentUpon>201807301003145_OrderMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

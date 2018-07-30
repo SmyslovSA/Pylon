@@ -10,5 +10,7 @@ namespace Pylon.DAL.Context
         public DbSet<Profile> Profile { get; set; }
 
         public DbSet<Product> Products { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
     }
 }

@@ -32,6 +32,7 @@ namespace Pylon.DAL.UoW
             RoleManager = new PylonRoleManager(new RoleStore<Role>(_pylonContext));
             ProfileManager = new ProfileRepository(_pylonContext);
             ProductManager = new ProductRepository(_pylonContext);
+            OrderManager = new OrderRepository(_pylonContext);
         }
 
         ~UnitOfWork()
@@ -46,6 +47,8 @@ namespace Pylon.DAL.UoW
         public IProfileRepository ProfileManager { get; set; }
 
         public IProductRepository ProductManager { get; set; }
+
+        public IOrderRepository OrderManager { get; set; }
 
         public void SaveChanges()
         {
