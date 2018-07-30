@@ -1,6 +1,5 @@
 ﻿using Pylon.DAL.UserManager;
 using System;
-using System.Threading.Tasks;
 
 namespace Pylon.DAL.Interface
 {
@@ -13,6 +12,8 @@ namespace Pylon.DAL.Interface
         IProfileRepository ProfileManager { get; set; }
 
         IProductRepository ProductManager { get; set; }
+
+        IOrderRepository OrderManager { get; set; }
 
         void SaveChanges();
     }

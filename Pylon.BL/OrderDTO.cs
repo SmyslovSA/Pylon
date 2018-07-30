@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Pylon.DAL
+namespace Pylon.BL
 {
-    public class Order
+    public class OrderDTO
     {
         public int Id { get; set; }
 
@@ -13,9 +13,5 @@ namespace Pylon.DAL
         public DateTime EndDate { get; set; }
 
         public int Count { get; set; }
-
-        public virtual Profile Profile { get; set; }
-
-        public string ProfileId { get; set; }
     }
 }

@@ -41,16 +41,16 @@ namespace Pylon.BL.Sevices
             prod.Maker = product.Maker;
             prod.PartNumber = product.PartNumber;
             _unitOfWork.ProductManager.Update(prod);
-            _unitOfWork.ProductManager.SaveChanges();
+            _unitOfWork.SaveChanges();
         }
 
-        public List<ProductDTO> GetAllProducts()
+        public ICollection<ProductDTO> GetAllProducts()
         {
             var list = _unitOfWork.ProductManager.Get();
             return AutoMapper.Mapper.Map<List<ProductDTO>>(list);
         }
 
-        public List<ProductDTO> GetProducts(string id)
+        public ICollection<ProductDTO> GetProducts(string id)
         {
             var list = _unitOfWork.ProductManager.Get(f => f.ProfileId == id);
             return AutoMapper.Mapper.Map<List<ProductDTO>>(list);
