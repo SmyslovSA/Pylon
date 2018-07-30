@@ -34,7 +34,7 @@ namespace Pylon.BL
                 await _unitOfWork.UserManager.AddToRoleAsync(user.Id, "customer");
                 // создаем профиль клиента
                 Profile clientProfile = new Profile { Id = user.Id, FirstName = userDto.FirstName, LastName = userDto.LastName };
-                _unitOfWork.ProfileManager.Create(clientProfile);
+                _unitOfWork.ProfileManager.Insert(clientProfile);
                 _unitOfWork.SaveChanges();
                 return new OperationDetails(true, "Регистрация успешно пройдена", "");
             }

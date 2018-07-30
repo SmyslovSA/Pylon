@@ -1,4 +1,6 @@
-﻿namespace Pylon.DAL
+﻿using System.Collections.Generic;
+
+namespace Pylon.DAL
 {
     public class Product
     {
@@ -12,7 +14,7 @@
 
         public string Maker { get; set; }
 
-        public string Image { get; set; }
+        public List<Image> Images { get; set; }
 
         public decimal Price { get; set; }
 

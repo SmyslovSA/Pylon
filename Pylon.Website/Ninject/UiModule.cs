@@ -13,6 +13,7 @@ namespace Pylon.Website.Ninject
         public override void Load()
         {
             Bind<IProductService>().To<ProductService>();
+            Bind<IProfileService>().To<ProfileService>();
         }
     }
 }

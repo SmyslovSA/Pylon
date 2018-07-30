@@ -3,11 +3,11 @@ using Pylon.DAL.Interface;
 
 namespace Pylon.DAL.UserManager
 {
-    public class ProfileManager : IProfileManager
+    public class ProfileRepository : BaseRepository<Profile>,IProfileRepository
     {
         private PylonContext _pylonContext;
 
-        public ProfileManager(PylonContext context)
+        public ProfileRepository(PylonContext context) : base(context)
         {
             _pylonContext = context;
         }

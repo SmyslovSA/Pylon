@@ -30,7 +30,7 @@ namespace Pylon.DAL.UoW
                 RequireUppercase = true,
             };
             RoleManager = new PylonRoleManager(new RoleStore<Role>(_pylonContext));
-            ProfileManager = new ProfileManager(_pylonContext);
+            ProfileManager = new ProfileRepository(_pylonContext);
             ProductManager = new ProductRepository(_pylonContext);
         }
 
@@ -43,7 +43,7 @@ namespace Pylon.DAL.UoW
 
         public PylonRoleManager RoleManager { get; set; }
 
-        public IProfileManager ProfileManager { get; set; }
+        public IProfileRepository ProfileManager { get; set; }
 
         public IProductRepository ProductManager { get; set; }
 

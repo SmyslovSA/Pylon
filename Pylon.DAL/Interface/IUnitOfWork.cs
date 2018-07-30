@@ -10,7 +10,7 @@ namespace Pylon.DAL.Interface
 
         PylonRoleManager RoleManager { get; set; }
 
-        IProfileManager ProfileManager { get; set; }
+        IProfileRepository ProfileManager { get; set; }
 
         IProductRepository ProductManager { get; set; }
 
