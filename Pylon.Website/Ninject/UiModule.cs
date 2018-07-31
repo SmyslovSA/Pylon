@@ -1,10 +1,6 @@
 ﻿using Ninject.Modules;
 using Pylon.BL.Interface;
 using Pylon.BL.Sevices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Pylon.Website.Ninject
 {
@@ -14,6 +10,7 @@ namespace Pylon.Website.Ninject
         {
             Bind<IProductService>().To<ProductService>();
             Bind<IProfileService>().To<ProfileService>();
+            Bind<IOrderService>().To<OrderService>();
         }
     }
 }

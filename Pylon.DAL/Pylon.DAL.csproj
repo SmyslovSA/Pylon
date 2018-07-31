@@ -54,7 +54,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\PylonContext.cs" />
-    <Compile Include="Image.cs" />
     <Compile Include="Interface\IBaseRepository.cs" />
     <Compile Include="Interface\IOrderRepository.cs" />
     <Compile Include="Interface\IProductRepository.cs" />
@@ -95,6 +94,18 @@
     <Compile Include="Migrations\201807301003145_OrderMigration.cs" />
     <Compile Include="Migrations\201807301003145_OrderMigration.Designer.cs">
       <DependentUpon>201807301003145_OrderMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807311210223_hccbccc.cs" />
+    <Compile Include="Migrations\201807311210223_hccbccc.Designer.cs">
+      <DependentUpon>201807311210223_hccbccc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807311422236_hjhjhkh.cs" />
+    <Compile Include="Migrations\201807311422236_hjhjhkh.Designer.cs">
+      <DependentUpon>201807311422236_hjhjhkh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807311424124_cbcvvx.cs" />
+    <Compile Include="Migrations\201807311424124_cbcvvx.Designer.cs">
+      <DependentUpon>201807311424124_cbcvvx.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Order.cs" />
@@ -142,6 +153,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807301003145_OrderMigration.resx">
       <DependentUpon>201807301003145_OrderMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807311210223_hccbccc.resx">
+      <DependentUpon>201807311210223_hccbccc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807311422236_hjhjhkh.resx">
+      <DependentUpon>201807311422236_hjhjhkh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807311424124_cbcvvx.resx">
+      <DependentUpon>201807311424124_cbcvvx.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

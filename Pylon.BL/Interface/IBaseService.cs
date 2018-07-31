@@ -4,11 +4,11 @@ namespace Pylon.BL.Interface
 {
     public interface IBaseService<TEntity> where TEntity : class
     {
-        TEntity GetProduct(int id);
-        ICollection<TEntity> GetProducts(string id);
-        int AddProduct(TEntity product);
-        void UpdateProduct(TEntity product);
-        void DeleteProduct(int id);
-        ICollection<TEntity> GetAllProducts();
+        TEntity Get(int id);
+        ICollection<TEntity> GetByProfile(string id);
+        int Add(TEntity product);
+        void Update(TEntity product);
+        void Delete(int id);
+        ICollection<TEntity> GetAll();
     }
 }

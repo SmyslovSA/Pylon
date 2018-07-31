@@ -14,9 +14,9 @@ namespace Pylon.DAL
 
         public string Maker { get; set; }
 
-        public List<Image> Images { get; set; }
-
         public decimal Price { get; set; }
+
+        public List<Order> Orders { get; set; }
 
         public virtual Profile Profile { get; set; }
 

@@ -15,25 +15,27 @@ namespace Pylon.BL.Sevices
             _unitOfWork = unitOfWork;
         }
 
-        public OrderDTO GetProduct(int id)
+        public OrderDTO Get(int id)
         {
             var order = _unitOfWork.OrderManager.GetById(id);
             return AutoMapper.Mapper.Map<OrderDTO>(order);
         }
 
-        public ICollection<OrderDTO> GetProducts(string id)
+        public ICollection<OrderDTO> GetByProfile(string id)
         {
-            var list = _unitOfWork.OrderManager.Get(f => f.ProfileId == id);
+            var list = _unitOfWork.OrderManager.Get(
+                f => f.ProfileId == id,
+                includeProperties: $"{nameof(Profile)} , {nameof(Product)}");
             return AutoMapper.Mapper.Map<List<OrderDTO>>(list);
         }
 
-        public ICollection<OrderDTO> GetAllProducts()
+        public ICollection<OrderDTO> GetAll()
         {
             var list = _unitOfWork.OrderManager.Get();
             return AutoMapper.Mapper.Map<List<OrderDTO>>(list);
         }
 
-        public int AddProduct(OrderDTO orderDTO)
+        public int Add(OrderDTO orderDTO)
         {
             var order = AutoMapper.Mapper.Map<Order>(orderDTO);
             _unitOfWork.OrderManager.Insert(order);
@@ -41,19 +43,18 @@ namespace Pylon.BL.Sevices
             return order.Id;
         }
 
-        public void DeleteProduct(int id)
+        public void Delete(int id)
         {
             _unitOfWork.OrderManager.Delete(id);
             _unitOfWork.SaveChanges();
         }
        
-        public void UpdateProduct(OrderDTO orderDTO)
+        public void Update(OrderDTO orderDTO)
         {
             var order = _unitOfWork.OrderManager.GetById(orderDTO.Id);
             order.OrderNumber = orderDTO.OrderNumber;
             order.StartDate = orderDTO.StartDate;
             order.EndDate = orderDTO.EndDate;
-            order.Count = order.Count;
             _unitOfWork.OrderManager.Update(order);
             _unitOfWork.SaveChanges();
         }

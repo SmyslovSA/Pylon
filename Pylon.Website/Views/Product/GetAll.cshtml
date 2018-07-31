@@ -8,8 +8,17 @@
 @foreach (var product in Model)
 {
 <div>
-    <h4>@product.Name 
-    @product.Description 
-    @product.Price.ToString("c")</h4>  
+    <h4>
+        @product.Name <br>
+        @product.Description <br>
+        @product.Price.ToString("c") <br>
+    </h4>
+    @using (Html.BeginForm("AddOrder", "Order", FormMethod.Post))
+    {
+        <input type="hidden" value=@product.Id name="productId" />
+        @Html.TextBox("StartDate");
+        @Html.TextBox("EndDate")
+        <p><input type="submit" value="BookProduct" /></p>
+    }
 </div>
 }

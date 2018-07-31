@@ -72,6 +72,7 @@
     <Compile Include="Interface\IProfileService.cs" />
     <Compile Include="Interface\IServiceCreator.cs" />
     <Compile Include="Interface\IUserService.cs" />
+    <Compile Include="Mapping\OrderMappingProfile.cs" />
     <Compile Include="Mapping\ProductMappingProfile.cs" />
     <Compile Include="Mapping\UserProfileMapping.cs" />
     <Compile Include="Ninject\BlModule.cs" />

@@ -12,10 +12,12 @@ namespace Pylon.DAL
 
         public DateTime EndDate { get; set; }
 
-        public int Count { get; set; }
-
         public virtual Profile Profile { get; set; }
 
         public string ProfileId { get; set; }
+
+        public virtual Product Product { get; set; }
+
+        public int ProductId { get; set; }
     }
 }

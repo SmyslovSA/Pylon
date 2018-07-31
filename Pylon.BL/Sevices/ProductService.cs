@@ -13,7 +13,7 @@ namespace Pylon.BL.Sevices
             _unitOfWork = unitOfWork;
         }
 
-        public int AddProduct(ProductDTO product)
+        public int Add(ProductDTO product)
         {
             var prod = AutoMapper.Mapper.Map<Product>(product);
             _unitOfWork.ProductManager.Insert(prod);
@@ -21,19 +21,19 @@ namespace Pylon.BL.Sevices
             return prod.Id;
         }
 
-        public void DeleteProduct(int id)
+        public void Delete(int id)
         {
             _unitOfWork.ProductManager.Delete(id);
             _unitOfWork.SaveChanges();
         }
 
-        public ProductDTO GetProduct(int id)
+        public ProductDTO Get(int id)
         {
             var product =  _unitOfWork.ProductManager.GetById(id);
             return AutoMapper.Mapper.Map<ProductDTO>(product);
         }
 
-        public void UpdateProduct(ProductDTO product)
+        public void Update(ProductDTO product)
         {
            var prod =  _unitOfWork.ProductManager.GetById(product.Id);
             prod.Name = product.Name;
@@ -44,13 +44,13 @@ namespace Pylon.BL.Sevices
             _unitOfWork.SaveChanges();
         }
 
-        public ICollection<ProductDTO> GetAllProducts()
+        public ICollection<ProductDTO> GetAll()
         {
             var list = _unitOfWork.ProductManager.Get();
             return AutoMapper.Mapper.Map<List<ProductDTO>>(list);
         }
 
-        public ICollection<ProductDTO> GetProducts(string id)
+        public ICollection<ProductDTO> GetByProfile(string id)
         {
             var list = _unitOfWork.ProductManager.Get(f => f.ProfileId == id);
             return AutoMapper.Mapper.Map<List<ProductDTO>>(list);

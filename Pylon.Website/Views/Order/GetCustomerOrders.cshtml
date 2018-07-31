@@ -1,0 +1,25 @@
+﻿@using Pylon.BL
+@model IEnumerable<OrderDTO>
+
+@{
+    ViewBag.Title = "GetCustomerOrders";
+}
+
+@foreach (var order in Model)
+{
+    <div>
+        <h4>
+            @order.StartDate.ToShortDateString() <br>
+            @order.EndDate.ToShortDateString() <br>
+            @order.OrderNumber <br>
+            @order.ProductName <br>
+            @order.ProductDescription <br>
+            @order.ProductMaker
+        </h4>
+        @using (Html.BeginForm("RemoveOrder", "Order"))
+        {
+            @Html.Hidden("id", order.Id)
+            <input class="btn btn-sm btn-warning" type="submit" value="Remove">
+        }
+    </div>
+}

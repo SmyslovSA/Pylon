@@ -18,14 +18,14 @@ namespace Pylon.Website.Controllers
         [HttpGet]
         public ActionResult GetAll()
         {
-            var list = _productService.GetAllProducts();
+            var list = _productService.GetAll();
             return View(list);
         }
 
         [HttpGet]
         public ActionResult GetSalerProducts()
         {
-            var list = _productService.GetProducts(User.GetUserId());
+            var list = _productService.GetByProfile(User.GetUserId());
             return View(list);
         }
 
@@ -47,13 +47,13 @@ namespace Pylon.Website.Controllers
                 Maker = model.Maker,
                 ProfileID = User.GetUserId()
                 };
-            _productService.AddProduct(productDTO);
+            _productService.Add(productDTO);
             return RedirectToAction("GetAll");
         }
 
         public RedirectToRouteResult RemoveProduct(int id)
         {
-            _productService.DeleteProduct(id);
+            _productService.Delete(id);
             return RedirectToAction("GetAll");
         }
     }
