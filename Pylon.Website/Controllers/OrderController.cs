@@ -2,6 +2,8 @@
 using Pylon.BL.Interface;
 using Pylon.Website.Extension;
 using Pylon.Website.Models;
+using System;
+using System.Globalization;
 using System.Web.Mvc;
 
 namespace Pylon.Website.Controllers
@@ -37,13 +39,13 @@ namespace Pylon.Website.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddOrder(OrderViewModel model, int productId)
+        public ActionResult AddOrder(string startDate, string endDate, int productId)
         {
             OrderDTO orderDTO = new OrderDTO
             {
-                StartDate = model.StartDate,
-                EndDate = model.EndDate,
-                ProductId = productId,
+                StartDate = DateTime.Parse(startDate),
+                EndDate = DateTime.Parse(endDate),
+				ProductId = productId,
                 ProfileId = User.GetUserId()
             };
 

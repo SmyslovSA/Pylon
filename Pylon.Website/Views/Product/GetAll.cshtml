@@ -9,6 +9,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width" />
 	<title>@ViewBag.Title</title>
+	<link rel="stylesheet" href="/css/bootstrap.min.css" />
 </head>
 
 <section id="car-list-area" class="section-padding">	
@@ -27,9 +28,11 @@
 						</div>
 					</div>
 				</div>
-				<!-- Single Sidebar End -->	
+				<!-- Single Sidebar End -->
 				
-					<div class="col-lg-8">
+				<div class="col-lg-8">
+					@foreach (var product in Model)
+					{
 						<div class="car-list-content m-t-50">
 
 							<!-- Single Car Start -->
@@ -37,39 +40,49 @@
 								<div class="row">
 									<!-- Single Car Thumbnail -->
 
-									@foreach (var product in Model)
-									{
-										<div class="col-lg-5">
-											@product.Image
-										</div>
-										<!-- Single Car Thumbnail -->
 
-										<!-- Single Car Info -->
-										<div class="col-lg-7">
-											<div class="display-table">
-												<div class="display-table-cell">
-													<div class="car-list-info">
-														<h2>@product.Name</h2>
-														<h5>@product.Price.ToString("c")</h5>
-														<p>@product.Description</p>
-														@using (Html.BeginForm("AddOrder", "Order", FormMethod.Post))
-														{
-															<input type="hidden" value=@product.Id name="productId" />
-															<input type="date" name="StartDate">
-															<input type="date" name="EndDate">
-															<br><br>
-															<p><input type="submit" class="rent-btn" value="BookProduct" /></p>
-														}
-													</div>
-													<br>
+									<div class="col-lg-5">
+										@product.Image
+									</div>
+									<!-- Single Car Thumbnail -->
+									<!-- Single Car Info -->
+									<div class="col-lg-7">
+										<div class="display-table">
+											<div class="display-table-cell">
+												<div class="car-list-info">
+													<h2>@product.Name</h2>
+													<h5>@product.Price.ToString("c")</h5>
+													<p>@product.Description</p>
+													@using (Html.BeginForm("AddOrder", "Order", FormMethod.Post))
+													{
+														<input type="hidden" value=@product.Id name="productId" />
+														<div class="input-group date" id="datetimepicker2">
+															<input type="text" class="form-control" name="startDate" autocomplete="off" />
+															<span class="input-group-addon">
+																<span class="glyphicon-calendar glyphicon"></span>
+															</span>
+														</div>
+														<div class="input-group date" id="datetimepicker1">
+															<input type="text" class="form-control" name="endDate" autocomplete="off" />
+															<span class="input-group-addon">
+																<span class="glyphicon-calendar glyphicon"></span>
+															</span>
+														</div>
+														<p><input type="submit" class="rent-btn" value="BookProduct" /></p>
+													}
 												</div>
+												<br>
 											</div>
 										</div>
-									}<!-- Single Car info -->
+									</div>
+									<!-- Single Car info -->
 								</div>
 							</div>
 						</div>
+						<br>
+					}
 					</div>
+				
 				</div>
 			</div>
 	</section>
