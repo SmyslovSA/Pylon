@@ -9,68 +9,70 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width" />
 	<title>@ViewBag.Title</title>
-	@Styles.Render("~/Content/css")
-	@Scripts.Render("~/bundles/modernizr")
 </head>
 
-<section id="car-list-area" class="section-padding">
-	<div class="container">
-		<div class="row">
-			<!-- Sidebar Area Start -->
-			<div class="col-lg-4">
-				<div class="sidebar-content-wrap">
-					<!-- Single Sidebar Start -->
-					<div class="single-sidebar">
-						<h3>For More Informations</h3>
-
-						<div class="sidebar-body">
-							<p><i class="fa fa-mobile"></i> +8801816 277 243</p>
-							<p><i class="fa fa-clock-o"></i> Mon - Sat 8.00 - 18.00</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- Single Sidebar End -->
-			@foreach (var product in Model)
-			{
-				<div class="col-lg-8">
-					<div class="car-list-content m-t-50">
-						<!-- Single Car Start -->
-						<div class="single-car-wrap">
-							<div class="row">
-								<!-- Single Car Thumbnail -->
-								<div class="col-lg-5">
-									@product.Image
-								</div>
-								<!-- Single Car Thumbnail -->
-								<!-- Single Car Info -->
-								<div class="col-lg-7">
-									<div class="display-table">
-										<div class="display-table-cell">
-											<div class="car-list-info">
-												<h2>@product.Name</h2>
-												<h5>@product.Price.ToString("c")</h5>
-												<p>@product.Description</p>
-												@using (Html.BeginForm("AddOrder", "Order", FormMethod.Post))
-												{
-													<input type="hidden" value=@product.Id name="productId" />
-													<input type="date" name="StartDate">
-													<input type="date" name="EndDate">
-													<p><input type="submit" value="BookProduct" /></p>
-												}
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Single Car info -->
+<section id="car-list-area" class="section-padding">	
+		<div class="container">
+			<div class="row">
+				<!-- Sidebar Area Start -->
+				<div class="col-lg-4">
+					<div class="sidebar-content-wrap">
+						<!-- Single Sidebar Start -->
+						<div class="single-sidebar">
+							<h3>For More Informations</h3>
+							<div class="sidebar-body">
+								<p><i class="fa fa-mobile"></i> +8801816 277 243</p>
+								<p><i class="fa fa-clock-o"></i> Mon - Sat 8.00 - 18.00</p>
 							</div>
 						</div>
 					</div>
 				</div>
-			}
-		</div>
-	</div>
-</section>
+				<!-- Single Sidebar End -->	
+				
+					<div class="col-lg-8">
+						<div class="car-list-content m-t-50">
+
+							<!-- Single Car Start -->
+							<div class="single-car-wrap">
+								<div class="row">
+									<!-- Single Car Thumbnail -->
+
+									@foreach (var product in Model)
+									{
+										<div class="col-lg-5">
+											@product.Image
+										</div>
+										<!-- Single Car Thumbnail -->
+
+										<!-- Single Car Info -->
+										<div class="col-lg-7">
+											<div class="display-table">
+												<div class="display-table-cell">
+													<div class="car-list-info">
+														<h2>@product.Name</h2>
+														<h5>@product.Price.ToString("c")</h5>
+														<p>@product.Description</p>
+														@using (Html.BeginForm("AddOrder", "Order", FormMethod.Post))
+														{
+															<input type="hidden" value=@product.Id name="productId" />
+															<input type="date" name="StartDate">
+															<input type="date" name="EndDate">
+															<br><br>
+															<p><input type="submit" class="rent-btn" value="BookProduct" /></p>
+														}
+													</div>
+													<br>
+												</div>
+											</div>
+										</div>
+									}<!-- Single Car info -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</section>
 
 
 
