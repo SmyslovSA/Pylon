@@ -40,13 +40,13 @@ namespace Pylon.Website.Controllers
 
         [HttpPost]
 		[Authorize(Roles = "saler")]
-		public RedirectToRouteResult AddProduct(ProductViewModel model)
+		public RedirectToRouteResult AddProduct(ProductViewModel model, string uploadImage, string description)
         {
             ProductDTO productDTO = new ProductDTO
             {
                 Name = model.Name,
                 Price = model.Price,
-                Description = model.Description,
+                Description = description,
                 PartNumber = model.PartNumber,
                 Maker = model.Maker,
                 ProfileID = User.GetUserId()
