@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace Pylon.Website.Controllers
 {
+	[Authorize]
     public class ProfileController : Controller
     {
         private IProfileService _profileService;

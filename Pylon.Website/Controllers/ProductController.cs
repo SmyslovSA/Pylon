@@ -16,6 +16,7 @@ namespace Pylon.Website.Controllers
         }
         
         [HttpGet]
+		[Authorize(Roles = "customer, saler")]
         public ActionResult GetAll()
         {
             var list = _productService.GetAll();
@@ -23,20 +24,23 @@ namespace Pylon.Website.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetSalerProducts()
+		[Authorize(Roles = "saler")]
+		public ActionResult GetSalerProducts()
         {
             var list = _productService.GetByProfile(User.GetUserId());
             return View(list);
         }
 
         [HttpGet]
-        public ActionResult AddProduct()
+		[Authorize(Roles = "saler")]
+		public ActionResult AddProduct()
         {
             return View();
         }
 
         [HttpPost]
-        public RedirectToRouteResult AddProduct(ProductViewModel model)
+		[Authorize(Roles = "saler")]
+		public RedirectToRouteResult AddProduct(ProductViewModel model)
         {
             ProductDTO productDTO = new ProductDTO
             {
@@ -51,7 +55,8 @@ namespace Pylon.Website.Controllers
             return RedirectToAction("GetAll");
         }
 
-        public RedirectToRouteResult RemoveProduct(int id)
+		[Authorize(Roles = "saler")]
+		public RedirectToRouteResult RemoveProduct(int id)
         {
             _productService.Delete(id);
             return RedirectToAction("GetAll");

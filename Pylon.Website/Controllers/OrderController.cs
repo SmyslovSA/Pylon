@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace Pylon.Website.Controllers
 {
+	[Authorize(Roles = "customer")]
     public class OrderController : Controller
     {
         private IOrderService _orderService;
