@@ -3,7 +3,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Pylon.BL;
 using Pylon.BL.Interface;
-using Pylon.Website.Models;
+using Pylon.Models;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -29,6 +29,7 @@ namespace Pylon.Website.Controllers
             }
         }
 
+		[HttpGet]
         public ActionResult Login()
         {
             return View();

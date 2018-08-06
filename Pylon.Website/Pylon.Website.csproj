@@ -207,11 +207,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Models\OrderViewModel.cs" />
-    <Compile Include="Models\ProductViewModel.cs" />
-    <Compile Include="Models\ProfileViewModel.cs" />
-    <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Ninject\UiModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -284,6 +279,10 @@
     <ProjectReference Include="..\Pylon.BL\Pylon.BL.csproj">
       <Project>{AFF8BBAE-2C2D-4672-9A22-1F7132C535C5}</Project>
       <Name>Pylon.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pylon.Models\Pylon.Models.csproj">
+      <Project>{2ea4e907-f564-40e0-b278-df227231c6e5}</Project>
+      <Name>Pylon.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

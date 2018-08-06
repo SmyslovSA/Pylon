@@ -1,11 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Web.Mvc;
 
-namespace Pylon.Website.Models
+namespace Pylon.Models
 {
     public class ProductViewModel
     {
-		[HiddenInput(DisplayValue = false)]
 		public int Id { get; set; }
 
 		[Required]

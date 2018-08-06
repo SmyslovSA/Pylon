@@ -1,9 +1,7 @@
 ﻿using Pylon.BL;
 using Pylon.BL.Interface;
 using Pylon.Website.Extension;
-using Pylon.Website.Models;
 using System;
-using System.Globalization;
 using System.Web.Mvc;
 
 namespace Pylon.Website.Controllers

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Pylon.Website.Models
+namespace Pylon.Models
 {
     public class ProfileViewModel
     {   
