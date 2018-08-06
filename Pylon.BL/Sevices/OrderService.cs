@@ -16,7 +16,7 @@ namespace Pylon.BL.Sevices
 
         public OrderDTO Get(int id)
         {
-            var order = _unitOfWork.OrderManager.GetById(id);
+			var order = _unitOfWork.OrderManager.GetById(id); /*?? throw new*/ 
             return AutoMapper.Mapper.Map<OrderDTO>(order);
         }
 
