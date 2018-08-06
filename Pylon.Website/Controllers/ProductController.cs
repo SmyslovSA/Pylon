@@ -2,7 +2,6 @@
 using Pylon.BL.Interface;
 using Pylon.Models;
 using Pylon.Website.Extension;
-using System;
 using System.Web;
 using System.Web.Mvc;
 
@@ -29,7 +28,6 @@ namespace Pylon.Website.Controllers
 		[Authorize(Roles = "saler")]
 		public ActionResult GetSalerProducts()
         {
-			throw new DivideByZeroException();
 			var list = _productService.GetByProfile(User.GetUserId());
             return View(list);
         }
