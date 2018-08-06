@@ -1,25 +1,52 @@
 ﻿@using Pylon.BL
 @model IEnumerable<OrderDTO>
 
-@{
-    ViewBag.Title = "GetCustomerOrders";
-}
-
+<br>
 @foreach (var order in Model)
 {
-    <div>
-        <h4>
-            @order.StartDate.ToShortDateString() <br>
-            @order.EndDate.ToShortDateString() <br>
-            @order.OrderNumber <br>
-            @order.ProductName <br>
-            @order.ProductDescription <br>
-            @order.ProductMaker
-        </h4>
-        @using (Html.BeginForm("RemoveOrder", "Order"))
-        {
-            @Html.Hidden("id", order.Id)
-            <input class="btn btn-sm btn-warning" type="submit" value="Remove">
-        }
-    </div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+						<div class="car-list-content m-t-50">
+							<!-- Single Car Start -->
+							<div class="single-car-wrap">
+								<div class="row">
+									<!-- Single Car Thumbnail -->
+
+									<div class="col-lg-4">
+											<div>
+												<img src="@Url.Action("GetImage", "Product", new { Id = order.ProductId })" />
+											</div>
+									</div>
+									<!-- Single Car Thumbnail -->
+									<!-- Single Car Info -->
+									<div class="col-lg-6">
+										<div class="col-lg-5">
+											<div class="display-table">
+												<div class="display-table-cell">
+													<div class="car-list-info">
+														<h2>@order.StartDate.ToShortDateString() - @order.EndDate.ToShortDateString()</h2>
+														<h3>@order.ProductName @order.ProductModel</h3>
+														<h5>@order.ProductPrice.ToString("c")</h5>
+													</div>
+													<br>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-2">
+										@using (Html.BeginForm("RemoveOrder", "Order"))
+										{
+											@Html.Hidden("id", order.Id)
+											<p><input type="submit" class="rent-btn" value="Remove" /></p>
+										}
+									</div>
+									<!-- Single Car info -->
+								</div>
+							</div>
+						</div>
+					<br>
+				</div>	
+			</div>
+		</div>
 }

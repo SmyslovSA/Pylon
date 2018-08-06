@@ -3,10 +3,45 @@ namespace Pylon.DAL.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class test : DbMigration
+    public partial class InitialMigration : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Orders",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        OrderNumber = c.Int(nullable: false),
+                        StartDate = c.DateTime(nullable: false),
+                        EndDate = c.DateTime(nullable: false),
+                        ProfileId = c.String(maxLength: 128),
+                        ProductId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Products", t => t.ProductId, cascadeDelete: true)
+                .ForeignKey("dbo.Profiles", t => t.ProfileId)
+                .Index(t => t.ProfileId)
+                .Index(t => t.ProductId);
+            
+            CreateTable(
+                "dbo.Products",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Year = c.Int(nullable: false),
+                        Name = c.String(),
+                        Model = c.String(),
+                        Fuel = c.String(),
+                        Price = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        ProfileId = c.String(maxLength: 128),
+                        ImageMimeType = c.String(),
+                        ImageData = c.Binary(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Profiles", t => t.ProfileId)
+                .Index(t => t.ProfileId);
+            
             CreateTable(
                 "dbo.Profiles",
                 c => new
@@ -14,6 +49,8 @@ namespace Pylon.DAL.Migrations
                         Id = c.String(nullable: false, maxLength: 128),
                         FirstName = c.String(),
                         LastName = c.String(),
+                        Phone = c.String(),
+                        CompanyName = c.String(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.Id)
@@ -93,10 +130,13 @@ namespace Pylon.DAL.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.Orders", "ProfileId", "dbo.Profiles");
             DropForeignKey("dbo.Profiles", "Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Products", "ProfileId", "dbo.Profiles");
+            DropForeignKey("dbo.Orders", "ProductId", "dbo.Products");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
@@ -104,12 +144,17 @@ namespace Pylon.DAL.Migrations
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.Profiles", new[] { "Id" });
+            DropIndex("dbo.Products", new[] { "ProfileId" });
+            DropIndex("dbo.Orders", new[] { "ProductId" });
+            DropIndex("dbo.Orders", new[] { "ProfileId" });
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.Profiles");
+            DropTable("dbo.Products");
+            DropTable("dbo.Orders");
         }
     }
 }

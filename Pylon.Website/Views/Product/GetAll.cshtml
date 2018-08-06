@@ -42,7 +42,12 @@
 
 
 									<div class="col-lg-5">
-										@product.Image
+										@if (product.ImageMimeType != null)
+										{
+											<div>
+												<img src="@Url.Action("GetImage", "Product", new { product.Id })" />
+											</div>
+										}
 									</div>
 									<!-- Single Car Thumbnail -->
 									<!-- Single Car Info -->
@@ -51,8 +56,9 @@
 											<div class="display-table-cell">
 												<div class="car-list-info">
 													<h2>@product.Name</h2>
-													<h5>@product.Price.ToString("c")</h5>
-													<p>@product.Description</p>
+													<h3>@product.Model</h3>
+													<h5>@product.Fuel</h5>
+													<h4>@product.Price.ToString("c")</h4>		
 													@using (Html.BeginForm("AddOrder", "Order", FormMethod.Post))
 													{
 														<input type="hidden" value=@product.Id name="productId" />

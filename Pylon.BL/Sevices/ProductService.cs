@@ -38,9 +38,10 @@ namespace Pylon.BL.Sevices
            var prod =  _unitOfWork.ProductManager.GetById(product.Id);
             prod.Name = product.Name;
             prod.Price = product.Price;
-            prod.Maker = product.Maker;
-            prod.PartNumber = product.PartNumber;
-            _unitOfWork.ProductManager.Update(prod);
+            prod.Fuel = product.Fuel;
+            prod.Year = product.Year;
+			prod.Model = product.Model;
+			_unitOfWork.ProductManager.Update(prod);
             _unitOfWork.SaveChanges();
         }
 

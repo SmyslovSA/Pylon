@@ -2,6 +2,7 @@
 using Pylon.BL.Interface;
 using Pylon.Website.Extension;
 using Pylon.Website.Models;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Pylon.Website.Controllers
@@ -31,26 +32,29 @@ namespace Pylon.Website.Controllers
             return View(list);
         }
 
-        [HttpGet]
+		[HttpGet]
 		[Authorize(Roles = "saler")]
 		public ActionResult AddProduct()
         {
             return View();
         }
 
-        [HttpPost]
+		[HttpPost]
 		[Authorize(Roles = "saler")]
-		public RedirectToRouteResult AddProduct(ProductViewModel model, string uploadImage, string description)
+		public RedirectToRouteResult AddProduct(ProductViewModel model, HttpPostedFileBase uploadFile)
         {
-            ProductDTO productDTO = new ProductDTO
-            {
-                Name = model.Name,
-                Price = model.Price,
-                Description = description,
-                PartNumber = model.PartNumber,
-                Maker = model.Maker,
+			ProductDTO productDTO = new ProductDTO
+			{
+				Name = model.Name,
+				Price = model.Price,
+				Model = model.CarModel,
+				Fuel = model.Fuel,
+				Year = model.Year,
+				ImageData = new byte[uploadFile.ContentLength],
+				ImageMimeType = uploadFile.ContentType,
                 ProfileID = User.GetUserId()
                 };
+			uploadFile.InputStream.Read(productDTO.ImageData, 0, uploadFile.ContentLength);
             _productService.Add(productDTO);
             return RedirectToAction("GetAll");
         }
@@ -61,5 +65,11 @@ namespace Pylon.Website.Controllers
             _productService.Delete(id);
             return RedirectToAction("GetAll");
         }
-    }
+
+		public FileContentResult GetImage(int Id)
+		{
+			var prod = _productService.Get(Id);
+			return File(prod.ImageData, prod.ImageMimeType);
+		}
+	}
 }

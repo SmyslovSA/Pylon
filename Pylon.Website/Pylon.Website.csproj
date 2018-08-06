@@ -261,8 +261,8 @@
     <Content Include="Views\Product\GetAll.cshtml" />
     <Content Include="Views\Product\AddProduct.cshtml" />
     <Content Include="Views\Product\GetSalerProducts.cshtml" />
-    <Content Include="Views\Profile\GetInfo.cshtml" />
     <Content Include="Views\Order\GetCustomerOrders.cshtml" />
+    <Content Include="Views\Profile\GetInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -10,11 +10,13 @@ namespace Pylon.BL
 
         public string ProductName { get; set; }
 
-        public string ProductDescription { get; set; }
+        public string ProductModel { get; set; }
 
-        public string ProductMaker { get; set; }
+        public decimal ProductPrice { get; set; }
 
-        public DateTime StartDate { get; set; }
+		public byte[] ProductImage { get; set; }
+
+		public DateTime StartDate { get; set; }
 
         public DateTime EndDate { get; set; }
 

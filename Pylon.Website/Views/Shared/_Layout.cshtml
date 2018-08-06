@@ -59,7 +59,7 @@
 									}
 									@if (User.IsInRole("saler"))
 									{
-										<li>@Html.ActionLink("My Products", "GetSalerProducts", "Product") </li>
+										<li>@Html.ActionLink("My Cars", "GetSalerProducts", "Product") </li>
 									}
 									@if (User.IsInRole("customer") || User.IsInRole("saler"))
 									{

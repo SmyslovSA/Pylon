@@ -20,7 +20,13 @@ namespace Pylon.Website.Controllers
         public ActionResult GetInfo()
         {
             var model = _profileService.GetProfile(User.GetUserId());
-            return View(model);
+			ProfileViewModel profile = new ProfileViewModel
+			{
+				FirstName = model.FirstName,
+				LastName = model.LastName,
+				Phone = model.Phone
+			};
+            return View(profile);
         }
 
         [HttpPost]
@@ -39,7 +45,6 @@ namespace Pylon.Website.Controllers
             {
                 FirstName = profile.FirstName,
                 LastName = profile.LastName,
-                CompanyName = profile.CompanyName,
                 Phone = profile.Phone,
                 Id = User.GetUserId()
             };
