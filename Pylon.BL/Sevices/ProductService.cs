@@ -1,6 +1,6 @@
 ﻿using Pylon.BL.Interface;
-using Pylon.DAL;
 using Pylon.DAL.Interface;
+using Pylon.DAL.Models;
 using System.Collections.Generic;
 
 namespace Pylon.BL.Sevices

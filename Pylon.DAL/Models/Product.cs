@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Pylon.DAL
+namespace Pylon.DAL.Models
 {
     public class Product
     {

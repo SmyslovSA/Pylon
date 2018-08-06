@@ -1,4 +1,4 @@
-﻿using Pylon.DAL;
+﻿using Pylon.DAL.Models;
 
 namespace Pylon.BL.Mapping
 {

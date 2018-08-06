@@ -2,8 +2,8 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using Ninject.Modules;
 using Ninject.Web.Common;
-using Pylon.DAL;
 using Pylon.DAL.Interface;
+using Pylon.DAL.Models;
 using Pylon.DAL.UoW;
 using Pylon.DAL.UserManager;
 

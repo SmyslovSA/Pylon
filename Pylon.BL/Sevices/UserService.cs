@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Pylon.BL.Interface;
-using Pylon.DAL;
 using Pylon.DAL.Interface;
+using Pylon.DAL.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;

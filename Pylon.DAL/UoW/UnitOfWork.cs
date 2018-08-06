@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using Pylon.DAL.Context;
 using Pylon.DAL.Interface;
+using Pylon.DAL.Models;
 using Pylon.DAL.UserManager;
 using System;
 

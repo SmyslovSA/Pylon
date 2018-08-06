@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Pylon.DAL
+namespace Pylon.DAL.Models
 {
     public class Order
     {

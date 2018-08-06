@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
-using System.Collections.Generic;
 
-namespace Pylon.DAL
+namespace Pylon.DAL.Models
 {
     public class User : IdentityUser
     {

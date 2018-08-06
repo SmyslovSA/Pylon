@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
+using Pylon.DAL.Models;
 
 namespace Pylon.DAL.UserManager
 {

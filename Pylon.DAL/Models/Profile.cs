@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Pylon.DAL
+namespace Pylon.DAL.Models
 {
     public class Profile
     {

@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Pylon.DAL.Models;
 
 namespace Pylon.DAL.Interface
 {

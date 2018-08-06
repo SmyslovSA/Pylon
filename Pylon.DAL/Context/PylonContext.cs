@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
+using Pylon.DAL.Models;
 using System.Data.Entity;
 
 namespace Pylon.DAL.Context

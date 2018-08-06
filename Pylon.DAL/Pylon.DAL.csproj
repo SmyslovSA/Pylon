@@ -64,17 +64,17 @@
       <DependentUpon>201808061001165_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Order.cs" />
-    <Compile Include="Product.cs" />
-    <Compile Include="Role.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Role.cs" />
     <Compile Include="UoW\UnitOfWork.cs" />
-    <Compile Include="User.cs" />
-    <Compile Include="Profile.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserManager\BaseRepository.cs" />
-    <Compile Include="UserManager\OrderRepository.cs" />
-    <Compile Include="UserManager\ProductRepository.cs" />
-    <Compile Include="UserManager\ProfileRepository.cs" />
+    <Compile Include="Repository\BaseRepository.cs" />
+    <Compile Include="Repository\OrderRepository.cs" />
+    <Compile Include="Repository\ProductRepository.cs" />
+    <Compile Include="Repository\ProfileRepository.cs" />
     <Compile Include="UserManager\PylonRoleManager.cs" />
     <Compile Include="UserManager\PylonUserManager.cs" />
   </ItemGroup>
