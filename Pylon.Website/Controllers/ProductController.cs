@@ -2,6 +2,7 @@
 using Pylon.BL.Interface;
 using Pylon.Models;
 using Pylon.Website.Extension;
+using System;
 using System.Web;
 using System.Web.Mvc;
 
@@ -19,7 +20,7 @@ namespace Pylon.Website.Controllers
         [HttpGet]
 		[Authorize(Roles = "customer, saler")]
         public ActionResult GetAll()
-        {
+        {	
             var list = _productService.GetAll();
             return View(list);
         }
@@ -28,7 +29,8 @@ namespace Pylon.Website.Controllers
 		[Authorize(Roles = "saler")]
 		public ActionResult GetSalerProducts()
         {
-            var list = _productService.GetByProfile(User.GetUserId());
+			throw new DivideByZeroException();
+			var list = _productService.GetByProfile(User.GetUserId());
             return View(list);
         }
 
