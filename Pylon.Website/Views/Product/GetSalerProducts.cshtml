@@ -3,7 +3,7 @@
 
 	@using (Html.BeginForm("AddProduct", "Product", FormMethod.Get))
 		{
-			<p><input type="submit" class="rent-btn" value="AddCar" /></p>
+			<p><input type="submit" class="rent-btn" value="AddCar"style="margin-bottom:10px; margin-left:15px" /></p>
 		}
 
 		<div class="container">
@@ -34,8 +34,8 @@
 											<div class="display-table">
 												<div class="display-table-cell">
 													<div class="car-list-info">
-														<h2>@product.Name</h2>
-														<h3>@product.Model</h3>
+														<h2>@product.Name @product.Model</h2>
+														<h4>@product.Year</h4>
 														<h5>@product.Price.ToString("c")</h5>
 													</div>
 													<br>
@@ -47,13 +47,13 @@
 										@using (Html.BeginForm("RemoveProduct", "Product"))
 										{
 											@Html.Hidden("id", product.Id)
-											<p><input type="submit" class="rent-btn" value="Edit" /></p>
+											<p><input type="submit" class="rent-btn" value="Edit" style="min-width:120px" /></p>
 										}
 										<br>
 										@using (Html.BeginForm("RemoveProduct", "Product"))
 										{
 											@Html.Hidden("id", product.Id)
-											<p><input type="submit" class="rent-btn" value="Remove" /></p>
+											<p><input type="submit" class="rent-btn" value="Remove" style="min-width:120px" /></p>
 										}
 									</div>
 									<!-- Single Car info -->

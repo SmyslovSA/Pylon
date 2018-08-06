@@ -3054,7 +3054,6 @@ body,
 ================================*/
 
 #page-404-wrap {
-	background-image: url("assets/img/banner.jpg");
 	background-position: center center;
 	background-size: cover;
 	color: #fff;
@@ -3242,7 +3241,7 @@ body,
 .content {
   box-sizing: border-box;
   min-height: 100%;
-  padding-bottom: 90px;
+  padding-bottom: 80px;
 }
 .footer {
   height: 80px;
