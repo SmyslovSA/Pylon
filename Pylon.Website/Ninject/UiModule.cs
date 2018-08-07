@@ -11,6 +11,7 @@ namespace Pylon.Website.Ninject
             Bind<IProductService>().To<ProductService>();
             Bind<IProfileService>().To<ProfileService>();
             Bind<IOrderService>().To<OrderService>();
-        }
+			Bind<IAdminService>().To<AdminService>();
+		}
     }
 }

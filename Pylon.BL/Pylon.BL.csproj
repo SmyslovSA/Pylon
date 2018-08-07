@@ -66,6 +66,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interface\IAdminService.cs" />
     <Compile Include="Interface\IBaseService.cs" />
     <Compile Include="Interface\IOrderService.cs" />
     <Compile Include="Interface\IProductService.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="ModelsDTO\ProductDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceCreator.cs" />
+    <Compile Include="Sevices\AdminService.cs" />
     <Compile Include="Sevices\OrderService.cs" />
     <Compile Include="Sevices\ProductService.cs" />
     <Compile Include="Sevices\ProfileService.cs" />

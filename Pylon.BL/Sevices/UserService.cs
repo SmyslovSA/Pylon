@@ -29,7 +29,7 @@ namespace Pylon.BL
                     return new OperationDetails(false, result.Errors.FirstOrDefault(), "");
                 // добавляем роль
                 await SetInitialData(new List<string> { "admin", "customer", "saler" });
-               // await _unitOfWork.UserManager.AddToRoleAsync(user.Id, "admin");
+               //await _unitOfWork.UserManager.AddToRoleAsync(user.Id, "admin");
                 await _unitOfWork.UserManager.AddToRoleAsync(user.Id, "saler");
                 await _unitOfWork.UserManager.AddToRoleAsync(user.Id, "customer");
                 // создаем профиль клиента
