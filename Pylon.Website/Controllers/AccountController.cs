@@ -45,7 +45,7 @@ namespace Pylon.Website.Controllers
                 ClaimsIdentity claim = await UserService.Authenticate(userDto);
                 if (claim == null)
                 {
-                    ModelState.AddModelError("", "Неверный логин или пароль.");
+                    ModelState.AddModelError("", "Wrong Login or Password.");
                 }
                 else
                 {

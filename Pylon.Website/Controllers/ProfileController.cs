@@ -30,11 +30,15 @@ namespace Pylon.Website.Controllers
         }
 
         [HttpPost]
-        public RedirectToRouteResult GhangePassword(string newPassword, string newPasswordConfirm)
+        public ActionResult GhangePassword(string newPassword, string newPasswordConfirm)
         {
+			if (newPassword == string.Empty || newPasswordConfirm == string.Empty || newPassword != newPasswordConfirm)
+			{
+				return RedirectToAction("GetInfo");
+			}
             //TODO: null validate
             _profileService.ChangePassword(User.GetUserId(),newPassword, newPasswordConfirm);
-            return RedirectToAction("GetInfo");
+            return View("GetInfo");
         }
 
         [HttpPost]
