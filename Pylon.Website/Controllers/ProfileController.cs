@@ -26,25 +26,29 @@ namespace Pylon.Website.Controllers
 				LastName = model.LastName,
 				Phone = model.Phone
 			};
-            return View(profile);
+			return View(profile);
         }
 
         [HttpPost]
-        public ActionResult GhangePassword(string newPassword, string newPasswordConfirm)
+        public ActionResult ChangePassword(PasswordChangeViewModel model)
         {
-			if (newPassword == string.Empty || newPasswordConfirm == string.Empty || newPassword != newPasswordConfirm)
+			if (!ModelState.IsValid)
 			{
-				return RedirectToAction("GetInfo");
+				return View("GetInfo");
 			}
-            //TODO: null validate
-            _profileService.ChangePassword(User.GetUserId(),newPassword, newPasswordConfirm);
-            return View("GetInfo");
+
+            _profileService.ChangePassword(User.GetUserId(),model.Password, model.ConfirmPassword);
+            return RedirectToAction("GetInfo");
         }
 
         [HttpPost]
-        public RedirectToRouteResult GhangePersonalData(ProfileViewModel profile)
+        public ActionResult GhangePersonalData(ProfileViewModel profile)
         {
-            //TODO: redirect to InvalidInformationView 
+			if (!ModelState.IsValid)
+			{
+				return View("GetInfo", profile);
+			}
+
             UserDTO userDTO = new UserDTO
             {
                 FirstName = profile.FirstName,
@@ -54,7 +58,7 @@ namespace Pylon.Website.Controllers
             };
 
             _profileService.ChangePersonalData(userDTO);
-            return RedirectToAction("GetInfo");
+            return View("GetInfo");
         }
     }
 }
