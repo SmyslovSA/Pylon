@@ -13,6 +13,8 @@ namespace Pylon.BL.Mapping
                 .ForMember(dbe => dbe.LastName, e => e.MapFrom(src => src.LastName))
                 .ForMember(dbe => dbe.CompanyName, e => e.MapFrom(src => src.CompanyName))
                 .ForMember(dbe => dbe.Phone, e => e.MapFrom(src => src.Phone))
+				.ForMember(dbe => dbe.IsBlocked, e => e.MapFrom(src => src.IsBlocked))
+				.ForMember(dbe => dbe.IsDeleted, e => e.MapFrom(src => src.IsDeleted))
 				.ReverseMap();
         }
     }

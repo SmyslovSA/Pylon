@@ -63,6 +63,14 @@
     <Compile Include="Migrations\201808061001165_InitialMigration.Designer.cs">
       <DependentUpon>201808061001165_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808081803037_ProfileIsBlockProperty.cs" />
+    <Compile Include="Migrations\201808081803037_ProfileIsBlockProperty.Designer.cs">
+      <DependentUpon>201808081803037_ProfileIsBlockProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808081825597_ProfileIsDeletedProperty.cs" />
+    <Compile Include="Migrations\201808081825597_ProfileIsDeletedProperty.Designer.cs">
+      <DependentUpon>201808081825597_ProfileIsDeletedProperty.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Product.cs" />
@@ -85,6 +93,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201808061001165_InitialMigration.resx">
       <DependentUpon>201808061001165_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808081803037_ProfileIsBlockProperty.resx">
+      <DependentUpon>201808081803037_ProfileIsBlockProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808081825597_ProfileIsDeletedProperty.resx">
+      <DependentUpon>201808081825597_ProfileIsDeletedProperty.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

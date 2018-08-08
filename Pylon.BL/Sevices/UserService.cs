@@ -33,7 +33,7 @@ namespace Pylon.BL
                 await _unitOfWork.UserManager.AddToRoleAsync(user.Id, "saler");
                 await _unitOfWork.UserManager.AddToRoleAsync(user.Id, "customer");
                 // создаем профиль клиента
-                Profile clientProfile = new Profile { Id = user.Id, FirstName = userDto.FirstName, LastName = userDto.LastName };
+                Profile clientProfile = new Profile { Id = user.Id, FirstName = userDto.FirstName, LastName = userDto.LastName, IsBlocked = false, IsDeleted = false};
                 _unitOfWork.ProfileManager.Insert(clientProfile);
                 _unitOfWork.SaveChanges();
                 return new OperationDetails(true, "Регистрация успешно пройдена", "");
@@ -47,12 +47,19 @@ namespace Pylon.BL
         public async Task<ClaimsIdentity> Authenticate(UserDTO userDto)
         {
             ClaimsIdentity claim = null;
-            // находим пользователя
-            User user = await _unitOfWork.UserManager.FindAsync(userDto.Email, userDto.Password);
-            // авторизуем его и возвращаем объект ClaimsIdentity
-            if (user != null)
-                claim = await _unitOfWork.UserManager.CreateIdentityAsync(
-                    user, DefaultAuthenticationTypes.ApplicationCookie);
+			// находим пользователя
+			User user = await _unitOfWork.UserManager.FindAsync(userDto.Email, userDto.Password);
+			// авторизуем его и возвращаем объект ClaimsIdentity
+			if (user != null)
+			{
+				var profile = _unitOfWork.ProfileManager.GetById(user.Id);
+				if (profile.IsDeleted == true || profile.IsBlocked == true)
+				{
+					return new ClaimsIdentity();
+				}
+				claim = await _unitOfWork.UserManager.CreateIdentityAsync(
+						user, DefaultAuthenticationTypes.ApplicationCookie);
+			}
             return claim;
         }
 

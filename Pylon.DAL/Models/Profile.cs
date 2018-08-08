@@ -21,5 +21,9 @@ namespace Pylon.DAL.Models
         public virtual User User { get; set; }
 
         public List<Product> Products { get; set; }
-    }
+
+		public bool IsBlocked { get; set; }
+
+		public bool IsDeleted { get; set; }
+	}
 }

@@ -1,5 +1,6 @@
 ﻿using Pylon.BL.Interface;
 using Pylon.DAL.Interface;
+using Pylon.DAL.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -28,6 +29,30 @@ namespace Pylon.BL.Sevices
 		public async Task RemoveRole(string id, string role)
 		{
 			await _unitOfWork.UserManager.RemoveFromRoleAsync(id, role);
+		}
+
+		public void BlockUser(string id)
+		{
+			var user = _unitOfWork.ProfileManager.GetById(id);
+			user.IsBlocked = true;
+			_unitOfWork.ProfileManager.Update(user);
+			_unitOfWork.SaveChanges();
+		}
+
+		public void UnBlockUser(string id)
+		{
+			var user = _unitOfWork.ProfileManager.GetById(id);
+			user.IsBlocked = false;
+			_unitOfWork.ProfileManager.Update(user);
+			_unitOfWork.SaveChanges();
+		}
+
+		public void DeleteUser(string id)
+		{
+			var user = _unitOfWork.ProfileManager.GetById(id);
+			user.IsDeleted = true;
+			_unitOfWork.ProfileManager.Update(user);
+			_unitOfWork.SaveChanges();
 		}
 	}
 }

@@ -47,7 +47,11 @@ namespace Pylon.Website.Controllers
                 {
                     ModelState.AddModelError("", "Wrong Login or Password.");
                 }
-                else
+				else if (!claim.IsAuthenticated)
+				{
+					ModelState.AddModelError("", "That user is blocked or deleted.");
+				}
+				else
                 {
                     AuthenticationManager.SignOut();
                     AuthenticationManager.SignIn(new AuthenticationProperties

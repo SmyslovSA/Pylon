@@ -29,5 +29,23 @@ namespace Pylon.Website.Controllers
 			_adminService.RemoveRole(id, role);
 			return View("GetAllUsers");
 		}
+
+		public ActionResult BlockUser(string id)
+		{
+			_adminService.BlockUser(id);
+			return RedirectToAction("GetAllUsers");
+		}
+
+		public ActionResult UnblockUser(string id)
+		{
+			_adminService.UnBlockUser(id);
+			return RedirectToAction("GetAllUsers");
+		}
+
+		public ActionResult DeleteUser(string id)
+		{
+			_adminService.DeleteUser(id);
+			return RedirectToAction("GetAllUsers");
+		}
 	}
 }

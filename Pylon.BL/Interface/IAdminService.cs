@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Pylon.BL.Interface
@@ -11,5 +8,8 @@ namespace Pylon.BL.Interface
 		ICollection<UserDTO> GetAll();
 		Task AddRole(string id, string role);
 		Task RemoveRole(string id, string role);
+		void BlockUser(string id);
+		void UnBlockUser(string id);
+		void DeleteUser(string id);
 	}
 }

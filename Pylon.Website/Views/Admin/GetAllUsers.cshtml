@@ -1,5 +1,4 @@
-﻿@using Pylon.Website.Extension;
-@model IEnumerable<Pylon.BL.UserDTO>
+﻿@model IEnumerable<Pylon.BL.UserDTO>
 
 <h2>GetAllUsers</h2>
 
@@ -15,26 +14,55 @@
 			@Html.DisplayNameFor(model => model.LastName)
 		</th>
 		<th>
-			@Html.DisplayName("Role")
+			@Html.DisplayNameFor(model => model.IsBlocked)
 		</th>
-		<th></th>
+		<th>
+			@Html.DisplayNameFor(model => model.IsDeleted)
+		</th>
 	</tr>
 
 	@foreach (var item in Model)
 	{
-		<tr>
-			<td>
-				@Html.DisplayFor(modelItem => item.Email)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.FirstName)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.LastName)
-			</td>
-			<td>
-			</td>
-		</tr>
-	}
-
+		if (item.IsDeleted == false)
+		{
+	<tr>
+		<td>
+			@Html.DisplayFor(modelItem => item.Email)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.FirstName)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.LastName)
+		</td>
+		@if (item.IsBlocked == false)
+		{
+		<td>
+			@using (Html.BeginForm("BlockUser", "Admin"))
+			{
+				@Html.Hidden("id", item.Id)
+				<input type="submit" value="Block User" />
+			}
+		</td>
+		}
+		else
+		{
+		<td>
+			@using (Html.BeginForm("UnblockUser", "Admin"))
+			{
+				@Html.Hidden("id", item.Id)
+				<input type="submit" value="Unblock User" />
+			}
+		</td>
+		}
+		<td>
+			@using (Html.BeginForm("DeleteUser", "Admin"))
+			{
+				@Html.Hidden("id", item.Id)
+				<input type="submit" value="Delete User" />
+			}
+		</td>
+	</tr>
+			}
+		}
 </table>

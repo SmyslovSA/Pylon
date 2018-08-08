@@ -23,5 +23,5 @@ namespace Pylon.BL
         public int ProductId { get; set; }
 
         public string ProfileId { get; set; }
-    }
+	}
 }

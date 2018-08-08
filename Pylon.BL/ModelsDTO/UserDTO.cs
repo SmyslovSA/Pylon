@@ -17,5 +17,9 @@
         public string CompanyName { get; set; }
 
         public string Phone { get; set; }
+
+		public bool IsBlocked { get; set; }
+
+		public bool IsDeleted { get; set; }
 	}
 }
