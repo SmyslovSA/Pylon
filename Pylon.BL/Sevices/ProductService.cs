@@ -56,5 +56,25 @@ namespace Pylon.BL.Sevices
             var list = _unitOfWork.ProductManager.Get(f => f.ProfileId == id);
             return AutoMapper.Mapper.Map<List<ProductDTO>>(list);
         }
-    }
+
+		public ICollection<ProductDTO> GetFilter(ProductDTO product, int maxYear, decimal maxPrice)
+		{
+			if (product.Year < 2000)
+				product.Year = 2000;
+			if (maxYear == 0 || maxYear < product.Year)
+				maxYear = int.MaxValue;
+			if (product.Price < 0)
+				product.Price = 0;
+			if (maxPrice == 0 || maxPrice < product.Price)
+				maxPrice = decimal.MaxValue;
+
+			var list = _unitOfWork.ProductManager.Get(
+					p => (product.Name == null ? p.Name.Length > 0 : p.Name.Contains(product.Name)) &&
+				    (product.Model == null ? p.Model.Length > 0 : p.Model.Contains(product.Model)) &&
+					(p.Price >= product.Price && maxPrice >= p.Price) &&
+					(p.Year >= product.Year && maxYear >= p.Year));
+
+			return AutoMapper.Mapper.Map<List<ProductDTO>>(list);
+		}
+	}
 }

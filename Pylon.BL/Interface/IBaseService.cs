@@ -6,7 +6,7 @@ namespace Pylon.BL.Interface
     {
         TEntity Get(int id);
         ICollection<TEntity> GetByProfile(string id);
-        int Add(TEntity product);
+		int Add(TEntity product);
         void Update(TEntity product);
         void Delete(int id);
         ICollection<TEntity> GetAll();

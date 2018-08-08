@@ -1,0 +1,33 @@
+﻿@model Pylon.Models.ProductFilterModel
+
+@using (Html.BeginForm("GetFilter", "Product", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+	@Html.AntiForgeryToken()
+				<div class="login-page-content">
+					<div class="login-form">
+						<form action="index.html">
+							<div class="username">
+								@Html.TextBoxFor(m => m.Name, new { @placeholder = "Model" })
+							</div>
+							<div class="username">
+								@Html.TextBoxFor(m => m.CarModel, new { @placeholder = "CarModel" })
+							</div>
+							<div class="username">
+								@Html.TextBoxFor(m => m.MinYear, new { @placeholder = "CarModel" })
+							</div>
+							<div class="username">
+								@Html.TextBoxFor(m => m.MaxYear, new { @placeholder = "CarModel" })
+							</div>
+							<div class="username">
+								@Html.TextBoxFor(m => m.MinPrice, new { @placeholder = "CarModel" })
+							</div>
+							<div class="username">
+								@Html.TextBoxFor(m => m.MaxPrice, new { @placeholder = "CarModel"})
+							</div>
+							<div class="log-btn">
+								<button> Search </button>
+							</div>
+						</form>
+					</div>
+				</div>
+}

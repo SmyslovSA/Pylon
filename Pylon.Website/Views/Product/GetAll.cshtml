@@ -1,14 +1,10 @@
 ﻿@using Pylon.BL
+@using Pylon.Models
 @model IEnumerable<ProductDTO>
-
-@{
-	ViewBag.Title = "GetAll";
-}
 
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width" />
-	<title>@ViewBag.Title</title>
 	<link rel="stylesheet" href="/css/bootstrap.min.css" />
 </head>
 
@@ -20,10 +16,9 @@
 					<div class="sidebar-content-wrap">
 						<!-- Single Sidebar Start -->
 						<div class="single-sidebar">
-							<h3>For More Informations</h3>
+							<h3>Filter</h3>
 							<div class="sidebar-body">
-								<p><i class="fa fa-mobile"></i> +8801816 277 243</p>
-								<p><i class="fa fa-clock-o"></i> Mon - Sat 8.00 - 18.00</p>
+								@Html.Partial("GetFilter", new ProductFilterModel())
 							</div>
 						</div>
 					</div>

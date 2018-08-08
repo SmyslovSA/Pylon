@@ -24,7 +24,27 @@ namespace Pylon.Website.Controllers
             return View(list);
         }
 
-        [HttpGet]
+		[HttpPost]
+		[Authorize(Roles = "customer, saler")]
+		public ActionResult GetFilter(ProductFilterModel model)
+		{
+			if (model == null)
+			{
+				return RedirectToAction("GetAll");
+			}
+			ProductDTO product = new ProductDTO
+			{
+				Name = model.Name,
+				Year = model.MinYear,
+				Price = model.MinPrice,
+				Model = model.CarModel,
+				Fuel = model.Fuel
+			};
+			var list = _productService.GetFilter(product,model.MaxYear,model.MaxPrice);
+			return View("GetAll",list);
+		}
+
+		[HttpGet]
 		[Authorize(Roles = "saler")]
 		public ActionResult GetSalerProducts()
         {
