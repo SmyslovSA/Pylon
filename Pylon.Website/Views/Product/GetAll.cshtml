@@ -8,85 +8,77 @@
 	<link rel="stylesheet" href="/css/bootstrap.min.css" />
 </head>
 
-<section id="car-list-area" class="section-padding">	
-		<div class="container">
-			<div class="row">
-				<!-- Sidebar Area Start -->
-				<div class="col-lg-4">
-					<div class="sidebar-content-wrap">
-						<!-- Single Sidebar Start -->
-						<div class="single-sidebar">
-							<h3>Filter</h3>
-							<div class="sidebar-body">
-								@Html.Partial("GetFilter", new ProductFilterModel())
-							</div>
+<section id="car-list-area" class="section-padding">
+	<div class="container">
+		<div class="row">
+			<!-- Sidebar Area Start -->
+			<div class="col-lg-4">
+					<!-- Single Sidebar Start -->
+					<div class="single-sidebar">
+						<h3>Filter</h3>
+						<div class="sidebar-body">
+							@Html.Partial("GetFilter", new ProductFilterModel())
 						</div>
-					</div>
-				</div>
-				<!-- Single Sidebar End -->
-				
-				<div class="col-lg-8">
-					@foreach (var product in Model)
-					{
-						<div class="car-list-content m-t-50">
-
-							<!-- Single Car Start -->
-							<div class="single-car-wrap">
-								<div class="row">
-									<!-- Single Car Thumbnail -->
-
-
-									<div class="col-lg-5">
-										@if (product.ImageMimeType != null)
-										{
-											<div>
-												<img src="@Url.Action("GetImage", "Product", new { product.Id })" />
-											</div>
-										}
-									</div>
-									<!-- Single Car Thumbnail -->
-									<!-- Single Car Info -->
-									<div class="col-lg-7">
-										<div class="display-table">
-											<div class="display-table-cell">
-												<div class="car-list-info">
-													<h2>@product.Name</h2>
-													<h3>@product.Model</h3>
-													<h5>@product.Fuel</h5>
-													<h4>@product.Price.ToString("c")</h4>		
-													@using (Html.BeginForm("AddOrder", "Order", FormMethod.Post))
-													{
-														<input type="hidden" value=@product.Id name="productId" />
-														<div class="input-group date" id="datetimepicker2">
-															<input type="text" class="form-control" name="startDate" autocomplete="off" />
-															<span class="input-group-addon">
-																<span class="glyphicon-calendar glyphicon"></span>
-															</span>
-														</div>
-														<div class="input-group date" id="datetimepicker1">
-															<input type="text" class="form-control" name="endDate" autocomplete="off" />
-															<span class="input-group-addon">
-																<span class="glyphicon-calendar glyphicon"></span>
-															</span>
-														</div>
-														<p><input type="submit" class="rent-btn" value="BookProduct" /></p>
-													}
-												</div>
-												<br>
-											</div>
-										</div>
-									</div>
-									<!-- Single Car info -->
-								</div>
-							</div>
-						</div>
-						<br>
-					}
-					</div>
-				
 				</div>
 			</div>
-	</section>
+			<!-- Single Sidebar End -->
+
+			<div class="col-lg-8">
+				@foreach (var product in Model)
+				{
+					<div class="car-list-content m-t-50">
+
+						<!-- Single Car Start -->
+						<div class="single-car-wrap">
+							<div class="row">
+								<!-- Single Car Thumbnail -->
+
+
+								<div class="col-lg-5">
+									@if (product.ImageMimeType != null)
+									{
+										<div>
+											<img src="@Url.Action("GetImage", "Product", new { product.Id })" />
+										</div>
+									}
+								</div>
+								<!-- Single Car Thumbnail -->
+								<!-- Single Car Info -->
+								<div class="col-lg-7">
+									<div class="display-table">
+										<div class="display-table-cell">
+											<div class="car-list-info">
+												<h2>@product.Name</h2>
+												<h3>@product.Model</h3>
+												<h5>@product.Fuel</h5>
+												<h4>@product.Price.ToString("c")</h4>
+												@using (Html.BeginForm("AddOrder", "Order", FormMethod.Post))
+												{
+													<input type="hidden" value=@product.Id name="productId" />
+													<div class="input-group date">
+														<input type="text" class="form-control" id="datepicker3" name="startDate" autocomplete="off" />
+													</div>
+													<div class="input-group date">
+														<input type="text" class="form-control" id="datepicker4" name="endDate" autocomplete="off" />
+													</div>
+													<p><input type="submit" class="rent-btn" value="BookProduct" /></p>
+												}
+											</div>
+											<br>
+										</div>
+									</div>
+								</div>
+								<!-- Single Car info -->
+							</div>
+						</div>
+					</div>
+					<br>
+				}
+			</div>
+		</div>
+	</div>
+</section>
+
 
 
 

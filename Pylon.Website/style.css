@@ -201,7 +201,7 @@ header.fixTotop #header-top {
 /*== Header Bottom CSS Start ==*/
 
 #header-bottom {
-	background-color: rgba(0, 0, 0, 0.3);
+	background-color: black;
 	padding: 15px 0;
 	-webkit-transition: all 0.4s ease 0s;
 	transition: all 0.4s ease 0s;
@@ -2222,7 +2222,7 @@ body,
 	background-image: url("assets/img/page-title.jpg");
 	background-position: center center;
 	background-size: cover;
-	padding-top: 80px;
+	padding-top: 60px;
 }
 
 #page-title-area .section-title {
@@ -2426,8 +2426,7 @@ body,
 }
 
 .sidebar-body {
-	line-height: 2;
-	padding: 30px 15px;
+	line-height: 1.5;
 }
 
 .sidebar-body i.fa {
@@ -2919,7 +2918,7 @@ body,
 
 .login-form {
 	background-color: #f8f9fa;
-	padding: 50px 20px 15px;
+	padding:  20px 15px;
 }
 
 .login-form h3 {

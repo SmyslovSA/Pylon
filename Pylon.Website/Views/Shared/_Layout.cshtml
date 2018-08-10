@@ -4,13 +4,8 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>@ViewBag.Title - My ASP.NET Application</title>
-
-	<link rel="stylesheet" href="/css/bootstrap-datetimepicker.min.css" />
-	<!--=== Favicon ===-->
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-
-	<title>Cardoor - Car Rental HTML Template</title>
-
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet" />
 	<link href="/assets/css/bootstrap.min.css" rel="stylesheet">
 	<!--=== Slicknav CSS ===-->
 	<link href="/assets/css/plugins/slicknav.min.css" rel="stylesheet">
@@ -152,20 +147,42 @@
 	<script src="/assets/js/plugins/slicknav.min.js"></script>
 	<!--=== Mian Js ===-->
 	<script src="/assets/js/main.js"></script>
-
-	<script src="/js/jquery-3.2.1.min.js"></script>
-	<script src="/js/moment-with-locales.min.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/bootstrap-datetimepicker.min.js"></script>
-	<script type="text/javascript">
-		$(function () {
-			$('#datetimepicker1').datetimepicker({
-				locale: 'ru',
-			});
-			$('#datetimepicker2').datetimepicker({
-				locale: 'ru'
-			});
-		});
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script>
+	$("#datepicker").datepicker({
+			format: " yyyy",
+			viewMode: "years",
+			minViewMode: "years",
+			autoclose: true,
+			startDate: "2000",
+			endDate: "@DateTime.Today.Year"
+	});
+	</script>
+	<script>
+	$("#datepicker2").datepicker({
+			format: " yyyy",
+			viewMode: "years",
+			minViewMode: "years",
+			autoclose: true,
+			startDate: "2000",
+			endDate: "@DateTime.Today.Year"
+	});
+	</script>
+	<script>
+		$("#datepicker3").datepicker({
+			format:"dd/mm/yyyy",
+			autoclose: true,
+			startDate: "@DateTime.Today"
+	});
+	</script>
+	<script>
+		$("#datepicker4").datepicker({
+			format: "dd/mm/yyyy",
+			autoclose: true,
+			startDate: "@DateTime.Today"
+	});
 	</script>
 </body>
 </html>
