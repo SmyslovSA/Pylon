@@ -15,6 +15,8 @@ namespace Pylon.BL.Mapping
                 .ForMember(dbe => dbe.Phone, e => e.MapFrom(src => src.Phone))
 				.ForMember(dbe => dbe.IsBlocked, e => e.MapFrom(src => src.IsBlocked))
 				.ForMember(dbe => dbe.IsDeleted, e => e.MapFrom(src => src.IsDeleted))
+				.ForMember(dbe => dbe.ImageMimeType, e => e.MapFrom(src => src.ImageMimeType))
+				.ForMember(dbe => dbe.ImageData, e => e.MapFrom(src => src.ImageData))
 				.ReverseMap();
         }
     }

@@ -71,6 +71,10 @@
     <Compile Include="Migrations\201808081825597_ProfileIsDeletedProperty.Designer.cs">
       <DependentUpon>201808081825597_ProfileIsDeletedProperty.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808131128190_ProfileImage.cs" />
+    <Compile Include="Migrations\201808131128190_ProfileImage.Designer.cs">
+      <DependentUpon>201808131128190_ProfileImage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Product.cs" />
@@ -99,6 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808081825597_ProfileIsDeletedProperty.resx">
       <DependentUpon>201808081825597_ProfileIsDeletedProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808131128190_ProfileImage.resx">
+      <DependentUpon>201808131128190_ProfileImage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

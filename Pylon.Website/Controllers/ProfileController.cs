@@ -2,6 +2,7 @@
 using Pylon.BL.Interface;
 using Pylon.Models;
 using Pylon.Website.Extension;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Pylon.Website.Controllers
@@ -24,17 +25,19 @@ namespace Pylon.Website.Controllers
 			{
 				FirstName = model.FirstName,
 				LastName = model.LastName,
-				Phone = model.Phone
+				Phone = model.Phone,
+				ImageData = model.ImageData,
+				ImageMimeType = model.ImageMimeType
 			};
 			return View(profile);
         }
 
         [HttpPost]
-        public ActionResult ChangePassword(PasswordChangeViewModel model)
+        public ActionResult ChangePassword(ProfileViewModel model)
         {
 			if (!ModelState.IsValid)
 			{
-				return View("GetInfo");
+				return RedirectToAction("GetInfo");
 			}
 
             _profileService.ChangePassword(User.GetUserId(),model.Password, model.ConfirmPassword);
@@ -58,7 +61,27 @@ namespace Pylon.Website.Controllers
             };
 
             _profileService.ChangePersonalData(userDTO);
-            return View("GetInfo");
+            return RedirectToAction("GetInfo");
         }
-    }
+
+		public FileContentResult GetImage(string Id)
+		{
+			var user = _profileService.GetProfile(Id);
+			return File(user.ImageData, user.ImageMimeType);
+		}
+
+		[HttpPost]
+		public ActionResult GhangeImage(HttpPostedFileBase uploadFile)
+		{
+			UserDTO userDTO = new UserDTO
+			{
+				Id = User.GetUserId(),
+				ImageData = new byte[uploadFile.ContentLength],
+				ImageMimeType = uploadFile.ContentType,
+			};
+			uploadFile.InputStream.Read(userDTO.ImageData, 0, uploadFile.ContentLength);
+			_profileService.ChangeImage(userDTO);
+			return RedirectToAction("GetInfo");
+		}
+	}
 }

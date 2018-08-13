@@ -5,5 +5,6 @@
         UserDTO GetProfile(string id);
         void ChangePassword(string id,string newPassword, string newPasswordConfirm);
         void ChangePersonalData(UserDTO user);
-    }
+		void ChangeImage(UserDTO user);
+	}
 }

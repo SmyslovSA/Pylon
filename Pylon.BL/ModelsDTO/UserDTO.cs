@@ -21,5 +21,9 @@
 		public bool IsBlocked { get; set; }
 
 		public bool IsDeleted { get; set; }
+
+		public string ImageMimeType { get; set; }
+
+		public byte[] ImageData { get; set; }
 	}
 }

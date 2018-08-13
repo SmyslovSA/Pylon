@@ -41,5 +41,15 @@ namespace Pylon.BL.Sevices
             _unitOfWork.ProfileManager.Update(profile);
             _unitOfWork.SaveChanges();
         }
-    }
+
+		public void ChangeImage(UserDTO user)
+		{
+			var profile = _unitOfWork.ProfileManager.GetById(user.Id);
+			//TODO: user data validate
+			profile.ImageData = user.ImageData;
+			profile.ImageMimeType = user.ImageMimeType;
+			_unitOfWork.ProfileManager.Update(profile);
+			_unitOfWork.SaveChanges();
+		}
+	}
 }

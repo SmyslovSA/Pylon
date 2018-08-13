@@ -1,13 +1,29 @@
-﻿@using Pylon.Models
+﻿@using Pylon.Website.Extension
 @model Pylon.Models.ProfileViewModel
 
 <div class="col-lg-12">
 	<div class="row">
 		<!-- Profile Avatar -->
 		<div class="col-lg-4" style="padding-top:10px">
-			<div>
-				
-			</div>
+			<div class="editor-field">
+				@using (Html.BeginForm("GhangeImage", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+				{
+					if (Model.ImageMimeType == null)
+					{
+						<img src="/assets/img/no_image_profile.jpg" alt="JSOFT">
+					}
+					else
+					{
+						<img src="@Url.Action("GetImage", "Profile", new { id = User.GetUserId() })" />
+					}
+					<div>
+					<input type="file" name="uploadFile" visible="off" />
+					</div>
+					<div class="log-btn">
+						<button> Save </button>
+					</div>
+					}
+				</div>
 		</div>
 		<!-- Profile Avatar -->
 		<!-- Profile Info -->
@@ -45,7 +61,34 @@
 					</div>
 				</div>
 			}
-			@Html.Partial("ChangePassword", new PasswordChangeViewModel())
+			@using (Html.BeginForm("ChangePassword", "Profile", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+			{
+				@Html.AntiForgeryToken()
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-7 col-md-8 m-auto" style="max-width:90%; flex-basis:90%">
+							<div class="login-page-content">
+								<div class="login-form">
+									<h3>Change Password</h3>
+									<form action="index.html">
+										<div class="password">
+											@Html.PasswordFor(m => m.Password, new { @placeholder = "New Password", @autocomplete = "off" })
+											@Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+										</div>
+										<div class="password">
+											@Html.PasswordFor(m => m.ConfirmPassword, new { @placeholder = "New Password Confirm", @autocomplete = "off" })
+											@Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+										</div>
+										<div class="log-btn">
+											<button> Change Password </button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			}
 		</div>
 		<!--Profile info -->
 	</div>
