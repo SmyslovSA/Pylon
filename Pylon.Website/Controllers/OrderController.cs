@@ -19,26 +19,15 @@ namespace Pylon.Website.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetOrder()
-        {
-            return View();
-        }
-
-        [HttpGet]
-        public ActionResult GetCustomerOrders(int page = 1)
+		public ActionResult GetCustomerOrders(int page = 1)
         {
             var list = _orderService.GetByProfile(User.GetUserId());
             return View(list.ToPagedList(page,5));
         }
 
 		[HttpPost]
-		[Authorize(Roles = "customer, saler")]
 		public ActionResult GetFilter(OrderFilterModel model, string userId)
 		{
-			if (model == null)
-			{
-				return RedirectToAction("GetAll");
-			}
 			OrderDTO product = new OrderDTO
 			{
 				ProfileId = userId,
@@ -50,13 +39,6 @@ namespace Pylon.Website.Controllers
 			var list = _orderService.GetFilter(product);
 			return View("GetCustomerOrders", list.ToPagedList(1, 5));
 		}
-
-		[HttpGet]
-        public ActionResult GetAllOrders()
-        {
-            var list = _orderService.GetAll();
-            return View(list);
-        }
 
         [HttpPost]
         public ActionResult AddOrder(string startDate, string endDate, int productId)
