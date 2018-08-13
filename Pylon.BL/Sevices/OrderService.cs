@@ -1,6 +1,7 @@
 ﻿using Pylon.BL.Interface;
 using Pylon.DAL.Interface;
 using Pylon.DAL.Models;
+using System;
 using System.Collections.Generic;
 
 namespace Pylon.BL.Sevices
@@ -28,7 +29,17 @@ namespace Pylon.BL.Sevices
             return AutoMapper.Mapper.Map<List<OrderDTO>>(list);
         }
 
-        public ICollection<OrderDTO> GetAll()
+		public ICollection<OrderDTO> GetFilter(OrderDTO order)
+		{
+			var list = _unitOfWork.OrderManager.Get(
+					 o => (order.ProfileId == o.ProfileId) &&
+					 (order.ProductName == null ? o.Product.Name.Length > 0 : o.Product.Name.Contains(order.ProductName)) &&
+					 (order.ProductModel == null ? o.Product.Model.Length > 0 : o.Product.Model.Contains(order.ProductModel))&&
+					 (order.StartDate <= o.StartDate && order.EndDate >= o.EndDate));
+			return AutoMapper.Mapper.Map<List<OrderDTO>>(list);
+		}
+
+		public ICollection<OrderDTO> GetAll()
         {
             var list = _unitOfWork.OrderManager.Get();
             return AutoMapper.Mapper.Map<List<OrderDTO>>(list);

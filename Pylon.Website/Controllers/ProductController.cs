@@ -47,10 +47,10 @@ namespace Pylon.Website.Controllers
 
 		[HttpGet]
 		[Authorize(Roles = "saler")]
-		public ActionResult GetSalerProducts()
+		public ActionResult GetSalerProducts(int page = 1)
         {
 			var list = _productService.GetByProfile(User.GetUserId());
-            return View(list);
+            return View(list.ToPagedList(page,5));
         }
 
 		[HttpGet]

@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LoginModel.cs" />
+    <Compile Include="OrderFilterModel.cs" />
     <Compile Include="OrderViewModel.cs" />
     <Compile Include="PasswordChangeViewModel.cs" />
     <Compile Include="ProductFilterModel.cs" />

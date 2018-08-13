@@ -1,0 +1,35 @@
+﻿@using Pylon.Website.Extension
+@model Pylon.Models.OrderFilterModel
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+</head>
+@using (Html.BeginForm("GetFilter", "Order", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+	@Html.AntiForgeryToken()
+	<div class="login-page-content">
+		<div class="login-form">
+			<input type="hidden" value=@User.GetUserId() name="userId" />
+			<div class="username">
+				@Html.Label("Car")
+				@Html.TextBoxFor(m => m.ProductName)
+			</div>
+			<div class="username">
+				@Html.Label("Model")
+				@Html.TextBoxFor(m => m.ProductModel)
+			</div>
+			<div class="username">
+				@Html.Label("StartDate")
+				<input type="text" id="datepicker3" name="startDate" autocomplete="off" />
+			</div>
+			<div class="username">
+				@Html.Label("EndDate")
+				<input type="text" class="form-control" name="endDate" autocomplete="off" />
+			</div>
+			<div class="log-btn">
+				<button> Search </button>
+			</div>
+		</div>
+	</div>
+}

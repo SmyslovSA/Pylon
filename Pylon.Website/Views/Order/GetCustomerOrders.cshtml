@@ -1,45 +1,75 @@
-﻿@using Pylon.BL
-@model IEnumerable<OrderDTO>
+﻿@using Pylon.Models
+@using PagedList.Mvc
+@model PagedList.IPagedList<Pylon.BL.OrderDTO>
 
-<br>
-@foreach (var order in Model)
-{
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-						<div class="car-list-content m-t-50">
-							<!-- Single Car Start -->
-							<div class="single-car-wrap">
-								<div class="row">
-									<!-- Single Car Thumbnail -->
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+	<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="/css/bootstrap.css" />
+</head>
+<section id="car-list-area" class="section-padding">
+	<div class="container">
+		<div class="row">
+			<!-- Sidebar Area Start -->
+			<div class="col-lg-4">
+				<!-- Single Sidebar Start -->
+				<div class="single-sidebar">
+					<h3>Filter</h3>
+					<div class="sidebar-body">
+						@Html.Partial("GetFilter", new OrderFilterModel())
+					</div>
+				</div>
+			</div>
+			<!-- Single Sidebar End -->
 
-									<div class="col-lg-4">
-											<div>
-												<img src="@Url.Action("GetImage", "Product", new { Id = order.ProductId })" />
+			<div class="col-lg-8">
+				@foreach (var order in Model)
+				{
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-10">
+								<div class="car-list-content m-t-50">
+									<!-- Single Car Start -->
+									<div class="single-car-wrap">
+										<div class="row">
+											<!-- Single Car Thumbnail -->
+
+											<div class="col-lg-4">
+												<div>
+													<img src="@Url.Action("GetImage", "Product", new { Id = order.ProductId })" />
+												</div>
 											</div>
-									</div>
-									<!-- Single Car Thumbnail -->
-									<!-- Single Car Info -->
-									<div class="col-lg-6">
-										<div class="car-list-info">
-														<h2>@order.StartDate.ToShortDateString() - @order.EndDate.ToShortDateString()</h2>
-														<h3>@order.ProductName @order.ProductModel</h3>
-														<h5>@order.ProductPrice.ToString("c")</h5>
+											<!-- Single Car Thumbnail -->
+											<!-- Single Car Info -->
+											<div class="col-lg-6">
+												<div class="car-list-info">
+													<h2>@order.StartDate.ToShortDateString() - @order.EndDate.ToShortDateString()</h2>
+													<h3>@order.ProductName @order.ProductModel</h3>
+													<h5>@order.ProductPrice.ToString("c")</h5>
+												</div>
+											</div>
+											<div class="col-lg-2">
+												@using (Html.BeginForm("RemoveOrder", "Order"))
+												{
+													@Html.Hidden("id", order.Id)
+													<p><input type="submit" class="rent-btn" value="Remove" /></p>
+												}
+											</div>
+											<!-- Single Car info -->
 										</div>
 									</div>
-									<div class="col-lg-2">
-										@using (Html.BeginForm("RemoveOrder", "Order"))
-										{
-											@Html.Hidden("id", order.Id)
-											<p><input type="submit" class="rent-btn" value="Remove" /></p>
-										}
-									</div>
-									<!-- Single Car info -->
 								</div>
+								<br>
 							</div>
 						</div>
-					<br>
-				</div>	
+					</div>
+				}
 			</div>
 		</div>
-}
+	</div>
+</section>
+	<br />
+	Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
+
+	@Html.PagedListPager(Model, page => Url.Action("GetCustomerOrders", new { page }))

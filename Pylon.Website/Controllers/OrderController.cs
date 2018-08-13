@@ -1,5 +1,7 @@
-﻿using Pylon.BL;
+﻿using PagedList;
+using Pylon.BL;
 using Pylon.BL.Interface;
+using Pylon.Models;
 using Pylon.Website.Extension;
 using System;
 using System.Web.Mvc;
@@ -23,13 +25,33 @@ namespace Pylon.Website.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetCustomerOrders()
+        public ActionResult GetCustomerOrders(int page = 1)
         {
             var list = _orderService.GetByProfile(User.GetUserId());
-            return View(list);
+            return View(list.ToPagedList(page,5));
         }
 
-        [HttpGet]
+		[HttpPost]
+		[Authorize(Roles = "customer, saler")]
+		public ActionResult GetFilter(OrderFilterModel model, string userId)
+		{
+			if (model == null)
+			{
+				return RedirectToAction("GetAll");
+			}
+			OrderDTO product = new OrderDTO
+			{
+				ProfileId = userId,
+				ProductName = model.ProductName,
+				ProductModel = model.ProductModel,
+				StartDate = model.StartDate == DateTime.MinValue ? model.StartDate = DateTime.Parse("01.01.2000") : model.StartDate,
+				EndDate = model.EndDate == DateTime.MinValue ? model.EndDate = DateTime.MaxValue : model.EndDate,
+			};
+			var list = _orderService.GetFilter(product);
+			return View("GetCustomerOrders", list.ToPagedList(1, 5));
+		}
+
+		[HttpGet]
         public ActionResult GetAllOrders()
         {
             var list = _orderService.GetAll();

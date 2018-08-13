@@ -37,23 +37,23 @@
 		</td>
 		@if (item.IsBlocked == false)
 		{
-		<td>
-			@using (Html.BeginForm("BlockUser", "Admin"))
-			{
-				@Html.Hidden("id", item.Id)
-				<input type="submit" value="Block User" />
-			}
-		</td>
+			<td>
+				@using (Html.BeginForm("BlockUser", "Admin"))
+				{
+					@Html.Hidden("id", item.Id)
+					<input type="submit" value="Block User" />
+				}
+			</td>
 		}
 		else
 		{
-		<td>
-			@using (Html.BeginForm("UnblockUser", "Admin"))
-			{
-				@Html.Hidden("id", item.Id)
-				<input type="submit" value="Unblock User" />
-			}
-		</td>
+			<td>
+				@using (Html.BeginForm("UnblockUser", "Admin"))
+				{
+					@Html.Hidden("id", item.Id)
+					<input type="submit" value="Unblock User" />
+				}
+			</td>
 		}
 		<td>
 			@using (Html.BeginForm("DeleteUser", "Admin"))
