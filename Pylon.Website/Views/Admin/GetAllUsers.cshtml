@@ -62,6 +62,26 @@
 				<input type="submit" value="Delete User" />
 			}
 		</td>
+		<td>
+			@using (Html.BeginForm("RemoveRole", "Admin"))
+			{
+				@Html.DropDownList("role",
+				  new SelectList(item.UserRoles.Result),
+				  "SelectRole")
+				@Html.Hidden("id", item.Id)
+				<input type="submit" value="Remove Role" />
+			}
+		</td>
+		<td>
+			@using (Html.BeginForm("AddRole", "Admin"))
+			{
+				@Html.DropDownList("role",
+				  new SelectList(item.Roles),
+				  "SelectRole")
+				@Html.Hidden("id", item.Id)
+				<input type="submit" value="Add Role" />
+			}
+		</td>
 	</tr>
 			}
 		}

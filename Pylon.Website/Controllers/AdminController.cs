@@ -20,14 +20,18 @@ namespace Pylon.Website.Controllers
 
 		public ActionResult AddRole(string id, string role)
 		{
+			if(id == null || role == string.Empty)
+				return RedirectToAction("GetAllUsers");
 			_adminService.AddRole(id, role);
-			return View("GetAllUsers");
+			return RedirectToAction("GetAllUsers");
 		}
 
 		public ActionResult RemoveRole(string id, string role)
 		{
+			if (id == null || role == string.Empty)
+				return RedirectToAction("GetAllUsers");
 			_adminService.RemoveRole(id, role);
-			return View("GetAllUsers");
+			return RedirectToAction("GetAllUsers");
 		}
 
 		public ActionResult BlockUser(string id)
