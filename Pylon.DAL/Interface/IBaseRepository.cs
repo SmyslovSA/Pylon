@@ -12,7 +12,14 @@ namespace Pylon.DAL.Interface
            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
            string includeProperties = "");
 
-        TEntity GetById<TKey>(TKey id);
+	  //  IEnumerable<TEntity> GetPage(
+			//int pageSize,
+			//int pageNumber,
+			//Expression<Func<TEntity, bool>> filter = null,
+			//Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+			//string includeProperties = "");
+
+		TEntity GetById<TKey>(TKey id);
         void Insert(TEntity entity);
         void Update(TEntity entity);
         void Delete<TKey>(TKey id);

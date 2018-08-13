@@ -1,4 +1,5 @@
-﻿using Pylon.BL;
+﻿using PagedList;
+using Pylon.BL;
 using Pylon.BL.Interface;
 using Pylon.Models;
 using Pylon.Website.Extension;
@@ -18,10 +19,10 @@ namespace Pylon.Website.Controllers
         
         [HttpGet]
 		[Authorize(Roles = "customer, saler")]
-        public ActionResult GetAll()
+        public ActionResult GetAll(int page = 1)
         {	
             var list = _productService.GetAll();
-            return View(list);
+            return View(list.ToPagedList(page,5));
         }
 
 		[HttpPost]
@@ -41,7 +42,7 @@ namespace Pylon.Website.Controllers
 				Fuel = model.Fuel
 			};
 			var list = _productService.GetFilter(product,model.MaxYear,model.MaxPrice);
-			return View("GetAll",list);
+			return View("GetAll",list.ToPagedList(1,5));
 		}
 
 		[HttpGet]

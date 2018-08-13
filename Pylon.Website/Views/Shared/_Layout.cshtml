@@ -4,6 +4,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>@ViewBag.Title - My ASP.NET Application</title>
+	
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet" />
 	<link href="/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -151,14 +152,24 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script>
+		var day = [2012];
 	$("#datepicker").datepicker({
 			format: " yyyy",
 			viewMode: "years",
 			minViewMode: "years",
 			autoclose: true,
 			startDate: "2000",
-			endDate: "@DateTime.Today.Year"
-	});
+			endDate: "@DateTime.Today.Year",
+			beforeShow: setholiDays
+		});
+		function setholiDays(date) {
+			for (i = 0; i < day.length; i++) {
+				if (date.getFullYear() == day[i]) {
+					return [false, 'holiday', day[i]];
+				}
+			}
+			return [true, ''];
+		};
 	</script>
 	<script>
 	$("#datepicker2").datepicker({
@@ -171,18 +182,13 @@
 	});
 	</script>
 	<script>
-		$("#datepicker3").datepicker({
+		$(function () {
+			$('input').filter('.form-control').datepicker({
 			format:"dd/mm/yyyy",
 			autoclose: true,
 			startDate: "@DateTime.Today"
-	});
-	</script>
-	<script>
-		$("#datepicker4").datepicker({
-			format: "dd/mm/yyyy",
-			autoclose: true,
-			startDate: "@DateTime.Today"
-	});
+			});
+		});
 	</script>
 </body>
 </html>

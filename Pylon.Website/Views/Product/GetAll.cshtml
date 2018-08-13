@@ -1,11 +1,13 @@
-﻿@using Pylon.BL
+﻿@using PagedList.Mvc
 @using Pylon.Models
-@model IEnumerable<ProductDTO>
+@model PagedList.IPagedList<Pylon.BL.ProductDTO>
+
 
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width" />
-	<link rel="stylesheet" href="/css/bootstrap.min.css" />
+	<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="/css/bootstrap.css" />
 </head>
 
 <section id="car-list-area" class="section-padding">
@@ -13,12 +15,12 @@
 		<div class="row">
 			<!-- Sidebar Area Start -->
 			<div class="col-lg-4">
-					<!-- Single Sidebar Start -->
-					<div class="single-sidebar">
-						<h3>Filter</h3>
-						<div class="sidebar-body">
-							@Html.Partial("GetFilter", new ProductFilterModel())
-						</div>
+				<!-- Single Sidebar Start -->
+				<div class="single-sidebar">
+					<h3>Filter</h3>
+					<div class="sidebar-body">
+						@Html.Partial("GetFilter", new ProductFilterModel())
+					</div>
 				</div>
 			</div>
 			<!-- Single Sidebar End -->
@@ -56,10 +58,10 @@
 												{
 													<input type="hidden" value=@product.Id name="productId" />
 													<div class="input-group date">
-														<input type="text" class="form-control" id="datepicker3" name="startDate" autocomplete="off" />
+														<input type="text" class="form-control" name="startDate" autocomplete="off" />
 													</div>
 													<div class="input-group date">
-														<input type="text" class="form-control" id="datepicker4" name="endDate" autocomplete="off" />
+														<input type="text" class="form-control" name="endDate" autocomplete="off" />
 													</div>
 													<p><input type="submit" class="rent-btn" value="BookProduct" /></p>
 												}
@@ -77,6 +79,10 @@
 			</div>
 		</div>
 	</div>
+	<br />
+	Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
+
+	@Html.PagedListPager(Model, page => Url.Action("GetAll", new { page }))
 </section>
 
 

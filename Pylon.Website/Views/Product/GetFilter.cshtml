@@ -8,33 +8,33 @@
 	@Html.AntiForgeryToken()
 	<div class="login-page-content">
 		<div class="login-form">
-				<div class="username">
-					@Html.Label("Car")
-					@Html.TextBoxFor(m => m.Name)
-				</div>
-				<div class="username">
-					@Html.Label("Model")
-					@Html.TextBoxFor(m => m.CarModel)
-				</div>
-				<div class="username">
-					@Html.Label("Min Year")
-					@Html.TextBoxFor(m => m.MinYear, new { @id = "datepicker", @autocomplete = "off" })
-				</div>
-				<div class="username">
-					@Html.Label("Max Year")
-					@Html.TextBoxFor(m => m.MaxYear, new { @id = "datepicker2", @autocomplete = "off" })
-				</div>
-				<div class="username">
-					@Html.Label("Min Price")
-					@Html.TextBoxFor(m => m.MinPrice)
-				</div>
-				<div class="username">
-					@Html.Label("Max Price")
-					@Html.TextBoxFor(m => m.MaxPrice)
-				</div>
-				<div class="log-btn">
-					<button> Search </button>
-				</div>
+			<div class="username">
+				@Html.Label("Car")
+				@Html.TextBoxFor(m => m.Name)
+			</div>
+			<div class="username">
+				@Html.Label("Model")
+				@Html.TextBoxFor(m => m.CarModel)
+			</div>
+			<div class="username">
+				@Html.Label("Min Year")
+				@Html.TextBoxFor(m => m.MinYear, new { @id = "datepicker", @autocomplete = "off" })
+			</div>
+			<div class="username">
+				@Html.Label("Max Year")
+				@Html.TextBoxFor(m => m.MaxYear, new { @id = "datepicker2", @autocomplete = "off" })
+			</div>
+			<div class="username">
+				@Html.Label("Min Price")
+				@Html.TextBoxFor(m => m.MinPrice)
+			</div>
+			<div class="username">
+				@Html.Label("Max Price")
+				@Html.TextBoxFor(m => m.MaxPrice)
+			</div>
+			<div class="log-btn">
+				<button> Search </button>
+			</div>
 		</div>
 	</div>
 }

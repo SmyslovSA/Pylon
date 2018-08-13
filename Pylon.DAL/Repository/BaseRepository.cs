@@ -27,7 +27,7 @@ namespace Pylon.DAL.UserManager
             return GetFilteredQuery(filter, orderBy, includeProperties).ToList();
         }
 
-        public TEntity GetById<TKey>(TKey id)
+		public TEntity GetById<TKey>(TKey id)
         {
             return _dbSet.Find(id);
         }
