@@ -33,14 +33,9 @@ namespace Pylon.Website.Controllers
         }
 
         [HttpPost]
-        public ActionResult ChangePassword(ProfileViewModel model)
+        public ActionResult ChangePassword(string newPassword, string newPasswordConfirm)
         {
-			if (!ModelState.IsValid)
-			{
-				return RedirectToAction("GetInfo");
-			}
-
-            _profileService.ChangePassword(User.GetUserId(),model.Password, model.ConfirmPassword);
+            _profileService.ChangePassword(User.GetUserId(),newPassword, newPasswordConfirm);
             return RedirectToAction("GetInfo");
         }
 
@@ -73,6 +68,9 @@ namespace Pylon.Website.Controllers
 		[HttpPost]
 		public ActionResult GhangeImage(HttpPostedFileBase uploadFile)
 		{
+			if (uploadFile == null || !uploadFile.ContentType.Contains("image/"))
+				return RedirectToAction("GetInfo");
+
 			UserDTO userDTO = new UserDTO
 			{
 				Id = User.GetUserId(),

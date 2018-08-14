@@ -15,18 +15,17 @@
 				{
 					if (Model.ImageMimeType == null)
 					{
-						<img src="/assets/img/no_image_profile.jpg" alt="JSOFT">
+						<img src="/assets/img/no_image_profile.jpg" id="image" alt="">
 					}
 					else
 					{
-						<img src="@Url.Action("GetImage", "Profile", new { id = User.GetUserId() })" />
+						<img src="@Url.Action("GetImage", "Profile", new { id = User.GetUserId() })" id="image" alt="" />
 					}
-					<div class="input-file-row-1">
-						<img id="image" src="#" alt="" />
+						<div class="input-file-row-1">
 							<div class="upload-file-container-text">
-								<input type="file" name="uploadFile" class="photo" id="imgInput" />
+								<input type="file" name="uploadFile" class="photo" id="imgInput" hidden/>
 							</div>
-					</div>
+						</div>
 					<div class="log-btn">
 						<button> Save </button>
 					</div>
@@ -47,6 +46,8 @@
 												<div class="login-form">
 													<h3>Personal Data</h3>
 													<form action="index.html">
+														@Html.HiddenFor(m => m.ImageData)
+														@Html.HiddenFor(m => m.ImageMimeType)
 														<div class="username">
 															@Html.TextBoxFor(m => m.FirstName, new { @placeholder = "Name", @autocomplete = "off" })
 															@Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
@@ -80,12 +81,10 @@
 													<h3>Change Password</h3>
 													<form action="index.html">
 														<div class="password">
-															@Html.PasswordFor(m => m.Password, new { @placeholder = "New Password", @autocomplete = "off" })
-															@Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+															@Html.Password("newPassword")
 														</div>
 														<div class="password">
-															@Html.PasswordFor(m => m.ConfirmPassword, new { @placeholder = "New Password Confirm", @autocomplete = "off" })
-															@Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+															@Html.Password("newPasswordConfirm")
 														</div>
 														<div class="log-btn">
 															<button> Change Password </button>
