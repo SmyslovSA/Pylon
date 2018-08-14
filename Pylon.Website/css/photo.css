@@ -1,0 +1,16 @@
+#upload {
+  background-color: #455c91;
+  color: white;
+  border: none;
+  font-size: 2em;
+  padding: 1em;
+  border-radius: 1em;
+}
+
+#upload:active {
+  background-color: #32446e;
+}
+
+#actual-upload {
+  display: none;
+}
