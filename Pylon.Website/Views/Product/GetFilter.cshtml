@@ -26,11 +26,11 @@
 			</div>
 			<div class="username">
 				@Html.Label("Min Price")
-				@Html.TextBoxFor(m => m.MinPrice)
+				@Html.TextBoxFor(m => m.MinPrice, new { @onkeypress = "validate(event)" })
 			</div>
 			<div class="username">
 				@Html.Label("Max Price")
-				@Html.TextBoxFor(m => m.MaxPrice)
+				@Html.TextBoxFor(m => m.MaxPrice, new { @onkeypress = "validate(event)" })
 			</div>
 			<div class="log-btn">
 				<button> Search </button>
