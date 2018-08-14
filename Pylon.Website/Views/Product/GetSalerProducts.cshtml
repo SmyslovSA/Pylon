@@ -33,6 +33,12 @@
 										<img src="@Url.Action("GetImage", "Product", new { product.Id })" />
 									</div>
 								}
+								else
+								{
+									<div>
+										<img src="/assets/img/no-image-product.jpg" />
+									</div>
+								}
 							</div>
 							<!-- Single Car Thumbnail -->
 							<!-- Single Car Info -->
@@ -51,7 +57,7 @@
 								</div>
 							</div>
 							<div class="col-lg-2">
-								@using (Html.BeginForm("RemoveProduct", "Product"))
+								@using (Html.BeginForm("GetProduct", "Product", FormMethod.Get))
 								{
 									@Html.Hidden("id", product.Id)
 									<p><input type="submit" class="rent-btn" value="Edit" style="min-width:120px" /></p>

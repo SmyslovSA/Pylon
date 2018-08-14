@@ -1,6 +1,6 @@
 ﻿@model Pylon.Models.ProductViewModel
 
-@using(Html.BeginForm("AddProduct", "Product", FormMethod.Post, new {enctype = "multipart/form-data"}))
+@using (Html.BeginForm("UpdateProduct", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
 	@Html.AntiForgeryToken()
 	@Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -10,8 +10,9 @@
 				<div class="col-lg-7 col-md-8 m-auto">
 					<div class="login-page-content">
 						<div class="login-form">
-							<h3>Add Car</h3>
+							<h3>Update Car</h3>
 							<form action="index.html">
+								@Html.HiddenFor(m => m.Id)
 								<div class="username">
 									@Html.TextBoxFor(m => m.Name, new { @placeholder = "Name" })
 									@Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
@@ -25,11 +26,21 @@
 									@Html.ValidationMessageFor(m => m.Year, "", new { @class = "text-danger" })
 								</div>
 								<div class="username">
-									@Html.TextBoxFor(m => m.Price, new { @placeholder = "Price" })
+									@{
+										Model.Price = (int)Model.Price;
+									}
+									@Html.TextBoxFor(m => (m.Price), new { @placeholder = "Price" })
 									@Html.ValidationMessageFor(m => m.Price, "", new { @class = "text-danger" })
 								</div>
 								<div>
-									<img src="/assets/img/no-car.png" id="image" alt="">
+									@if (Model.ImageMimeType == null)
+									{
+										<img src="/assets/img/no-car.png" id="image" alt="">
+									}
+									else
+									{
+										<img src="@Url.Action("GetImage", "Product", new { id = Model.Id })" id="image" alt="" />
+									}
 									<div class="input-file-row-1">
 										<div class="upload-file-container-text">
 											<input type="file" name="uploadFile" class="photo" id="imgInput" hidden />
@@ -37,7 +48,7 @@
 									</div>
 								</div>
 								<div class="log-btn">
-									<button > Add Car </button>
+									<button> Update </button>
 								</div>
 							</form>
 						</div>

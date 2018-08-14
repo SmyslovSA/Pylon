@@ -41,6 +41,8 @@ namespace Pylon.BL.Sevices
             prod.Fuel = product.Fuel;
             prod.Year = product.Year;
 			prod.Model = product.Model;
+			prod.ImageData = product.ImageData.Length == 0 ? prod.ImageData : product.ImageData;
+			prod.ImageMimeType = product.ImageMimeType == null ? prod.ImageMimeType : product.ImageMimeType;
 			_unitOfWork.ProductManager.Update(prod);
             _unitOfWork.SaveChanges();
         }

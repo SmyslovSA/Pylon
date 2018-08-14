@@ -16,8 +16,27 @@ namespace Pylon.Website.Controllers
         {
             _productService = service;
         }
-        
-        [HttpGet]
+
+		[HttpGet]
+		[Authorize(Roles = "customer, saler")]
+		public ActionResult GetProduct(int id)
+		{
+			var productDTO = _productService.Get(id);
+			ProductViewModel product = new ProductViewModel
+			{
+				Id = productDTO.Id,
+				Name = productDTO.Name,
+				CarModel = productDTO.Model,
+				Fuel = productDTO.Fuel,
+				Price = productDTO.Price,
+				Year = productDTO.Year,
+				ImageData = productDTO.ImageData,
+				ImageMimeType = productDTO.ImageMimeType
+			};
+			return View(product);
+		}
+
+		[HttpGet]
 		[Authorize(Roles = "customer, saler")]
         public ActionResult GetAll(int page = 1)
         {	
@@ -71,14 +90,35 @@ namespace Pylon.Website.Controllers
 				Model = model.CarModel,
 				Fuel = model.Fuel,
 				Year = model.Year,
-				ImageData = new byte[uploadFile.ContentLength],
-				ImageMimeType = uploadFile.ContentType,
+				ImageData = uploadFile==null ? new byte[0] : new byte[uploadFile.ContentLength],
+				ImageMimeType = uploadFile == null ? null : uploadFile.ContentType,
                 ProfileID = User.GetUserId()
                 };
-			uploadFile.InputStream.Read(productDTO.ImageData, 0, uploadFile.ContentLength);
+			if(uploadFile != null && uploadFile.ContentType.Contains("image/"))
+				uploadFile.InputStream.Read(productDTO.ImageData, 0, uploadFile.ContentLength);
             _productService.Add(productDTO);
             return RedirectToAction("GetAll");
         }
+
+		[Authorize(Roles = "saler")]
+		public RedirectToRouteResult UpdateProduct(ProductViewModel model, HttpPostedFileBase uploadFile)
+		{
+			ProductDTO productDTO = new ProductDTO
+			{
+				Name = model.Name,
+				Price = model.Price,
+				Model = model.CarModel,
+				Fuel = model.Fuel,
+				Year = model.Year,
+				ImageData = uploadFile == null ? new byte[0] : new byte[uploadFile.ContentLength],
+				ImageMimeType = uploadFile == null ? null : uploadFile.ContentType,
+				Id = model.Id
+			};
+			if (uploadFile != null && uploadFile.ContentType.Contains("image/"))
+				uploadFile.InputStream.Read(productDTO.ImageData, 0, uploadFile.ContentLength);
+			_productService.Update(productDTO);
+			return RedirectToAction("GetAll");
+		}
 
 		[Authorize(Roles = "saler")]
 		public RedirectToRouteResult RemoveProduct(int id)
