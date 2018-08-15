@@ -191,6 +191,14 @@
 	</script>
 	<script>
 		$(function () {
+			$("#datepicker4").datepicker({
+				format: "dd/mm/yyyy",
+				autoclose: true,
+			});
+		});
+	</script>
+	<script>
+		$(function () {
 			$('input').filter('.form-control').datepicker({
 			format:"dd/mm/yyyy",
 			autoclose: true,
@@ -202,6 +210,9 @@
 		function readURL(input) {
 
 			if (input.files && input.files[0]) {
+				if (!input.files[0].type.match('image.*')) {
+					return;
+				}
 				var reader = new FileReader();
 
 				reader.onload = function (e) {

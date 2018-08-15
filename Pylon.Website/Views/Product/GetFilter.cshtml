@@ -17,11 +17,11 @@
 				@Html.TextBoxFor(m => m.CarModel)
 			</div>
 			<div class="username">
-				@Html.Label("Min Year")
+				@Html.Label("Start Year")
 				@Html.TextBoxFor(m => m.MinYear, new { @id = "datepicker", @autocomplete = "off" })
 			</div>
 			<div class="username">
-				@Html.Label("Max Year")
+				@Html.Label("End Year")
 				@Html.TextBoxFor(m => m.MaxYear, new { @id = "datepicker2", @autocomplete = "off" })
 			</div>
 			<div class="username">
@@ -34,6 +34,7 @@
 			</div>
 			<div class="log-btn">
 				<button> Search </button>
+				
 			</div>
 		</div>
 	</div>

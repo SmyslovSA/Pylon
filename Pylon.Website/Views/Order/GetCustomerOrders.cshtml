@@ -26,41 +26,29 @@
 			<div class="col-lg-8">
 				@foreach (var order in Model)
 				{
-					<div class="container">
-						<div class="row">
-							<div class="col-lg-10">
-								<div class="car-list-content m-t-50">
-									<!-- Single Car Start -->
-									<div class="single-car-wrap">
-										<div class="row">
-											<!-- Single Car Thumbnail -->
-
-											<div class="col-lg-4">
-												<div>
-													<img src="@Url.Action("GetImage", "Product", new { Id = order.ProductId })" />
-												</div>
-											</div>
-											<!-- Single Car Thumbnail -->
-											<!-- Single Car Info -->
-											<div class="col-lg-6">
-												<div class="car-list-info">
-													<h2>@order.StartDate.ToShortDateString() - @order.EndDate.ToShortDateString()</h2>
-													<h3>@order.ProductName @order.ProductModel</h3>
-													<h5>@order.ProductPrice.ToString("c")</h5>
-												</div>
-											</div>
-											<div class="col-lg-2">
-												@using (Html.BeginForm("RemoveOrder", "Order"))
-												{
-													@Html.Hidden("id", order.Id)
-													<p><input type="submit" class="rent-btn" value="Remove" /></p>
-												}
-											</div>
-											<!-- Single Car info -->
-										</div>
+					<div class="car-list-content m-t-50">
+						<div class="single-car-wrap">
+							<div class="row">
+								<div class="col-lg-5">
+									<div class="div-image">
+										<img src="@Url.Action("GetImage", "Product", new { Id = order.ProductId })" />
 									</div>
 								</div>
-								<br>
+								<div class="col-lg-7">
+									<div class="car-list-info">
+										<h2>@order.StartDate.ToShortDateString() - @order.EndDate.ToShortDateString()</h2>
+										<h4>@order.ProductName @order.ProductModel</h4>
+										<h4>Price: @order.ProductPrice.ToString()</h4>
+										<hr>
+										@using (Html.BeginForm("RemoveOrder", "Order"))
+										{
+											@Html.Hidden("id", order.Id)
+											<div class="secondary-btn">
+												<button style="float:left">Remove</button>
+											</div>
+										}
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -68,8 +56,9 @@
 			</div>
 		</div>
 	</div>
-</section>
+
 	<br />
-	Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
+	Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
 	@Html.PagedListPager(Model, page => Url.Action("GetCustomerOrders", new { page }))
+</section>

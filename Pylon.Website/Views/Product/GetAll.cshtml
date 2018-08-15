@@ -39,7 +39,7 @@
 								<div class="col-lg-5">
 									@if (product.ImageMimeType != null)
 									{
-										<div>
+										<div class="div-image">
 											<img src="@Url.Action("GetImage", "Product", new { product.Id })" />
 										</div>
 									}
@@ -54,39 +54,45 @@
 								<!-- Single Car Info -->
 								<div class="col-lg-7">
 									<div class="display-table">
-										<div class="display-table-cell">
 											<div class="car-list-info">
-												<h2>@product.Name</h2>
-												<h3>@product.Model</h3>
+												<h2>@product.Name @product.Model</h2>
 												<h5>@product.Fuel</h5>
-												<h4>@product.Price.ToString("c")</h4>
+												<h4>Price: @product.Price.ToString()</h4>
+												<hr>
 												@using (Html.BeginForm("AddOrder", "Order", FormMethod.Post))
 												{
 													<input type="hidden" value=@product.Id name="productId" />
 													<div class="input-group date">
-														<input type="text" class="form-control" name="startDate" autocomplete="off" />
+														<div class="col-lg-4">
+															<h4>Start Date:</h4>
+														</div>
+														<div class="col-lg-8">
+															<input type="text" class="form-control" name="startDate" autocomplete="off" />
+														</div>
 													</div>
 													<div class="input-group date">
-														<input type="text" class="form-control" name="endDate" autocomplete="off" />
+														<div class="col-lg-4">
+															<h4>End Date:</h4>
+														</div>
+														<div class="col-lg-8">
+															<input type="text" class="form-control" name="endDate" autocomplete="off" />
+															<p><input type="submit" class="rent-btn" value="Book It!" style="float:right" /></p>
+														</div>
 													</div>
-													<p><input type="submit" class="rent-btn" value="BookProduct" /></p>
 												}
 											</div>
-											<br>
-										</div>
 									</div>
 								</div>
 								<!-- Single Car info -->
 							</div>
 						</div>
 					</div>
-					<br>
 				}
 			</div>
 		</div>
 	</div>
 	<br />
-	Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
+	Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
 	@Html.PagedListPager(Model, page => Url.Action("GetAll", new { page }))
 </section>

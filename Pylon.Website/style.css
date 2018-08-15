@@ -94,7 +94,7 @@
 }
 
 .section-padding {
-	padding: 100px 0;
+	padding: 50px 0;
 }
 
 .section-title {
@@ -2272,6 +2272,9 @@ body,
 	margin-bottom: 10px;
 }
 
+.car-list-info h2{
+	margin-top: 10px;
+}
 .car-list-info h2 a {
 	color: #22252c;
 	font-size: 20px;
@@ -2341,9 +2344,31 @@ body,
 	color: #ddd;
 }
 
-.rent-btn {
+.secondary-btn button {
 	background-color: #000;
+	border-color: #000;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	cursor: pointer;
+	font-weight: 600;
 	color: #fff;
+	display: inline-block;
+	margin-top: 5px;
+	padding: 8px 30px;
+	-webkit-transition: all 0.4s ease 0s;
+	transition: all 0.4s ease 0s;
+}
+
+.secondary-btn button:hover {
+	background-color: #222;
+	border-color: #222;
+	color: #ffd000;
+}
+
+.rent-btn {
+	background-color: #ffd000;
+	color: #000;
 	display: inline-block;
 	font-weight: 600;
 	margin-top: 5px;
@@ -2398,6 +2423,10 @@ body,
 	margin-bottom: 30px;
 }
 
+.col-lg-8 .car-list-content .single-car-wrap{
+	margin-bottom: 30px;
+}
+
 .car-list-content .col-lg-6:last-child .single-car-wrap {
 	margin-bottom: 0;
 }
@@ -2414,6 +2443,7 @@ body,
 
 .single-sidebar h3 {
 	background-color: #ffd000;
+	margin-top: 0px;
 	color: #222;
 	font-size: 18px;
 	padding: 12px 5px;
@@ -2945,19 +2975,20 @@ body,
 }
 
 .log-btn button {
-	background-color: #fff;
-	border-color: #fff;
+	background-color: #000;
+	border-color: #000;
 	border-radius: 4px;
 	-webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 	cursor: pointer;
 	font-weight: 700;
+	color: #fff;
 }
 
 .log-btn button:hover {
 	background-color: #222;
 	border-color: #222;
-	color: #fff;
+	color: #ffd000;
 }
 
 .or {
@@ -3245,4 +3276,7 @@ body,
 .footer {
   height: 80px;
   margin-top: -80px;
+}
+.div-image{
+	padding: 10px;
 }
