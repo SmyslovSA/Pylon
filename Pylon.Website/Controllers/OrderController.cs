@@ -43,7 +43,10 @@ namespace Pylon.Website.Controllers
         [HttpPost]
         public ActionResult AddOrder(string startDate, string endDate, int productId)
         {
-            OrderDTO orderDTO = new OrderDTO
+			if(startDate == string.Empty || endDate == string.Empty)
+				return RedirectToAction("GetAll", "Product");
+
+			OrderDTO orderDTO = new OrderDTO
             {
                 StartDate = DateTime.Parse(startDate),
                 EndDate = DateTime.Parse(endDate),

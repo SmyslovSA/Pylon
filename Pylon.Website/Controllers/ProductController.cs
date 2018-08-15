@@ -1,8 +1,10 @@
-﻿using PagedList;
+﻿using Newtonsoft.Json;
+using PagedList;
 using Pylon.BL;
 using Pylon.BL.Interface;
 using Pylon.Models;
 using Pylon.Website.Extension;
+using System.Collections;
 using System.Web;
 using System.Web.Mvc;
 
@@ -41,7 +43,25 @@ namespace Pylon.Website.Controllers
         public ActionResult GetAll(int page = 1)
         {	
             var list = _productService.GetAll();
-            return View(list.ToPagedList(page,5));
+			var startArray = new ArrayList();
+			var endArray = new ArrayList();
+			var idArray = new ArrayList();
+			foreach (var order in list)
+			{
+				foreach (var date in order.Orders)
+				{
+					startArray.Add(date.StartDate.ToShortDateString());
+					endArray.Add(date.EndDate.ToShortDateString());
+					idArray.Add(date.ProductId);
+				}
+			}
+			string startData = JsonConvert.SerializeObject(startArray, Formatting.None);
+			string endData = JsonConvert.SerializeObject(endArray, Formatting.None);
+			string idData = JsonConvert.SerializeObject(idArray, Formatting.None);
+			ViewBag.StartData = new HtmlString(startData);
+			ViewBag.EndData = new HtmlString(endData);
+			ViewBag.IdData = new HtmlString(idData);
+			return View(list.ToPagedList(page,5));
         }
 
 		[HttpPost]

@@ -16,6 +16,7 @@ namespace Pylon.BL.Mapping
                 .ForMember(dbe => dbe.ProfileId, e => e.MapFrom(src => src.ProfileID))
 				.ForMember(dbe => dbe.ImageMimeType, e => e.MapFrom(src => src.ImageMimeType))
 				.ForMember(dbe => dbe.ImageData, e => e.MapFrom(src => src.ImageData))
+				.ForMember(dbe => dbe.Orders, e => e.MapFrom(src => src.Orders))
 				.ReverseMap();
         }
     }

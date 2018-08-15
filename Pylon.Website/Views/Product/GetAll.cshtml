@@ -10,6 +10,12 @@
 	<link rel="stylesheet" href="/css/bootstrap.css" />
 </head>
 
+
+<script>
+	var data1 = JSON.parse('@ViewBag.StartData');
+	var data2 = JSON.parse('@ViewBag.EndData');
+	var data3 = JSON.parse('@ViewBag.IdData');
+</script>
 <section id="car-list-area" class="section-padding">
 	<div class="container">
 		<div class="row">
@@ -39,13 +45,13 @@
 								<div class="col-lg-5">
 									@if (product.ImageMimeType != null)
 									{
-										<div class="div-image">
+										<div class="div-new-image">
 											<img src="@Url.Action("GetImage", "Product", new { product.Id })" />
 										</div>
 									}
 									else
 									{
-										<div>
+										<div class="div-new-image">
 											<img src="/assets/img/no-image-product.jpg" />
 										</div>
 									}
@@ -54,33 +60,33 @@
 								<!-- Single Car Info -->
 								<div class="col-lg-7">
 									<div class="display-table">
-											<div class="car-list-info">
-												<h2>@product.Name @product.Model</h2>
-												<h5>@product.Fuel</h5>
-												<h4>Price: @product.Price.ToString()</h4>
-												<hr>
-												@using (Html.BeginForm("AddOrder", "Order", FormMethod.Post))
-												{
-													<input type="hidden" value=@product.Id name="productId" />
-													<div class="input-group date">
-														<div class="col-lg-4">
-															<h4>Start Date:</h4>
-														</div>
-														<div class="col-lg-8">
-															<input type="text" class="form-control" name="startDate" autocomplete="off" />
-														</div>
+										<div class="car-list-info">
+											<h2>@product.Name @product.Model</h2>
+											<h4>Year: @product.Year</h4>
+											<h4>Price: @product.Price.ToString()</h4>
+											<hr>
+											@using (Html.BeginForm("AddOrder", "Order", FormMethod.Post))
+											{
+												<input type="hidden" value=@product.Id name="productId" />
+												<div class="input-group date">
+													<div class="col-lg-4">
+														<h4>Start Date:</h4>
 													</div>
-													<div class="input-group date">
-														<div class="col-lg-4">
-															<h4>End Date:</h4>
-														</div>
-														<div class="col-lg-8">
-															<input type="text" class="form-control" name="endDate" autocomplete="off" />
-															<p><input type="submit" class="rent-btn" value="Book It!" style="float:right" /></p>
-														</div>
+													<div class="col-lg-8">
+														<input type="text" class="form-control" name="startDate" autocomplete="off" onclick="Do(@product.Id)"/>
 													</div>
-												}
-											</div>
+												</div>
+												<div class="input-group date">
+													<div class="col-lg-4">
+														<h4>End Date:</h4>
+													</div>
+													<div class="col-lg-8">
+														<input type="text" class="form-control" name="endDate" autocomplete="off" />
+														<p><input type="submit" class="rent-btn" value="Book It!" style="float:right" /></p>
+													</div>
+												</div>
+											}
+										</div>
 									</div>
 								</div>
 								<!-- Single Car info -->
@@ -96,7 +102,6 @@
 
 	@Html.PagedListPager(Model, page => Url.Action("GetAll", new { page }))
 </section>
-
 
 
 

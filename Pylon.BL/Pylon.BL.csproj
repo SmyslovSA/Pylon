@@ -73,9 +73,11 @@
     <Compile Include="Interface\IProfileService.cs" />
     <Compile Include="Interface\IServiceCreator.cs" />
     <Compile Include="Interface\IUserService.cs" />
+    <Compile Include="Mapping\DatesMappingProfile.cs" />
     <Compile Include="Mapping\OrderMappingProfile.cs" />
     <Compile Include="Mapping\ProductMappingProfile.cs" />
     <Compile Include="Mapping\UserProfileMapping.cs" />
+    <Compile Include="ModelsDTO\DateDTO.cs" />
     <Compile Include="Ninject\BlModule.cs" />
     <Compile Include="ModelsDTO\OperationDetails.cs" />
     <Compile Include="ModelsDTO\OrderDTO.cs" />

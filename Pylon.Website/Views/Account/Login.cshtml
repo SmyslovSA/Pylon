@@ -2,11 +2,10 @@
 @{
 	ViewBag.Title = "Log in";
 }
-<section id="lgoin-page-wrap" class="section-padding">
+<section id="lgoin-page-wrap" class="section-padding-login">
 	@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 	{
-	@Html.AntiForgeryToken()
-	@Html.ValidationSummary(true, "" , new {@class = "text-danger" })
+	
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-4 col-md-8 m-auto">				
@@ -16,11 +15,13 @@
 							<form action="index.html">
 								<div class="username">
 									@Html.TextBoxFor(m => m.Email, new { @placeholder = "Login" })
-									@Html.ValidationMessageFor(m => m.Email, "" , new { @class = "text-danger" })
+									@Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
 								</div>
 								<div class="password">
 									@Html.PasswordFor(m => m.Password, new { @placeholder = "Password" })
 									@Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+									@Html.AntiForgeryToken()
+									@Html.ValidationSummary(true, "", new { @class = "text-danger" })
 								</div>
 								<div class="log-btn">
 									<button type="submit"><i class="fa fa-sign-in"></i> Log In</button>

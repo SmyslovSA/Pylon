@@ -1,4 +1,7 @@
-﻿namespace Pylon.BL
+﻿using Pylon.BL.ModelsDTO;
+using System.Collections.Generic;
+
+namespace Pylon.BL
 {
     public class ProductDTO
     {
@@ -21,5 +24,7 @@
 		public string ImageMimeType { get; set; }
 
 		public byte[] ImageData { get; set; }
+
+		public List<DateDTO> Orders { get; set; }
 	}
 }

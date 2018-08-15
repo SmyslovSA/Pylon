@@ -2096,6 +2096,7 @@ pre code {
   }
   .col-lg-12 {
     width: 100%;
+    padding-left: 0px;
   }
   .col-lg-11 {
     width: 91.66666667%;
@@ -2112,6 +2113,7 @@ pre code {
   .col-lg-7 {
     width: 58.33333333%;
     padding-bottom: 15px;
+    padding-left: 0px;
   }
   .col-lg-6 {
     width: 50%;

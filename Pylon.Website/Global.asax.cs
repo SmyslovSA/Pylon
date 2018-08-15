@@ -52,7 +52,7 @@ namespace Pylon.Website
 				}
 			}
 			var ex = Server.GetLastError();
-			logger.Error($"{User.Identity.Name} : {((HttpException)ex).GetHttpCode()} : {ex.Message} ");
+			logger.Error($"{User.Identity.Name} : {ex.Message} ");
 			var controller = new ErrorController();
 			var routeData = new RouteData();
 			var action = "Index";

@@ -7,7 +7,7 @@
 {
 	@Html.AntiForgeryToken()
 	@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-	<section id="login-page-wrap" class="section-padding">
+	<section id="login-page-wrap" class="section-padding-login">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-5 col-md-8 m-auto">
@@ -40,7 +40,7 @@
 									@Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
 								</div>
 								<div class="log-btn">
-									<button type="submit" class="btn btn-warning text-center"> Sign Up</button>
+									<button type="submit"> Sign Up</button>
 								</div>
 							</form>
 						</div>

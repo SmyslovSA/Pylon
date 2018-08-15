@@ -14,43 +14,47 @@
 							<form action="index.html">
 								@Html.HiddenFor(m => m.Id)
 								<div class="username">
-									@Html.TextBoxFor(m => m.Name, new { @placeholder = "Name" })
+									@Html.Label("Manufacturer")
+									@Html.TextBoxFor(m => m.Name)
 									@Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
 								</div>
 								<div class="username">
-									@Html.TextBoxFor(m => m.CarModel, new { @placeholder = "Model" })
+									@Html.Label("Model")
+									@Html.TextBoxFor(m => m.CarModel)
 									@Html.ValidationMessageFor(m => m.CarModel, "", new { @class = "text-danger" })
 								</div>
 								<div class="username">
-									@Html.TextBoxFor(m => m.Year, new { @placeholder = "Year" })
+									@Html.Label("Year")
+									@Html.TextBoxFor(m => m.Year)
 									@Html.ValidationMessageFor(m => m.Year, "", new { @class = "text-danger" })
 								</div>
 								<div class="username">
 									@{
 										Model.Price = (int)Model.Price;
 									}
-									@Html.TextBoxFor(m => (m.Price), new { @placeholder = "Price" })
+									@Html.Label("Price")
+									@Html.TextBoxFor(m => m.Price)
 									@Html.ValidationMessageFor(m => m.Price, "", new { @class = "text-danger" })
 								</div>
-								<div>
+								<div class="div-image">
 									@if (Model.ImageMimeType == null)
 									{
-										<img src="/assets/img/no-car.png" id="image" alt="">
+											<img src="/assets/img/no-car.png" id="image" alt="">
 									}
 									else
 									{
-										<img src="@Url.Action("GetImage", "Product", new { id = Model.Id })" id="image" alt="" />
+											<img src="@Url.Action("GetImage", "Product", new { id = Model.Id })" id="image" alt="" />
 									}
 									<div class="input-file-row-1">
-										<div class="upload-file-container-text">
-											<input type="file" name="uploadFile" class="photo" id="imgInput" hidden />
-										</div>
+											<div class="upload-file-container-text">
+												<input type="file" name="uploadFile" class="photo" id="imgInput" hidden />
+											</div>
 									</div>
 								</div>
-								<div class="log-btn">
-									<button> Update </button>
-								</div>
-							</form>
+									<div class="log-btn">
+										<button> Update </button>
+									</div>
+</form>
 						</div>
 					</div>
 				</div>
@@ -62,3 +66,13 @@
 @section Scripts {
 	@Scripts.Render("~/bundles/jqueryval")
 }
+
+	<script>
+		document.querySelector("#image").addEventListener("click", function () {
+			var clickEvent = document.createEvent('MouseEvents');
+
+			clickEvent.initMouseEvent('click', true, true, window,
+				0, 0, 0, 0, 0, false, false, false, false, 0, null);
+			document.querySelector("#imgInput").dispatchEvent(clickEvent);
+		});
+	</script>

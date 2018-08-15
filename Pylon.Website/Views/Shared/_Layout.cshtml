@@ -4,7 +4,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>@ViewBag.Title - My ASP.NET Application</title>
-	
+
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet" />
 	<link href="/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -44,7 +44,12 @@
 			<div id="header-bottom">
 				<div class="container">
 					<div class="row">
-						<div class="col-lg-4"></div>
+						<div class="col-lg-2">
+							<div class="div-new-image">
+							<img src="/assets/img/car-logo.png">
+							<img src="/assets/img/pylon.png">
+							</div>
+						</div>
 						<!--== Main Menu Start ==-->
 						<div class="col-lg-8 d-none d-xl-block">
 							<nav class="mainmenu alignright">
@@ -94,11 +99,46 @@
 		</div>
 	</div>
 	<div class="footer">
+		<!--== Footer Area Start ==-->
 		<section id="footer-area">
 			<!-- Footer Widget Start -->
 			<div class="footer-widget-area">
 				<div class="container">
-					<div class="row"> </div>
+					<div class="row">
+						<!-- Single Footer Widget Start -->
+						<div class="col-lg-4 col-md-6">
+							<div class="single-footer-widget">
+								<h2>About Us</h2>
+								<div class="widget-body">
+									<div class="div-new-image">
+										<img src="/assets/img/car-logo.png">
+									</div>
+									<p>We are an international car rental company. Thank you for choosing us.</p>
+								</div>
+							</div>
+						</div>
+						<!-- Single Footer Widget End -->
+						<!-- Single Footer Widget Start -->
+						<div class="col-lg-4 col-md-6">
+						</div>
+						<!-- Single Footer Widget End -->
+						<!-- Single Footer Widget Start -->
+						<div class="col-lg-4 col-md-6">
+							<div class="single-footer-widget">
+								<h2>get touch</h2>
+								<div class="widget-body">
+									<p>You can contact us in the following ways:</p>
+
+									<ul class="get-touch">
+										<li><i class="fa fa-map-marker"></i> Minsk, Belarus</li>
+										<li><i class="fa fa-mobile"></i> +375 44 542 63 52 </li>
+										<li><i class="fa fa-envelope"></i> stepan.smyslov@gmail.com</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!-- Single Footer Widget End -->
+					</div>
 				</div>
 			</div>
 			<!-- Footer Widget End -->
@@ -108,8 +148,10 @@
 					<div class="row">
 						<div class="col-lg-12 text-center">
 							<p>
+								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 								Copyright &copy;
-								<script>document.write(new Date().getFullYear());</script> All rights reserved
+								<script>document.write(new Date().getFullYear());</script> All rights reserved </a>
+								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 							</p>
 						</div>
 					</div>
@@ -185,7 +227,7 @@
 		$(function () {
 			$("#datepicker3").datepicker({
 				format: "dd/mm/yyyy",
-				autoclose: true,
+				autoclose: true
 			});
 		});
 	</script>
@@ -194,15 +236,6 @@
 			$("#datepicker4").datepicker({
 				format: "dd/mm/yyyy",
 				autoclose: true,
-			});
-		});
-	</script>
-	<script>
-		$(function () {
-			$('input').filter('.form-control').datepicker({
-			format:"dd/mm/yyyy",
-			autoclose: true,
-			startDate: "@DateTime.Today"
 			});
 		});
 	</script>
@@ -228,15 +261,6 @@
 		});
 	</script>
 	<script>
-		document.querySelector("#image").addEventListener("click", function () {
-			var clickEvent = document.createEvent('MouseEvents');
-
-			clickEvent.initMouseEvent('click', true, true, window,
-				0, 0, 0, 0, 0, false, false, false, false, 0, null);
-			document.querySelector("#imgInput").dispatchEvent(clickEvent);
-		});
-	</script>
-	<script>
 		function validate(evt) {
 			var theEvent = evt || window.event;
 			var key = theEvent.keyCode || theEvent.which;
@@ -247,6 +271,40 @@
 				if (theEvent.preventDefault) theEvent.preventDefault();
 			}
 		}
+	</script>
+	<script>
+		var Temp = 0;
+		var Cdates= new Array();
+		var Enddate= new Array();
+		var Id = 0;
+		function Do(x) {
+			Cdates = data1;
+			Enddate = data2;
+			Id = data3;
+			Temp = x;
+			$(this.document).ready(function () {		
+			$(function () {
+				$('input').filter('.form-control').datepicker({
+					format: "dd/mm/yyyy",
+					autoclose: true,
+					startDate: "@DateTime.Today",
+					beforeShowDay: check_closed
+		});
+				});		
+				function check_closed(date) {
+				var m = date.getMonth(); d = date.getDate();
+				if (d < 10) { d = "0" + d; }; y = date.getFullYear();
+					for (i = 0; i < Cdates.length; i++) {
+						if (Id[i] == Temp &&(($.inArray(d + '.' + (m + 1) + '.' + y, Cdates) != -1) || ($.inArray(d + '.' + '0' + (m + 1) + '.' + y, Cdates) != -1))) {
+				return false;
+			}
+			return true;
+		}
+	}
+});
+		}
+		
+	
 	</script>
 </body>
 </html>

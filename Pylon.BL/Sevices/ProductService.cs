@@ -49,8 +49,8 @@ namespace Pylon.BL.Sevices
 
         public ICollection<ProductDTO> GetAll()
         {
-            var list = _unitOfWork.ProductManager.Get();
-            return AutoMapper.Mapper.Map<List<ProductDTO>>(list);
+            var list = _unitOfWork.ProductManager.Get(includeProperties: $"{nameof(Product.Orders)}");
+			return AutoMapper.Mapper.Map<List<ProductDTO>>(list);
         }
 
         public ICollection<ProductDTO> GetByProfile(string id)

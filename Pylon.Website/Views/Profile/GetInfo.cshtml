@@ -14,22 +14,25 @@
 				<div class="editor-field">
 					@using (Html.BeginForm("GhangeImage", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
 					{
-						if (Model.ImageMimeType == null)
-						{
+						<div class="div-image">
+							@if (Model.ImageMimeType == null)
+							{
 							<img src="/assets/img/no_image_profile.jpg" id="image" alt="">
-						}
-						else
-						{
+							}
+							else
+							{
 							<img src="@Url.Action("GetImage", "Profile", new { id = User.GetUserId() })" id="image" alt="" />
-						}
-						<div class="input-file-row-1">
-							<div class="upload-file-container-text">
-								<input type="file" name="uploadFile" class="photo" id="imgInput" hidden />
+							}
+
+							<div class="input-file-row-1">
+								<div class="upload-file-container-text">
+									<input type="file" name="uploadFile" class="photo" id="imgInput" hidden />
+								</div>
 							</div>
-						</div>
-						<div class="login-form" style="background-color:white; padding:0px">
-							<div class="log-btn">
-								<button> Save </button>
+							<div class="login-form" style="background-color:white; padding:0px">
+								<div class="log-btn">
+									<button> Save </button>
+								</div>
 							</div>
 						</div>
 					}
@@ -52,15 +55,18 @@
 											@Html.HiddenFor(m => m.ImageData)
 											@Html.HiddenFor(m => m.ImageMimeType)
 											<div class="username">
-												@Html.TextBoxFor(m => m.FirstName, new { @placeholder = "Name", @autocomplete = "off" })
+												@Html.Label("First Name")
+												@Html.TextBoxFor(m => m.FirstName, new { @autocomplete = "off" })
 												@Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
 											</div>
 											<div class="username">
-												@Html.TextBoxFor(m => m.LastName, new { @placeholder = "Last Name", @autocomplete = "off" })
+												@Html.Label("Last Name")
+												@Html.TextBoxFor(m => m.LastName, new { @autocomplete = "off" })
 												@Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
 											</div>
 											<div class="username">
-												@Html.TextBoxFor(m => m.Phone, new { @placeholder = "Phone in format XX-XXX-XX-XX", @autocomplete = "off" })
+												@Html.Label("Phone")
+												@Html.TextBoxFor(m => m.Phone, new { @autocomplete = "off" })
 												@Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
 											</div>
 											<div class="log-btn">
@@ -84,9 +90,11 @@
 										<h3>Change Password</h3>
 										<form action="index.html">
 											<div class="password">
+												@Html.Label("New Password")
 												@Html.Password("newPassword")
 											</div>
 											<div class="password">
+												@Html.Label("Confirm Password")
 												@Html.Password("newPasswordConfirm")
 											</div>
 											<div class="log-btn">
@@ -107,3 +115,13 @@
 		<br>
 	</div>
 </section>
+
+<script>
+		document.querySelector("#image").addEventListener("click", function () {
+			var clickEvent = document.createEvent('MouseEvents');
+
+			clickEvent.initMouseEvent('click', true, true, window,
+				0, 0, 0, 0, 0, false, false, false, false, 0, null);
+			document.querySelector("#imgInput").dispatchEvent(clickEvent);
+		});
+</script>
