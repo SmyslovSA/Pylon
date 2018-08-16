@@ -14,7 +14,7 @@
 							<form action="index.html">
 								@Html.HiddenFor(m => m.Id)
 								<div class="username">
-									@Html.Label("Manufacturer")
+									@Html.Label("Car")
 									@Html.TextBoxFor(m => m.Name)
 									@Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
 								</div>
@@ -25,7 +25,7 @@
 								</div>
 								<div class="username">
 									@Html.Label("Year")
-									@Html.TextBoxFor(m => m.Year)
+									@Html.TextBoxFor(m => m.Year, new { @onkeypress = "validate(event)" })
 									@Html.ValidationMessageFor(m => m.Year, "", new { @class = "text-danger" })
 								</div>
 								<div class="username">
@@ -33,7 +33,7 @@
 										Model.Price = (int)Model.Price;
 									}
 									@Html.Label("Price")
-									@Html.TextBoxFor(m => m.Price)
+									@Html.TextBoxFor(m => m.Price, new { @onkeypress = "validate(event)" })
 									@Html.ValidationMessageFor(m => m.Price, "", new { @class = "text-danger" })
 								</div>
 								<div class="div-image">

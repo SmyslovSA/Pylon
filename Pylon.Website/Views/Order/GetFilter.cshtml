@@ -12,7 +12,7 @@
 		<div class="login-form">
 			<input type="hidden" value=@User.GetUserId() name="userId" />
 			<div class="username">
-				@Html.Label("Manufacturer")
+				@Html.Label("Car")
 				@Html.TextBoxFor(m => m.ProductName)
 			</div>
 			<div class="username">
@@ -20,11 +20,11 @@
 				@Html.TextBoxFor(m => m.ProductModel)
 			</div>
 			<div class="username">
-				@Html.Label("StartDate")
+				@Html.Label("Start Date")
 				<input type="text" id="datepicker3" name="startDate" autocomplete="off" />
 			</div>
 			<div class="username">
-				@Html.Label("EndDate")
+				@Html.Label("End Date")
 				<input type="text" id="datepicker4" name="endDate" autocomplete="off" />
 			</div>
 			<div class="log-btn">

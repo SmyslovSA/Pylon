@@ -63,7 +63,8 @@
 										<div class="car-list-info">
 											<h2>@product.Name @product.Model</h2>
 											<h4>Year: @product.Year</h4>
-											<h4>Price: @product.Price.ToString()</h4>
+											@{product.Price = (int)product.Price;}
+											<h4>Price: @product.Price$</h4>
 											<hr>
 											@using (Html.BeginForm("AddOrder", "Order", FormMethod.Post))
 											{

@@ -38,7 +38,8 @@
 									<div class="car-list-info">
 										<h2>@order.StartDate.ToShortDateString() - @order.EndDate.ToShortDateString()</h2>
 										<h4>@order.ProductName @order.ProductModel</h4>
-										<h4>Price: @order.ProductPrice.ToString()</h4>
+										@{order.ProductPrice = (int)order.ProductPrice;}
+										<h4>Price: @order.ProductPrice$</h4>
 										<hr>
 										@using (Html.BeginForm("RemoveOrder", "Order"))
 										{
