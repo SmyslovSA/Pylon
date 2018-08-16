@@ -273,38 +273,27 @@
 		}
 	</script>
 	<script>
-		var Temp = 0;
-		var Cdates= new Array();
-		var Enddate= new Array();
-		var Id = 0;
 		function Do(x) {
-			Cdates = data1;
-			Enddate = data2;
-			Id = data3;
-			Temp = x;
-			$(this.document).ready(function () {		
+
 			$(function () {
 				$('input').filter('.form-control').datepicker({
 					format: "dd/mm/yyyy",
 					autoclose: true,
-					startDate: "@DateTime.Today",
-					beforeShowDay: check_closed
+					startDate: "@DateTime.Today"
+					//beforeShowDay: check_closed
 		});
 				});		
-				function check_closed(date) {
+			function check_closed(date) {
 				var m = date.getMonth(); d = date.getDate();
 				if (d < 10) { d = "0" + d; }; y = date.getFullYear();
 					for (i = 0; i < Cdates.length; i++) {
-						if (Id[i] == Temp &&(($.inArray(d + '.' + (m + 1) + '.' + y, Cdates) != -1) || ($.inArray(d + '.' + '0' + (m + 1) + '.' + y, Cdates) != -1))) {
+						if ((1 == Temp) && (($.inArray(d + '.' + (m + 1) + '.' + y, Cdates) != -1) || ($.inArray(d + '.' + '0' + (m + 1) + '.' + y, Cdates) != -1))) {
 				return false;
 			}
 			return true;
 		}
 	}
-});
-		}
-		
-	
+}
 	</script>
 </body>
 </html>

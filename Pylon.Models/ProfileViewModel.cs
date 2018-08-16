@@ -10,9 +10,7 @@ namespace Pylon.Models
 		[Required]
         public string LastName { get; set; }
 
-		[Display(Name = "Phone Number:")]
 		[Required(ErrorMessage = "Phone Number is required.")]
-		[RegularExpression(@"^\(?([0-9]{2})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{2})[-. ]?([0-9]{2})$", ErrorMessage = "Invalid Phone Number.")]
 		public string Phone { get; set; }
 
 		public string ImageMimeType { get; set; }

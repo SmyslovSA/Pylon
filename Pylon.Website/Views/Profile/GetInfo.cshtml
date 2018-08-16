@@ -17,11 +17,11 @@
 						<div class="div-image">
 							@if (Model.ImageMimeType == null)
 							{
-							<img src="/assets/img/no_image_profile.jpg" id="image" alt="">
+								<img src="/assets/img/no_image_profile.jpg" id="image" alt="">
 							}
 							else
 							{
-							<img src="@Url.Action("GetImage", "Profile", new { id = User.GetUserId() })" id="image" alt="" />
+								<img src="@Url.Action("GetImage", "Profile", new { id = User.GetUserId() })" id="image" alt="" />
 							}
 
 							<div class="input-file-row-1">
@@ -66,8 +66,8 @@
 											</div>
 											<div class="username">
 												@Html.Label("Phone")
-												@Html.TextBoxFor(m => m.Phone, new { @autocomplete = "off" })
-												@Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
+												@Html.TextBoxFor(m => m.Phone, new { @autocomplete = "off", @id = "phone" })
+												@Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger"})
 											</div>
 											<div class="log-btn">
 												<button> Save </button>
@@ -115,13 +115,18 @@
 		<br>
 	</div>
 </section>
+@Scripts.Render("~/bundles/jquery")
+<script src="~/Scripts/jquery.maskedinput.js"></script>
+<script>
+	document.querySelector("#image").addEventListener("click", function () {
+		var clickEvent = document.createEvent('MouseEvents');
+
+		clickEvent.initMouseEvent('click', true, true, window,
+			0, 0, 0, 0, 0, false, false, false, false, 0, null);
+		document.querySelector("#imgInput").dispatchEvent(clickEvent);
+	});
+</script>
 
 <script>
-		document.querySelector("#image").addEventListener("click", function () {
-			var clickEvent = document.createEvent('MouseEvents');
-
-			clickEvent.initMouseEvent('click', true, true, window,
-				0, 0, 0, 0, 0, false, false, false, false, 0, null);
-			document.querySelector("#imgInput").dispatchEvent(clickEvent);
-		});
+		$("#phone").mask("+375(99) 999-99-99");
 </script>
