@@ -4,6 +4,7 @@ using Pylon.BL.Interface;
 using Pylon.Models;
 using Pylon.Website.Extension;
 using System;
+using System.Globalization;
 using System.Web.Mvc;
 
 namespace Pylon.Website.Controllers
@@ -43,13 +44,13 @@ namespace Pylon.Website.Controllers
         [HttpPost]
         public ActionResult AddOrder(string startDate, string endDate, int productId)
         {
-			if(startDate == string.Empty || endDate == string.Empty)
+			if (startDate == string.Empty || endDate == string.Empty)
 				return RedirectToAction("GetAll", "Product");
 
 			OrderDTO orderDTO = new OrderDTO
             {
-                StartDate = DateTime.Parse(startDate),
-                EndDate = DateTime.Parse(endDate),
+                StartDate = DateTime.ParseExact(startDate, "dd/MM/yyyy", CultureInfo.InvariantCulture),
+				EndDate = DateTime.ParseExact(endDate, "dd/MM/yyyy", CultureInfo.InvariantCulture),
 				ProductId = productId,
                 ProfileId = User.GetUserId()
             };

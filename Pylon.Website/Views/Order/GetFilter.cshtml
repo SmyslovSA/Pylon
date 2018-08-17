@@ -12,24 +12,33 @@
 		<div class="login-form">
 			<input type="hidden" value=@User.GetUserId() name="userId" />
 			<div class="username">
-				@Html.Label("Car")
+				@Html.Label(@Resources.Resource.Car)
 				@Html.TextBoxFor(m => m.ProductName)
 			</div>
 			<div class="username">
-				@Html.Label("Model")
+				@Html.Label(@Resources.Resource.Model)
 				@Html.TextBoxFor(m => m.ProductModel)
 			</div>
 			<div class="username">
-				@Html.Label("Start Date")
+				@Html.Label(@Resources.Resource.StartDate)
 				<input type="text" id="datepicker3" name="startDate" autocomplete="off" />
 			</div>
 			<div class="username">
-				@Html.Label("End Date")
+				@Html.Label(@Resources.Resource.EndDate)
 				<input type="text" id="datepicker4" name="endDate" autocomplete="off" />
 			</div>
 			<div class="log-btn">
-				<button> Search </button>
+				<button> @Resources.Resource.Search </button>
 			</div>
 		</div>
 	</div>
 }
+@Scripts.Render("~/bundles/jquery")
+<script src="~/Scripts/jquery.maskedinput.js"></script>
+<script>
+	$("#datepicker3").mask("99/99/9999", { placeholder: "dd/mm/yyyy" });
+</script>
+
+<script>
+	$("#datepicker4").mask("99/99/9999", { placeholder: "dd/mm/yyyy" });
+</script>

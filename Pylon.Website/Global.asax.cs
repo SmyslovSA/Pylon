@@ -7,6 +7,9 @@ using Pylon.Website.Controllers;
 using Pylon.Website.Ninject;
 using Rocket.Web;
 using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -80,6 +83,24 @@ namespace Pylon.Website
 
 			controller.ViewData.Model = new HandleErrorInfo(ex, currentController, currentAction);
 			((IController)controller).Execute(new RequestContext(new HttpContextWrapper(httpContext), routeData));
+		}
+
+		protected void Application_BeginRequest()
+		{
+			string cultureName = null;
+			HttpCookie cultureCookie = HttpContext.Current.Request.Cookies["lang"];
+			if (cultureCookie != null)
+				cultureName = cultureCookie.Value;
+			else
+				cultureName = "en";
+
+			List<string> cultures = new List<string>() { "ru", "en"};
+			if (!cultures.Contains(cultureName))
+			{
+				cultureName = "en";
+			}
+			Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(cultureName);
+			Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture(cultureName);
 		}
 	}
 }

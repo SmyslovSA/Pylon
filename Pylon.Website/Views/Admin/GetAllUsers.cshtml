@@ -41,7 +41,7 @@
 				@using (Html.BeginForm("BlockUser", "Admin"))
 				{
 					@Html.Hidden("id", item.Id)
-					<input type="submit" value="Block User" />
+					<input type="submit" value="@Resources.Resource.BlockUser" />
 				}
 			</td>
 		}
@@ -51,7 +51,7 @@
 				@using (Html.BeginForm("UnblockUser", "Admin"))
 				{
 					@Html.Hidden("id", item.Id)
-					<input type="submit" value="Unblock User" />
+					<input type="submit" value="@Resources.Resource.UnblockUser" />
 				}
 			</td>
 		}
@@ -59,7 +59,7 @@
 			@using (Html.BeginForm("DeleteUser", "Admin"))
 			{
 				@Html.Hidden("id", item.Id)
-				<input type="submit" value="Delete User" />
+				<input type="submit" value="@Resources.Resource.DeleteUser" />
 			}
 		</td>
 		<td>
@@ -67,9 +67,9 @@
 			{
 				@Html.DropDownList("role",
 				  new SelectList(item.UserRoles.Result),
-				  "SelectRole")
+				  @Resources.Resource.SelectRole)
 				@Html.Hidden("id", item.Id)
-				<input type="submit" value="Remove Role" />
+				<input type="submit" value="@Resources.Resource.RemoveRole" />
 			}
 		</td>
 		<td>
@@ -77,9 +77,9 @@
 			{
 				@Html.DropDownList("role",
 				  new SelectList(item.Roles),
-				  "SelectRole")
+				  @Resources.Resource.SelectRole)
 				@Html.Hidden("id", item.Id)
-				<input type="submit" value="Add Role" />
+				<input type="submit" value="@Resources.Resource.AddRole" />
 			}
 		</td>
 	</tr>

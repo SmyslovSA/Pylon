@@ -11,25 +11,25 @@
 			<div class="col-lg-4 col-md-8 m-auto">				
 					<div class="login-page-content">
 						<div class="login-form">
-							<h3>Welcome Back!</h3>
+							<h3>@Resources.Resource.Login!</h3>
 							<form action="index.html">
 								<div class="username">
-									@Html.TextBoxFor(m => m.Email, new { @placeholder = "Login" })
+									@Html.TextBoxFor(m => m.Email, new { @placeholder = Resources.Resource.LoginForm })
 									@Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
 								</div>
 								<div class="password">
-									@Html.PasswordFor(m => m.Password, new { @placeholder = "Password" })
+									@Html.PasswordFor(m => m.Password, new { @placeholder = Resources.Resource.PasswordForm })
 									@Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
 									@Html.AntiForgeryToken()
 									@Html.ValidationSummary(true, "", new { @class = "text-danger" })
 								</div>
 								<div class="log-btn">
-									<button type="submit"><i class="fa fa-sign-in"></i> Log In</button>
+									<button type="submit"><i class="fa fa-sign-in"></i> @Resources.Resource.LoginButton</button>
 								</div>
 							</form>
 						</div>
 						<div class="create-ac">
-							 @Html.ActionLink("Don't have an account?", "Register")
+							 @Html.ActionLink(@Resources.Resource.DontHaveAnAccount, "Register")
 						</div>
 					</div>
 				</div>

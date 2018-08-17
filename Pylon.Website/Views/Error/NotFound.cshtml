@@ -6,11 +6,11 @@
 						<div class="number">
 							<div class="four">404</div>
 						</div>
-						<h4>PAGE NOT FOUND !</h4>
-						<p>SORRY, WE COULDN'T FIND THE PAGE <br> YOU'RE LOOKING.</p>
+						<h4>@Resources.Resource.NotFound</h4>
+						<p>@Resources.Resource.NotFoundMessage <br> @Resources.Resource.NotFoundMessage2</p>
 						@using (Html.BeginForm("GetAll", "Product", FormMethod.Get))
 						{
-							<p><input type="submit" class="rent-btn" value="Go To Start Page" /></p>
+							<p><input type="submit" class="rent-btn" value="@Resources.Resource.GoToStartPage" /></p>
 						}
 					</div>
 				</div>

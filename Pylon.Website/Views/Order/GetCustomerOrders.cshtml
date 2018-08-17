@@ -15,7 +15,7 @@
 			<div class="col-lg-4">
 				<!-- Single Sidebar Start -->
 				<div class="single-sidebar">
-					<h3>Filter</h3>
+					<h3>@Resources.Resource.Filter</h3>
 					<div class="sidebar-body">
 						@Html.Partial("GetFilter", new OrderFilterModel())
 					</div>
@@ -39,13 +39,13 @@
 										<h2>@order.StartDate.ToShortDateString() - @order.EndDate.ToShortDateString()</h2>
 										<h4>@order.ProductName @order.ProductModel</h4>
 										@{order.ProductPrice = (int)order.ProductPrice;}
-										<h4>Price: @order.ProductPrice$</h4>
+										<h4>@Resources.Resource.Price: @order.ProductPrice$</h4>
 										<hr>
 										@using (Html.BeginForm("RemoveOrder", "Order"))
 										{
 											@Html.Hidden("id", order.Id)
 											<div class="secondary-btn">
-												<button style="float:left">Remove</button>
+												<button style="float:left">@Resources.Resource.Delete</button>
 											</div>
 										}
 									</div>
@@ -59,7 +59,7 @@
 	</div>
 
 	<br />
-	Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+	@Resources.Resource.Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) @Resources.Resource.of @Model.PageCount
 
 	@Html.PagedListPager(Model, page => Url.Action("GetCustomerOrders", new { page }))
 </section>

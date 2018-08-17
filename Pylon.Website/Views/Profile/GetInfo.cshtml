@@ -31,7 +31,7 @@
 							</div>
 							<div class="login-form" style="background-color:white; padding:0px">
 								<div class="log-btn">
-									<button> Save </button>
+									<button> @Resources.Resource.Save </button>
 								</div>
 							</div>
 						</div>
@@ -50,27 +50,27 @@
 							<div class="col-lg-7 col-md-8 m-auto" style="max-width:90%; flex-basis:90%;padding-top:10px">
 								<div class="login-page-content">
 									<div class="login-form">
-										<h3>Personal Data</h3>
+										<h3>@Resources.Resource.PersonalData</h3>
 										<form action="index.html">
 											@Html.HiddenFor(m => m.ImageData)
 											@Html.HiddenFor(m => m.ImageMimeType)
 											<div class="username">
-												@Html.Label("First Name")
+												@Html.Label(@Resources.Resource.Name)
 												@Html.TextBoxFor(m => m.FirstName, new { @autocomplete = "off" })
 												@Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
 											</div>
 											<div class="username">
-												@Html.Label("Last Name")
+												@Html.Label(@Resources.Resource.LastName)
 												@Html.TextBoxFor(m => m.LastName, new { @autocomplete = "off" })
 												@Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
 											</div>
 											<div class="username">
-												@Html.Label("Phone")
+												@Html.Label(@Resources.Resource.Phone)
 												@Html.TextBoxFor(m => m.Phone, new { @autocomplete = "off", @id = "phone" })
 												@Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger"})
 											</div>
 											<div class="log-btn">
-												<button> Save </button>
+												<button> @Resources.Resource.Save </button>
 											</div>
 										</form>
 									</div>
@@ -87,18 +87,18 @@
 							<div class="col-lg-7 col-md-8 m-auto" style="max-width:90%; flex-basis:90%">
 								<div class="login-page-content">
 									<div class="login-form">
-										<h3>Change Password</h3>
+										<h3>@Resources.Resource.ChangePassword</h3>
 										<form action="index.html">
 											<div class="password">
-												@Html.Label("New Password")
+												@Html.Label(@Resources.Resource.NewPassword)
 												@Html.Password("newPassword")
 											</div>
 											<div class="password">
-												@Html.Label("Confirm Password")
+												@Html.Label(@Resources.Resource.PasswordConfirm)
 												@Html.Password("newPasswordConfirm")
 											</div>
 											<div class="log-btn">
-												<button> Save </button>
+												<button> @Resources.Resource.Save </button>
 											</div>
 										</form>
 									</div>

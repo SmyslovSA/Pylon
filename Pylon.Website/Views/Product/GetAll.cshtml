@@ -16,6 +16,7 @@
 	var data2 = JSON.parse('@ViewBag.EndData');
 	var data3 = JSON.parse('@ViewBag.IdData');
 </script>
+
 <section id="car-list-area" class="section-padding">
 	<div class="container">
 		<div class="row">
@@ -23,7 +24,7 @@
 			<div class="col-lg-4">
 				<!-- Single Sidebar Start -->
 				<div class="single-sidebar">
-					<h3>Filter</h3>
+					<h3>@Resources.Resource.Filter</h3>
 					<div class="sidebar-body">
 						@Html.Partial("GetFilter", new ProductFilterModel())
 					</div>
@@ -62,28 +63,28 @@
 									<div class="display-table">
 										<div class="car-list-info">
 											<h2>@product.Name @product.Model</h2>
-											<h4>Year: @product.Year</h4>
+											<h4>@Resources.Resource.Year: @product.Year</h4>
 											@{product.Price = (int)product.Price;}
-											<h4>Price: @product.Price$</h4>
+											<h4>@Resources.Resource.Price: @product.Price$</h4>
 											<hr>
 											@using (Html.BeginForm("AddOrder", "Order", FormMethod.Post))
 											{
 												<input type="hidden" value=@product.Id name="productId" />
 												<div class="input-group date">
 													<div class="col-lg-4">
-														<h4>Start Date:</h4>
+														<h4>@Resources.Resource.StartDate:</h4>
 													</div>
 													<div class="col-lg-8">
-														<input type="text" class="form-control" name="startDate" autocomplete="off" onclick="Do(@product.Id)"/>
+														<input type="text" class="form-control" id="picker" name="startDate" autocomplete="off" onclick="Do(@product.Id)" />
 													</div>
 												</div>
 												<div class="input-group date">
 													<div class="col-lg-4">
-														<h4>End Date:</h4>
+														<h4>@Resources.Resource.EndDate:</h4>
 													</div>
 													<div class="col-lg-8">
-														<input type="text" class="form-control" name="endDate" autocomplete="off" />
-														<p><input type="submit" class="rent-btn" value="Book It!" style="float:right" /></p>
+														<input type="text" class="form-control" id="picker" name="endDate" autocomplete="off" />
+														<p><input type="submit" class="rent-btn" value="@Resources.Resource.BookIt" style="float:right" /></p>
 													</div>
 												</div>
 											}
@@ -99,10 +100,8 @@
 		</div>
 	</div>
 	<br />
-	Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+	@Resources.Resource.Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) @Resources.Resource.of @Model.PageCount
 
 	@Html.PagedListPager(Model, page => Url.Action("GetAll", new { page }))
 </section>
-
-
 

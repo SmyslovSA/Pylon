@@ -1,4 +1,5 @@
-﻿@model Pylon.Models.RegisterModel
+﻿@using Pylon.Models
+@model Pylon.Models.RegisterModel
 @{
 	ViewBag.Title = "Register";
 }
@@ -13,39 +14,39 @@
 				<div class="col-lg-5 col-md-8 m-auto">
 					<div class="login-page-content">
 						<div class="login-form">
-							<h3>Sign Up</h3>
+							<h3>@Resources.Resource.Registration</h3>
 							<form action="index.html">
 								<div class="name">
 									<div class="row">
 										<div class="col-md-6">
-											@Html.TextBoxFor(m => m.FirstName, new {@placeholder = "First Name"} )
+											@Html.TextBoxFor(m => m.FirstName, new {@placeholder = @Resources.Resource.Name } )
 											@Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
 										</div>
 										<div class="col-md-6">
-											@Html.TextBoxFor(m => m.LastName, new { @placeholder = "Last Name" })
+											@Html.TextBoxFor(m => m.LastName, new { @placeholder = @Resources.Resource.LastName })
 											@Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
 										</div>
 									</div>
 								</div>
 								<div class="username">
-									@Html.TextBoxFor(m => m.Email, new { @placeholder = "Email" })
+									@Html.TextBoxFor(m => m.Email, new { @placeholder = Resources.Resource.Email })
 									@Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
 								</div>
 								<div class="password">
-									@Html.PasswordFor(m => m.Password, new { @placeholder = "Password" })
+									@Html.PasswordFor(m => m.Password, new { @placeholder = Resources.Resource.Password })
 									@Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
 								</div>
 								<div class="password">
-									@Html.PasswordFor(m => m.ConfirmPassword, new { @placeholder = "Password Confirmation" })
+									@Html.PasswordFor(m => m.ConfirmPassword, new { @placeholder = Resources.Resource.PasswordConfirm })
 									@Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
 								</div>
 								<div class="log-btn">
-									<button type="submit"> Sign Up</button>
+									<button type="submit"> @Resources.Resource.SignUp</button>
 								</div>
 							</form>
 						</div>
 						<div class="create-ac">
-							 @Html.ActionLink("Have an account?","Login")
+							 @Html.ActionLink(@Resources.Resource.HaveAnAccount, "Login")
 						</div>
 					</div>
 				</div>

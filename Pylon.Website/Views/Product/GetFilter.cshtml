@@ -9,34 +9,42 @@
 	<div class="login-page-content">
 		<div class="login-form">
 			<div class="username">
-				@Html.Label("Car")
+				@Html.Label(@Resources.Resource.Car)
 				@Html.TextBoxFor(m => m.Name)
 			</div>
 			<div class="username">
-				@Html.Label("Model")
+				@Html.Label(@Resources.Resource.Model)
 				@Html.TextBoxFor(m => m.CarModel)
 			</div>
 			<div class="username">
-				@Html.Label("Start Year")
+				@Html.Label(@Resources.Resource.StartYear)
 				@Html.TextBoxFor(m => m.MinYear, new { @id = "datepicker", @autocomplete = "off" })
 			</div>
 			<div class="username">
-				@Html.Label("End Year")
+				@Html.Label(@Resources.Resource.EndYear)
 				@Html.TextBoxFor(m => m.MaxYear, new { @id = "datepicker2", @autocomplete = "off" })
 			</div>
 			<div class="username">
-				@Html.Label("Min Price")
+				@Html.Label(@Resources.Resource.MinPrice)
 				@Html.TextBoxFor(m => m.MinPrice, new { @onkeypress = "validate(event)" })
 			</div>
 			<div class="username">
-				@Html.Label("Max Price")
+				@Html.Label(@Resources.Resource.MaxPrice)
 				@Html.TextBoxFor(m => m.MaxPrice, new { @onkeypress = "validate(event)" })
 			</div>
 			<div class="log-btn">
-				<button> Search </button>
-				
+				<button> @Resources.Resource.Search </button>
+
 			</div>
 		</div>
 	</div>
 }
+@Scripts.Render("~/bundles/jquery")
+<script src="~/Scripts/jquery.maskedinput.js"></script>
+<script>
+	$("#datepicker").mask("9999", { placeholder: "yyyy" });
+</script>
 
+<script>
+	$("#datepicker2").mask("9999", { placeholder: "yyyy" });
+</script>

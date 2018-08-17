@@ -8,83 +8,83 @@
 	<link rel="stylesheet" href="/css/bootstrap.css" />
 </head>
 
-	<section id="car-list-area" class="section-padding">
-				<div class="container">
-					<div class="row">
-						<div style="margin-left:auto; margin-right:15px;margin-bottom:15px">
-							@using (Html.BeginForm("AddProduct", "Product", FormMethod.Get))
-							{
-								<input type="submit" class="rent-btn" value="Add Car" />
-							}
-						</div>
-						<div class="col-lg-12">
-							@foreach (var product in Model)
-							{
-								<div class="car-list-content m-t-50">
-									<!-- Single Car Start -->
-									<div class="single-car-wrap">
-										<div class="row">
-											<!-- Single Car Thumbnail -->
+<section id="car-list-area" class="section-padding">
+	<div class="container">
+		<div class="row">
+			<div style="margin-left:auto; margin-right:15px;margin-bottom:15px">
+				@using (Html.BeginForm("AddProduct", "Product", FormMethod.Get))
+				{
+					<input type="submit" class="rent-btn" value="@Resources.Resource.AddCar" />
+				}
+			</div>
+			<div class="col-lg-12">
+				@foreach (var product in Model)
+				{
+					<div class="car-list-content m-t-50">
+						<!-- Single Car Start -->
+						<div class="single-car-wrap">
+							<div class="row">
+								<!-- Single Car Thumbnail -->
 
 
-											<div class="col-lg-5">
-												@if (product.ImageMimeType != null)
-												{
-													<div class="div-new-image">
-														<img src="@Url.Action("GetImage", "Product", new { product.Id })" />
-													</div>
-												}
-												else
-												{
-													<div class="div-new-image">
-														<img src="/assets/img/no-image-product.jpg" />
-													</div>
-												}
+								<div class="col-lg-5">
+									@if (product.ImageMimeType != null)
+									{
+										<div class="div-new-image">
+											<img src="@Url.Action("GetImage", "Product", new { product.Id })" />
+										</div>
+									}
+									else
+									{
+										<div class="div-new-image">
+											<img src="/assets/img/no-image-product.jpg" />
+										</div>
+									}
+								</div>
+								<!-- Single Car Thumbnail -->
+								<!-- Single Car Info -->
+								<div class="col-lg-7">
+									<div class="display-table">
+										<div style="padding-left:10px">
+											<div class="car-list-info">
+												<h2>@product.Name @product.Model</h2>
+												<h4>@Resources.Resource.Year: @product.Year</h4>
+												@{product.Price = (int)product.Price;}
+												<h4>@Resources.Resource.Price: @product.Price$</h4>
+												<hr>
 											</div>
-											<!-- Single Car Thumbnail -->
-											<!-- Single Car Info -->
-											<div class="col-lg-7">
-												<div class="display-table">
-													<div style="padding-left:10px">
-														<div class="car-list-info">
-															<h2>@product.Name @product.Model</h2>
-															<h4>Year: @product.Year</h4>
-															@{product.Price = (int)product.Price;}
-															<h4>Price: @product.Price$</h4>
-															<hr>
-														</div>
-													</div>
-													<br>
-													<div class="col-lg-12">
-														@using (Html.BeginForm("GetProduct", "Product", FormMethod.Get))
-														{
-															@Html.Hidden("id", product.Id)
-															<p><input type="submit" class="rent-btn" value="Edit" style="float:right" /></p>
-														}
-														@using (Html.BeginForm("RemoveProduct", "Product"))
-														{
-															@Html.Hidden("id", product.Id)
-															<div class="secondary-btn">
-																<button>Remove</button>
-															</div>
-														}
-													</div>
+										</div>
+										<br>
+										<div class="col-lg-12">
+											@using (Html.BeginForm("GetProduct", "Product", FormMethod.Get))
+											{
+												@Html.Hidden("id", product.Id)
+												<p><input type="submit" class="rent-btn" value="@Resources.Resource.Edit" style="float:right" /></p>
+											}
+											@using (Html.BeginForm("RemoveProduct", "Product"))
+											{
+												@Html.Hidden("id", product.Id)
+												<div class="secondary-btn">
+													<button>@Resources.Resource.Delete</button>
 												</div>
-											</div>
-
-											<!-- Single Car info -->
+											}
 										</div>
 									</div>
 								</div>
-								<br>
-							}
+
+								<!-- Single Car info -->
+							</div>
 						</div>
-
 					</div>
-				</div>
+					<br>
+				}
+			</div>
 
-				<br />
-				Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
+		</div>
+	</div>
 
-				@Html.PagedListPager(Model, page => Url.Action("GetSalerProducts", new { page }))
-		</section>
+	<br />
+	@Resources.Resource.Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) @Resources.Resource.of @Model.PageCount
+
+	@Html.PagedListPager(Model, page => Url.Action("GetSalerProducts", new { page }))
+</section>

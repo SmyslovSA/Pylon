@@ -10,25 +10,25 @@
 				<div class="col-lg-7 col-md-8 m-auto">
 					<div class="login-page-content">
 						<div class="login-form">
-							<h3>Add Car</h3>
+							<h3>@Resources.Resource.AddCar</h3>
 							<form action="index.html">
 								<div class="username">
-									@Html.Label("Car")
+									@Html.Label(@Resources.Resource.Car)
 									@Html.TextBoxFor(m => m.Name)
 									@Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
 								</div>
 								<div class="username">
-									@Html.Label("Model")
+									@Html.Label(@Resources.Resource.Model)
 									@Html.TextBoxFor(m => m.CarModel)
 									@Html.ValidationMessageFor(m => m.CarModel, "", new { @class = "text-danger" })
 								</div>
 								<div class="username">
-									@Html.Label("Year")
+									@Html.Label(@Resources.Resource.Year)
 									@Html.TextBoxFor(m => m.Year, new { @onkeypress = "validate(event)" })
 									@Html.ValidationMessageFor(m => m.Year, "", new { @class = "text-danger" })
 								</div>
 								<div class="username">
-									@Html.Label("Price")
+									@Html.Label(@Resources.Resource.Price)
 									@Html.TextBoxFor(m => m.Price, new { @onkeypress = "validate(event)" })
 									@Html.ValidationMessageFor(m => m.Price, "", new { @class = "text-danger" })
 								</div>
@@ -45,7 +45,7 @@
 										</div>
 									</div>
 									<div class="log-btn">
-										<button> Add Car </button>
+										<button> @Resources.Resource.AddCar </button>
 									</div>
 </form>
 						</div>

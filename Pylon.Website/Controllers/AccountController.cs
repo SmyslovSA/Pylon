@@ -45,11 +45,11 @@ namespace Pylon.Website.Controllers
                 ClaimsIdentity claim = await UserService.Authenticate(userDto);
                 if (claim == null)
                 {
-                    ModelState.AddModelError("", "Wrong Login or Password.");
+                    ModelState.AddModelError("", Resources.Resource.IncorrectLoginOrPassword);
                 }
 				else if (!claim.IsAuthenticated)
 				{
-					ModelState.AddModelError("", "That user is blocked or deleted.");
+					ModelState.AddModelError("", Resources.Resource.UserBlockedOrDeleted);
 				}
 				else
                 {

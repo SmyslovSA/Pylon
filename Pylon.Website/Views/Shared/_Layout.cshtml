@@ -46,8 +46,8 @@
 					<div class="row">
 						<div class="col-lg-2">
 							<div class="div-new-image">
-							<img src="/assets/img/car-logo.png">
-							<img src="/assets/img/pylon.png">
+								<img src="/assets/img/car-logo.png">
+								<img src="/assets/img/pylon.png">
 							</div>
 						</div>
 						<!--== Main Menu Start ==-->
@@ -56,26 +56,37 @@
 								<ul>
 									@if (User.IsInRole("admin"))
 									{
-										<li>@Html.ActionLink("Admin", "GetAllUsers", "Admin") </li>
+										<li>@Html.ActionLink(@Resources.Resource.Admin, "GetAllUsers", "Admin") </li>
 									}
 									@if (User.IsInRole("customer") || User.IsInRole("saler"))
 									{
-										<li>@Html.ActionLink("All Cars", "GetAll", "Product") </li>
+										<li>@Html.ActionLink(@Resources.Resource.AllCars, "GetAll", "Product") </li>
 									}
 									@if (User.IsInRole("saler"))
 									{
-										<li>@Html.ActionLink("My Cars", "GetSalerProducts", "Product") </li>
+										<li>@Html.ActionLink(@Resources.Resource.MyCars, "GetSalerProducts", "Product") </li>
 									}
 									@if (User.IsInRole("customer") || User.IsInRole("saler"))
 									{
-										<li>@Html.ActionLink("Profile", "GetInfo", "Profile") </li>
+										<li>@Html.ActionLink(@Resources.Resource.Profile, "GetInfo", "Profile") </li>
 									}
 									@if (User.IsInRole("customer"))
 									{
-										<li>@Html.ActionLink("My Orders", "GetCustomerOrders", "Order") </li>
+										<li>@Html.ActionLink(@Resources.Resource.MyOrders, "GetCustomerOrders", "Order") </li>
 									}
 									<li>@Html.Partial("_LoginPartial")</li>
 								</ul>
+								<div>
+									@using (Html.BeginForm("ChangeCulture", "Language"))
+									{
+										<select name="lang">
+											<option disabled selected>@Resources.Resource.ChooseLanguage</option>
+											<option value="ru">Русский</option>
+											<option value="en">English</option>
+										</select>
+										<input type="submit" name="submit" value="@Resources.Resource.ChooseLanguage">
+									}
+								</div>
 							</nav>
 						</div>
 						<!--== Main Menu End ==-->
@@ -108,12 +119,12 @@
 						<!-- Single Footer Widget Start -->
 						<div class="col-lg-4 col-md-6">
 							<div class="single-footer-widget">
-								<h2>About Us</h2>
+								<h2>@Resources.Resource.FooterAboutUs</h2>
 								<div class="widget-body">
 									<div class="div-new-image">
 										<img src="/assets/img/car-logo.png">
 									</div>
-									<p>We are an international car rental company. Thank you for choosing us.</p>
+									<p>@Resources.Resource.AboutUs</p>
 								</div>
 							</div>
 						</div>
@@ -125,12 +136,12 @@
 						<!-- Single Footer Widget Start -->
 						<div class="col-lg-4 col-md-6">
 							<div class="single-footer-widget">
-								<h2>get touch</h2>
+								<h2>@Resources.Resource.FooterContactUs</h2>
 								<div class="widget-body">
-									<p>You can contact us in the following ways:</p>
+									<p>@Resources.Resource.ContactUs</p>
 
 									<ul class="get-touch">
-										<li><i class="fa fa-map-marker"></i> Minsk, Belarus</li>
+										<li><i class="fa fa-map-marker"></i> @Resources.Resource.FooterCity</li>
 										<li><i class="fa fa-mobile"></i> +375 44 542 63 52 </li>
 										<li><i class="fa fa-envelope"></i> stepan.smyslov@gmail.com</li>
 									</ul>
@@ -150,7 +161,7 @@
 							<p>
 								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 								Copyright &copy;
-								<script>document.write(new Date().getFullYear());</script> All rights reserved </a>
+								<script>document.write(new Date().getFullYear());</script> @Resources.Resource.Copyright
 								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 							</p>
 						</div>
@@ -193,8 +204,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="~/Scripts/jquery.maskedinput.js"></script>
 	<script>
-		var day = [2012];
 	$("#datepicker").datepicker({
 			format: " yyyy",
 			viewMode: "years",
@@ -202,16 +213,7 @@
 			autoclose: true,
 			startDate: "2000",
 			endDate: "@DateTime.Today.Year",
-			beforeShow: setholiDays
 		});
-		function setholiDays(date) {
-			for (i = 0; i < day.length; i++) {
-				if (date.getFullYear() == day[i]) {
-					return [false, 'holiday', day[i]];
-				}
-			}
-			return [true, ''];
-		};
 	</script>
 	<script>
 	$("#datepicker2").datepicker({
@@ -227,7 +229,8 @@
 		$(function () {
 			$("#datepicker3").datepicker({
 				format: "dd/mm/yyyy",
-				autoclose: true
+				autoclose: true,
+				startDate: "01.01.2000"
 			});
 		});
 	</script>
@@ -236,6 +239,7 @@
 			$("#datepicker4").datepicker({
 				format: "dd/mm/yyyy",
 				autoclose: true,
+				startDate: "01.01.2000"
 			});
 		});
 	</script>
@@ -274,26 +278,46 @@
 	</script>
 	<script>
 		function Do(x) {
-
+			var test = x;
 			$(function () {
 				$('input').filter('.form-control').datepicker({
 					format: "dd/mm/yyyy",
 					autoclose: true,
-					startDate: "@DateTime.Today"
-					//beforeShowDay: check_closed
+					startDate: "@DateTime.Today",
+					beforeShowDay: check_closed
 		});
-				});		
+			});
 			function check_closed(date) {
-				var m = date.getMonth(); d = date.getDate();
-				if (d < 10) { d = "0" + d; }; y = date.getFullYear();
-					for (i = 0; i < Cdates.length; i++) {
-						if ((1 == Temp) && (($.inArray(d + '.' + (m + 1) + '.' + y, Cdates) != -1) || ($.inArray(d + '.' + '0' + (m + 1) + '.' + y, Cdates) != -1))) {
-				return false;
+				if (date < new Date()) {
+					return;
+				}
+				var start = data1;
+				var temp = test;
+				var id = data3;
+				var m = date.getMonth() + 1;
+				if (m < 10) {
+					m = '0' + m
+				};
+				d = date.getDate();
+				if (d < 10) {
+					d = "0" + d;
+				};
+				y = date.getFullYear();
+				var is = false;
+					for (var i = 0; i < start.length; i++) {
+						if ((id[i] == temp) && (($.inArray(d + '.' + m + '.' + y, start) != -1))) {
+							is = false;
+							console.log(date);
+							break;
 			}
-			return true;
-		}
-	}
-}
+			is = true;
+				}
+				return is;
+			};
+		};
+	</script>
+	<script>
+		$('input').filter("#picker").mask("99/99/9999", { placeholder: "dd/mm/yyyy" });
 	</script>
 </body>
 </html>
