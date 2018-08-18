@@ -14,26 +14,22 @@
 							<form action="index.html">
 								@Html.HiddenFor(m => m.Id)
 								<div class="username">
-									@Html.Label(@Resources.Resource.Car)
-									@Html.TextBoxFor(m => m.Name)
+									@Html.TextBoxFor(m => m.Name, new {@placeholder = @Resources.Resource.Car })
 									@Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
 								</div>
 								<div class="username">
-									@Html.Label(@Resources.Resource.Model)
-									@Html.TextBoxFor(m => m.CarModel)
+									@Html.TextBoxFor(m => m.CarModel, new { @placeholder = @Resources.Resource.Model })
 									@Html.ValidationMessageFor(m => m.CarModel, "", new { @class = "text-danger" })
 								</div>
 								<div class="username">
-									@Html.Label(@Resources.Resource.Year)
-									@Html.TextBoxFor(m => m.Year, new { @onkeypress = "validate(event)" })
+									@Html.TextBoxFor(m => m.Year, new { @onkeypress = "validate(event)", @placeholder = @Resources.Resource.Year })
 									@Html.ValidationMessageFor(m => m.Year, "", new { @class = "text-danger" })
 								</div>
 								<div class="username">
 									@{
 										Model.Price = (int)Model.Price;
 									}
-									@Html.Label(@Resources.Resource.Price)
-									@Html.TextBoxFor(m => m.Price, new { @onkeypress = "validate(event)" })
+									@Html.TextBoxFor(m => m.Price, new { @onkeypress = "validate(event)", @placeholder = @Resources.Resource.Price })
 									@Html.ValidationMessageFor(m => m.Price, "", new { @class = "text-danger" })
 								</div>
 								<div class="div-image">

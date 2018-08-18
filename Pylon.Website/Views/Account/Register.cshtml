@@ -7,7 +7,6 @@
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
 	@Html.AntiForgeryToken()
-	@Html.ValidationSummary(true, "", new { @class = "text-danger" })
 	<section id="login-page-wrap" class="section-padding-login">
 		<div class="container">
 			<div class="row">
@@ -19,7 +18,7 @@
 								<div class="name">
 									<div class="row">
 										<div class="col-md-6">
-											@Html.TextBoxFor(m => m.FirstName, new {@placeholder = @Resources.Resource.Name } )
+											@Html.TextBoxFor(m => m.FirstName, new { @placeholder = @Resources.Resource.Name })
 											@Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
 										</div>
 										<div class="col-md-6">
@@ -27,6 +26,10 @@
 											@Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
 										</div>
 									</div>
+								</div>
+								<div class="username">
+									@Html.TextBoxFor(m => m.Phone, new { @autocomplete = "off", @id = "phone", @placeholder = @Resources.Resource.Phone })
+									@Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
 								</div>
 								<div class="username">
 									@Html.TextBoxFor(m => m.Email, new { @placeholder = Resources.Resource.Email })
@@ -40,13 +43,14 @@
 									@Html.PasswordFor(m => m.ConfirmPassword, new { @placeholder = Resources.Resource.PasswordConfirm })
 									@Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
 								</div>
+								@Html.ValidationSummary(true, "", new { @class = "text-danger" })
 								<div class="log-btn">
 									<button type="submit"> @Resources.Resource.SignUp</button>
 								</div>
 							</form>
 						</div>
 						<div class="create-ac">
-							 @Html.ActionLink(@Resources.Resource.HaveAnAccount, "Login")
+							@Html.ActionLink(@Resources.Resource.HaveAnAccount, "Login")
 						</div>
 					</div>
 				</div>
@@ -57,5 +61,11 @@
 
 @section Scripts {
 	@Scripts.Render("~/bundles/jqueryval")
-}
 
+}
+@Scripts.Render("~/bundles/jquery")
+<script src="~/Scripts/jquery.maskedinput.js"></script>
+
+<script>
+	$("#phone").mask("+375(99) 999-99-99");
+</script>

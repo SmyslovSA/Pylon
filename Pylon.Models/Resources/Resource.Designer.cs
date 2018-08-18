@@ -133,6 +133,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The field &quot;Car&quot; required.
+        /// </summary>
+        public static string CarRequired {
+            get {
+                return ResourceManager.GetString("CarRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change Password.
         /// </summary>
         public static string ChangePassword {
@@ -403,6 +412,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The field &quot;Model&quot; required.
+        /// </summary>
+        public static string ModelRequired {
+            get {
+                return ResourceManager.GetString("ModelRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to My Cars.
         /// </summary>
         public static string MyCars {
@@ -502,7 +520,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PasswordConfirm.
+        ///   Looks up a localized string similar to Password Confirm.
         /// </summary>
         public static string PasswordConfirm {
             get {
@@ -556,11 +574,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The field &quot;Phone&quot; required.
+        /// </summary>
+        public static string PhoneRequired {
+            get {
+                return ResourceManager.GetString("PhoneRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Price.
         /// </summary>
         public static string Price {
             get {
                 return ResourceManager.GetString("Price", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The field &quot;Price&quot; required.
+        /// </summary>
+        public static string PriceRequired {
+            get {
+                return ResourceManager.GetString("PriceRequired", resourceCulture);
             }
         }
         
@@ -696,6 +732,15 @@ namespace Resources {
         public static string Year {
             get {
                 return ResourceManager.GetString("Year", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The field &quot;Year&quot; required.
+        /// </summary>
+        public static string YearRequired {
+            get {
+                return ResourceManager.GetString("YearRequired", resourceCulture);
             }
         }
     }

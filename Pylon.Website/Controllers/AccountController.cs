@@ -88,6 +88,7 @@ namespace Pylon.Website.Controllers
                     Password = model.Password,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
+					Phone = model.Phone
                 };
                 OperationDetails operationDetails = await UserService.Create(userDto);
                 if (operationDetails.Succedeed)

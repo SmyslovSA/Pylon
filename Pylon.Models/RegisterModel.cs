@@ -31,5 +31,10 @@ namespace Pylon.Models
 				  ErrorMessageResourceName = "LastNameRequired")]
 		[Display(Name = "LastName", ResourceType = typeof(Resources.Resource))]
         public string LastName { get; set; }
-    }
+
+		[Required(ErrorMessageResourceType = typeof(Resources.Resource),
+				  ErrorMessageResourceName = "PhoneRequired")]
+		[Display(Name = "Phone", ResourceType = typeof(Resources.Resource))]
+		public string Phone { get; set; }
+	}
 }

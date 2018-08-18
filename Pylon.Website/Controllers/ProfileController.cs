@@ -20,7 +20,7 @@ namespace Pylon.Website.Controllers
         [HttpGet]
         public ActionResult GetInfo()
         {
-            var model = _profileService.GetProfile(User.GetUserId());
+			var model = _profileService.GetProfile(User.GetUserId());
 			ProfileViewModel profile = new ProfileViewModel
 			{
 				FirstName = model.FirstName,
@@ -32,7 +32,7 @@ namespace Pylon.Website.Controllers
 			return View(profile);
         }
 
-        [HttpPost]
+		[HttpPost]
         public ActionResult ChangePassword(string newPassword, string newPasswordConfirm)
         {
             _profileService.ChangePassword(User.GetUserId(),newPassword, newPasswordConfirm);

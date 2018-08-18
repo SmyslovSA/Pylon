@@ -49,8 +49,8 @@ namespace Pylon.Website.Controllers
 
 			OrderDTO orderDTO = new OrderDTO
             {
-                StartDate = DateTime.ParseExact(startDate, "dd/MM/yyyy", CultureInfo.InvariantCulture),
-				EndDate = DateTime.ParseExact(endDate, "dd/MM/yyyy", CultureInfo.InvariantCulture),
+                StartDate = DateTime.ParseExact(startDate,"dd/MM/yyyy", CultureInfo.CurrentCulture),
+				EndDate = DateTime.ParseExact(endDate, "dd/MM/yyyy", CultureInfo.CurrentCulture),
 				ProductId = productId,
                 ProfileId = User.GetUserId()
             };

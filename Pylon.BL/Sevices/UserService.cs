@@ -26,21 +26,21 @@ namespace Pylon.BL
                 user = new User { Email = userDto.Email, UserName = userDto.Email };
                 var result = await _unitOfWork.UserManager.CreateAsync(user, userDto.Password);
                 if (result.Errors.Count() > 0)
-                    return new OperationDetails(false, result.Errors.FirstOrDefault(), "");
+                    return new OperationDetails(false, LogicResource.BLResource.RegistrationFailedPassword, "");
                 // добавляем роль
                 await SetInitialData(new List<string> { "admin", "customer", "saler" });
                //await _unitOfWork.UserManager.AddToRoleAsync(user.Id, "admin");
                 await _unitOfWork.UserManager.AddToRoleAsync(user.Id, "saler");
                 await _unitOfWork.UserManager.AddToRoleAsync(user.Id, "customer");
                 // создаем профиль клиента
-                Profile clientProfile = new Profile { Id = user.Id, FirstName = userDto.FirstName, LastName = userDto.LastName, IsBlocked = false, IsDeleted = false};
+                Profile clientProfile = new Profile { Id = user.Id, FirstName = userDto.FirstName, LastName = userDto.LastName, IsBlocked = false, IsDeleted = false, Phone = userDto.Phone};
                 _unitOfWork.ProfileManager.Insert(clientProfile);
                 _unitOfWork.SaveChanges();
                 return new OperationDetails(true, "Регистрация успешно пройдена", "");
             }
             else
             {
-                return new OperationDetails(false, "Пользователь с таким логином уже существует", "Email");
+                return new OperationDetails(false, LogicResource.BLResource.RegistrationFailedEmail, "Email");
             }
         }
 

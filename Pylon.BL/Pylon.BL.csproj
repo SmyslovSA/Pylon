@@ -83,6 +83,11 @@
     <Compile Include="ModelsDTO\OrderDTO.cs" />
     <Compile Include="ModelsDTO\ProductDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\BLResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BLResource.resx</DependentUpon>
+    </Compile>
     <Compile Include="ServiceCreator.cs" />
     <Compile Include="Sevices\AdminService.cs" />
     <Compile Include="Sevices\OrderService.cs" />
@@ -100,6 +105,16 @@
       <Project>{945310F1-8D1C-450E-9D5C-0A23209236D1}</Project>
       <Name>Pylon.DAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\BLResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>BLResource.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>LogicResource</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\BLResource.ru.resx">
+      <CustomToolNamespace>LogicResource</CustomToolNamespace>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

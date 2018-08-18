@@ -330,4 +330,22 @@
   <data name="SelectRole" xml:space="preserve">
     <value>Выберите роль</value>
   </data>
+  <data name="CarRequired" xml:space="preserve">
+    <value>Поле "Машина" обязательно</value>
+  </data>
+  <data name="ModelRequired" xml:space="preserve">
+    <value>Поле "Модель" обязательно</value>
+  </data>
+  <data name="PriceRequired" xml:space="preserve">
+    <value>Поле "Цена" обязательно</value>
+  </data>
+  <data name="YearRequired" xml:space="preserve">
+    <value>Поле "Год выпуска" обязательно</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>Поле "Телефон" обязательно</value>
+  </data>
+  <data name="PhoneRequired" xml:space="preserve">
+    <value>Поле "Телефон" обязательно</value>
+  </data>
 </root>

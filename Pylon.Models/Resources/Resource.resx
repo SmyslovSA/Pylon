@@ -166,7 +166,7 @@
     <value>Password</value>
   </data>
   <data name="PasswordConfirm" xml:space="preserve">
-    <value>PasswordConfirm</value>
+    <value>Password Confirm</value>
   </data>
   <data name="PasswordConfirmRequired" xml:space="preserve">
     <value>The field "Password Confirm" required</value>
@@ -329,5 +329,20 @@
   </data>
   <data name="SelectRole" xml:space="preserve">
     <value>Select Role</value>
+  </data>
+  <data name="CarRequired" xml:space="preserve">
+    <value>The field "Car" required</value>
+  </data>
+  <data name="ModelRequired" xml:space="preserve">
+    <value>The field "Model" required</value>
+  </data>
+  <data name="PriceRequired" xml:space="preserve">
+    <value>The field "Price" required</value>
+  </data>
+  <data name="YearRequired" xml:space="preserve">
+    <value>The field "Year" required</value>
+  </data>
+  <data name="PhoneRequired" xml:space="preserve">
+    <value>The field "Phone" required</value>
   </data>
 </root>

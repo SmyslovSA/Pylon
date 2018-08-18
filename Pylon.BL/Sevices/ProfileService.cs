@@ -33,7 +33,6 @@ namespace Pylon.BL.Sevices
         public void ChangePersonalData(UserDTO user)
         {
             var profile = _unitOfWork.ProfileManager.GetById(user.Id);
-            //TODO: user data validate
             profile.FirstName = user.FirstName;
             profile.LastName = user.LastName;
             profile.Phone = user.Phone;
@@ -45,7 +44,6 @@ namespace Pylon.BL.Sevices
 		public void ChangeImage(UserDTO user)
 		{
 			var profile = _unitOfWork.ProfileManager.GetById(user.Id);
-			//TODO: user data validate
 			profile.ImageData = user.ImageData;
 			profile.ImageMimeType = user.ImageMimeType;
 			_unitOfWork.ProfileManager.Update(profile);

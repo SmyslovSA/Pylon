@@ -21,8 +21,10 @@ namespace Pylon.Website.Controllers
 
 		[HttpGet]
 		[Authorize(Roles = "customer, saler")]
-		public ActionResult GetProduct(int id)
+		public ActionResult GetProduct(int id = 0)
 		{
+			if (id == 0)
+				return RedirectToAction("GetSalerProducts");
 			var productDTO = _productService.Get(id);
 			ProductViewModel product = new ProductViewModel
 			{
@@ -76,11 +78,11 @@ namespace Pylon.Website.Controllers
 			{
 				Name = model.Name,
 				Year = model.MinYear,
-				Price = model.MinPrice,
+				Price = model.MinPrice ?? 0,
 				Model = model.CarModel,
 				Fuel = model.Fuel
 			};
-			var list = _productService.GetFilter(product,model.MaxYear,model.MaxPrice);
+			var list = _productService.GetFilter(product,model.MaxYear, model.MaxPrice ?? int.MaxValue);
 			return View("GetAll",list.ToPagedList(1,5));
 		}
 
