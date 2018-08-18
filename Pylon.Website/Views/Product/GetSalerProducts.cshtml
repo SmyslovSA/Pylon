@@ -61,11 +61,12 @@
 												@Html.Hidden("id", product.Id)
 												<p><input type="submit" class="rent-btn" value="@Resources.Resource.Edit" style="float:right" /></p>
 											}
+
 											@using (Html.BeginForm("RemoveProduct", "Product"))
 											{
 												@Html.Hidden("id", product.Id)
 												<div class="secondary-btn">
-													<button>@Resources.Resource.Delete</button>
+													<button onclick="return confirm('@Resources.Resource.AreYouSure')">@Resources.Resource.Delete</button>
 												</div>
 											}
 										</div>

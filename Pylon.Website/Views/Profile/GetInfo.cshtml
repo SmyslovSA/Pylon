@@ -55,16 +55,16 @@
 											@Html.HiddenFor(m => m.ImageData)
 											@Html.HiddenFor(m => m.ImageMimeType)
 											<div class="username">
-												@Html.TextBoxFor(m => m.FirstName, new { @autocomplete = "off", @placeholder = @Resources.Resource.Name })
+												@Html.TextBoxFor(m => m.FirstName, new { @autocomplete = "off", @placeholder = @Resources.Resource.Name, required = "required", oninvalid = $"this.setCustomValidity('{@Resources.Resource.NameRequired}')", oninput = "this.setCustomValidity('')" })
 												@Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
 											</div>
 											<div class="username">
-												@Html.TextBoxFor(m => m.LastName, new { @autocomplete = "off", @placeholder = @Resources.Resource.LastName })
+												@Html.TextBoxFor(m => m.LastName, new { @autocomplete = "off", @placeholder = @Resources.Resource.LastName, required = "required", oninvalid = $"this.setCustomValidity('{@Resources.Resource.LastNameRequired}')", oninput = "this.setCustomValidity('')" })
 												@Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
 											</div>
 											<div class="username">
-												@Html.TextBoxFor(m => m.Phone, new { @autocomplete = "off", @id = "phone", @placeholder = @Resources.Resource.Phone })
-												@Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger"})
+												@Html.TextBoxFor(m => m.Phone, new { @autocomplete = "off", @id = "phone", @placeholder = @Resources.Resource.Phone, required = "required" })
+												@Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
 											</div>
 											<div class="log-btn">
 												<button> @Resources.Resource.Save </button>
@@ -87,10 +87,10 @@
 										<h3>@Resources.Resource.ChangePassword</h3>
 										<form action="index.html">
 											<div class="password">
-												<input type="password" id="newPassword" placeholder="@Resources.Resource.NewPassword">
+												<input type="password" id="newPassword" name="newPassword" placeholder="@Resources.Resource.NewPassword" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" oninvalid="this.setCustomValidity('Passwords must be at least 6 characters. Passwords must have at least one digit. Passwords must have at least one uppercase.')" oninput="this.setCustomValidity('')">
 											</div>
 											<div class="password">
-												<input type="password" id="newPasswordConfirm" placeholder="@Resources.Resource.PasswordConfirm">
+												<input type="password" id="newPasswordConfirm" name="newPasswordConfirm" placeholder="@Resources.Resource.PasswordConfirm" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" oninput="check(this)">
 											</div>
 											<div class="log-btn">
 												<button> @Resources.Resource.Save </button>
@@ -123,5 +123,14 @@
 </script>
 
 <script>
-		$("#phone").mask("+375(99) 999-99-99");
+	$("#phone").mask("+375(99) 999-99-99");
+</script>
+<script>
+	function check(input) {
+		if (input.value != document.getElementById('newPassword').value) {
+			input.setCustomValidity('@Resources.Resource.PasswordConfirmValidation');
+		} else {
+			input.setCustomValidity('');
+		}
+	}
 </script>

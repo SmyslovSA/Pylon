@@ -348,4 +348,13 @@
   <data name="PhoneRequired" xml:space="preserve">
     <value>Поле "Телефон" обязательно</value>
   </data>
+  <data name="PasswordCheck" xml:space="preserve">
+    <value>Пароль вводится на английском языке. Должен содержать минимум 6 символов, минимум одну цифру( '0'-'9') и минимум одну букву верхнего регистра.</value>
+  </data>
+  <data name="PasswordConfirmValidation" xml:space="preserve">
+    <value>Новый пароль  и Подтверждение пароля  не совпадают.</value>
+  </data>
+  <data name="AreYouSure" xml:space="preserve">
+    <value>Вы уверены?</value>
+  </data>
 </root>

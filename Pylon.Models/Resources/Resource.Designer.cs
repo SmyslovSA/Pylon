@@ -106,6 +106,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are You Sure?.
+        /// </summary>
+        public static string AreYouSure {
+            get {
+                return ResourceManager.GetString("AreYouSure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Block User.
         /// </summary>
         public static string BlockUser {
@@ -520,6 +529,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Passwords must be at least 6 characters. Passwords must have at least one digit (&apos;0&apos;-&apos;9&apos;). Passwords must have at least one uppercase (&apos;A&apos;-&apos;Z&apos;)..
+        /// </summary>
+        public static string PasswordCheck {
+            get {
+                return ResourceManager.GetString("PasswordCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password Confirm.
         /// </summary>
         public static string PasswordConfirm {
@@ -534,6 +552,15 @@ namespace Resources {
         public static string PasswordConfirmRequired {
             get {
                 return ResourceManager.GetString("PasswordConfirmRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password Confirm and New Password do not match..
+        /// </summary>
+        public static string PasswordConfirmValidation {
+            get {
+                return ResourceManager.GetString("PasswordConfirmValidation", resourceCulture);
             }
         }
         

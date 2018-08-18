@@ -345,4 +345,13 @@
   <data name="PhoneRequired" xml:space="preserve">
     <value>The field "Phone" required</value>
   </data>
+  <data name="PasswordCheck" xml:space="preserve">
+    <value>Passwords must be at least 6 characters. Passwords must have at least one digit ('0'-'9'). Passwords must have at least one uppercase ('A'-'Z').</value>
+  </data>
+  <data name="PasswordConfirmValidation" xml:space="preserve">
+    <value>Password Confirm and New Password do not match.</value>
+  </data>
+  <data name="AreYouSure" xml:space="preserve">
+    <value>Are You Sure?</value>
+  </data>
 </root>
