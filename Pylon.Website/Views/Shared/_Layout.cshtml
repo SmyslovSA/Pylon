@@ -263,39 +263,42 @@
 		}
 	</script>
 	<script>
-			$(function () {
-				$('input').filter('.form-control').datepicker({
-					format: "dd/mm/yyyy",
-					autoclose: true,
-					startDate: "@DateTime.Today",
-					beforeShowDay: check_closed
-		});
-			});
-			function check_closed(date) {
-				if (date < new Date()) {
-					return;
-				}
-				var start = data1;
-				var temp = $('#picker').data('myval');
-				var temp2 = $('#picker2').data('myendval');
-				var id = data3;
-				var m = date.getMonth() + 1;
-				if (m < 10) {
-					m = '0' + m
-				};
-				d = date.getDate();
-				if (d < 10) {
-					d = "0" + d;
-				};
-				y = date.getFullYear();
-					for (var i = 0; i < start.length; i++) {
-						if ((id[i] === temp) && (($.inArray(d + '.' + m + '.' + y, start) != -1))) {
-							console.log(date, data3);
-							return false
-			}
-				}
-				return true;
-			};
+ $(function () {
+            $('.disableDatesDP').each(function () {
+                var $element = $(this);
+                $element.datepicker({
+                    format: "dd/mm/yyyy",
+                    autoclose: true,
+                    startDate: "@DateTime.Today",
+                    beforeShowDay: function (date) {
+						if (date < new Date().setHours(0, 0, 0, 0)) {
+                            return;
+						}
+						var startArray = data1;
+						var endArray = data2;
+
+						var startDate = [];
+						var endDate = [];
+
+						for (var i = 0; i < startArray.length; i++) {
+							startDate[i] = new Date(startArray[i].replace(/(\d+).(\d+).(\d+)/, '$3/$2/$1'));
+						}
+						for (var i = 0; i < endArray.length; i++) {
+							endDate[i] = new Date(endArray[i].replace(/(\d+).(\d+).(\d+)/, '$3/$2/$1'));
+						}
+
+                        var productId = $element.data('myval');
+                        var productIdFromOrder = data3;
+                        
+                        for (var i = 0; i < startDate.length; i++) {
+							if ((productIdFromOrder[i] == productId) && ((startDate[i] <= date) && (date <= endDate[i]))) {
+								return false;
+                            }
+						}
+						return true;
+                    }});
+                });
+            });
 	</script>
 	<script>
 		$('input').filter("#picker").mask("99/99/9999", { placeholder: "dd/mm/yyyy" });
