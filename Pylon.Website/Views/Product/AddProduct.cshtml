@@ -13,7 +13,7 @@
 							<h3>@Resources.Resource.AddCar</h3>
 							<form action="index.html">
 								<div class="username">
-									@Html.TextBoxFor(m => m.Name, new {@placeholder = @Resources.Resource.Car })
+									@Html.TextBoxFor(m => m.Name, new { @placeholder = @Resources.Resource.Car })
 									@Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
 								</div>
 								<div class="username">
@@ -21,7 +21,7 @@
 									@Html.ValidationMessageFor(m => m.CarModel, "", new { @class = "text-danger" })
 								</div>
 								<div class="username">
-									@Html.TextBoxFor(m => m.Year, new { @onkeypress = "validate(event)", @placeholder = @Resources.Resource.Year })
+									@Html.TextBoxFor(m => m.Year, new {@min = 2000, @max = DateTime.Today.Year, @onkeypress = "validate(event)", @placeholder = @Resources.Resource.Year, @autocomplete = "off", @maxlength = 4})
 									@Html.ValidationMessageFor(m => m.Year, "", new { @class = "text-danger" })
 								</div>
 								<div class="username">
@@ -38,12 +38,12 @@
 												<input type="file" name="uploadFile" class="photo" id="imgInput" hidden />
 											</div>
 										</div>
-										</div>
 									</div>
-									<div class="log-btn">
-										<button> @Resources.Resource.AddCar </button>
-									</div>
-</form>
+								</div>
+								<div class="log-btn">
+									<button> @Resources.Resource.AddCar </button>
+								</div>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -55,13 +55,18 @@
 @section Scripts {
 	@Scripts.Render("~/bundles/jqueryval")
 }
+@Scripts.Render("~/bundles/jquery")
+<script src="~/Scripts/jquery.maskedinput.js"></script>
+<script>
+	document.querySelector("#image").addEventListener("click", function () {
+		var clickEvent = document.createEvent('MouseEvents');
+
+		clickEvent.initMouseEvent('click', true, true, window,
+			0, 0, 0, 0, 0, false, false, false, false, 0, null);
+		document.querySelector("#imgInput").dispatchEvent(clickEvent);
+	});
+</script>
 
 <script>
-		document.querySelector("#image").addEventListener("click", function () {
-			var clickEvent = document.createEvent('MouseEvents');
-
-			clickEvent.initMouseEvent('click', true, true, window,
-				0, 0, 0, 0, 0, false, false, false, false, 0, null);
-			document.querySelector("#imgInput").dispatchEvent(clickEvent);
-		});
+	$("#datepicker").mask("9999", { placeholder: "yyyy" });
 </script>

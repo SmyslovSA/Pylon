@@ -46,7 +46,7 @@ namespace Pylon.Website.Controllers
         {
 			if (startDate == string.Empty || endDate == string.Empty)
 				return RedirectToAction("GetAll", "Product");
-
+			var date = new DateTime(2017, 05, 26);
 			OrderDTO orderDTO = new OrderDTO
             {
                 StartDate = DateTime.ParseExact(startDate,"dd/MM/yyyy", CultureInfo.CurrentCulture),

@@ -205,42 +205,29 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="~/Scripts/jquery.maskedinput.js"></script>
 	<script>
-	$("#datepicker").datepicker({
-			format: " yyyy",
-			viewMode: "years",
-			minViewMode: "years",
-			autoclose: true,
-			startDate: "2000",
-			endDate: "@DateTime.Today.Year",
-		});
+        $(function () {
+            $('.datepickerFilterProduct').each(function () {
+                $(this).datepicker({
+                    format: " yyyy",
+                    viewMode: "years",
+                    minViewMode: "years",
+                    autoclose: true,
+                    startDate: "2000",
+                    endDate: "@DateTime.Today.Year",
+                });
+            });
+        });
 	</script>
 	<script>
-	$("#datepicker2").datepicker({
-			format: " yyyy",
-			viewMode: "years",
-			minViewMode: "years",
-			autoclose: true,
-			startDate: "2000",
-			endDate: "@DateTime.Today.Year"
-	});
-	</script>
-	<script>
-		$(function () {
-			$("#datepicker3").datepicker({
-				format: "dd/mm/yyyy",
-				autoclose: true,
-				startDate: "01.01.2000"
-			});
-		});
-	</script>
-	<script>
-		$(function () {
-			$("#datepicker4").datepicker({
-				format: "dd/mm/yyyy",
-				autoclose: true,
-				startDate: "01.01.2000"
-			});
-		});
+        $(function () {
+            $('.datepickerFilterOrder').each(function () {
+                $(this).datepicker({
+                    format: "dd/mm/yyyy",
+				    autoclose: true,
+				    startDate: "01.01.2000"
+                });
+            });
+        });
 	</script>
 	<script>
 		function readURL(input) {
@@ -276,8 +263,6 @@
 		}
 	</script>
 	<script>
-		function Do(x) {
-			var test = x;
 			$(function () {
 				$('input').filter('.form-control').datepicker({
 					format: "dd/mm/yyyy",
@@ -291,7 +276,8 @@
 					return;
 				}
 				var start = data1;
-				var temp = test;
+				var temp = $('#picker').data('myval');
+				var temp2 = $('#picker2').data('myendval');
 				var id = data3;
 				var m = date.getMonth() + 1;
 				if (m < 10) {
@@ -302,21 +288,20 @@
 					d = "0" + d;
 				};
 				y = date.getFullYear();
-				var is = false;
 					for (var i = 0; i < start.length; i++) {
-						if ((id[i] == temp) && (($.inArray(d + '.' + m + '.' + y, start) != -1))) {
-							is = false;
-							console.log(date);
-							break;
+						if ((id[i] === temp) && (($.inArray(d + '.' + m + '.' + y, start) != -1))) {
+							console.log(date, data3);
+							return false
 			}
-			is = true;
 				}
-				return is;
+				return true;
 			};
-		};
 	</script>
 	<script>
 		$('input').filter("#picker").mask("99/99/9999", { placeholder: "dd/mm/yyyy" });
+	</script>
+	<script>
+		$('input').filter("#picker2").mask("99/99/9999", { placeholder: "dd/mm/yyyy" });
 	</script>
 </body>
 </html>

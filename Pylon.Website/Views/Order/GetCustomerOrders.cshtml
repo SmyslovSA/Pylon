@@ -36,7 +36,7 @@
 								</div>
 								<div class="col-lg-7">
 									<div class="car-list-info">
-										<h2>@order.StartDate.Day/@order.StartDate.Month/@order.StartDate.Year - @order.EndDate.Day/@order.EndDate.Month/@order.EndDate.Year</h2>
+										<h2>@order.StartDate.ToShortDateString() - @order.EndDate.ToShortDateString()</h2>
 										<h4>@order.ProductName @order.ProductModel</h4>
 										@{order.ProductPrice = (int)order.ProductPrice;}
 										<h4>@Resources.Resource.Price: @order.ProductPrice$</h4>
