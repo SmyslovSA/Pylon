@@ -354,4 +354,7 @@
   <data name="AreYouSure" xml:space="preserve">
     <value>Are You Sure?</value>
   </data>
+  <data name="Language" xml:space="preserve">
+    <value>ENGLISH</value>
+  </data>
 </root>

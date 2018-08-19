@@ -253,7 +253,7 @@
     <value>Конечная дата</value>
   </data>
   <data name="EndYear" xml:space="preserve">
-    <value>Год выпуска(конец)</value>
+    <value>Год выпуска (конец)</value>
   </data>
   <data name="FatalError" xml:space="preserve">
     <value>Ошибка. Попробуйте позже</value>
@@ -313,7 +313,7 @@
     <value>Начальная дата</value>
   </data>
   <data name="StartYear" xml:space="preserve">
-    <value>Год выпуска(начало)</value>
+    <value>Год выпуска (начало)</value>
   </data>
   <data name="UnblockUser" xml:space="preserve">
     <value>Разблокировать</value>
@@ -356,5 +356,8 @@
   </data>
   <data name="AreYouSure" xml:space="preserve">
     <value>Вы уверены?</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>РУССКИЙ</value>
   </data>
 </root>

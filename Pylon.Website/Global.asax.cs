@@ -99,6 +99,7 @@ namespace Pylon.Website
 			{
 				cultureName = "en";
 			}
+			Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("ru");
 			Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture(cultureName);
 		}
 	}

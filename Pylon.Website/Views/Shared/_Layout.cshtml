@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>@ViewBag.Title - My ASP.NET Application</title>
+	<title>Pylon Website</title>
 
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet" />
@@ -45,13 +45,13 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-2">
-							<div class="div-new-image">
+							<div class="div-menu-image">
 								<img src="/assets/img/car-logo.png">
 								<img src="/assets/img/pylon.png">
 							</div>
 						</div>
 						<!--== Main Menu Start ==-->
-						<div class="col-lg-8 d-none d-xl-block">
+						<div class="col-lg-10 d-none d-xl-block">
 							<nav class="mainmenu alignright">
 								<ul>
 									@if (User.IsInRole("admin"))
@@ -66,27 +66,23 @@
 									{
 										<li>@Html.ActionLink(@Resources.Resource.MyCars, "GetSalerProducts", "Product") </li>
 									}
-									@if (User.IsInRole("customer") || User.IsInRole("saler"))
-									{
-										<li>@Html.ActionLink(@Resources.Resource.Profile, "GetInfo", "Profile") </li>
-									}
 									@if (User.IsInRole("customer"))
 									{
 										<li>@Html.ActionLink(@Resources.Resource.MyOrders, "GetCustomerOrders", "Order") </li>
 									}
-									<li>@Html.Partial("_LoginPartial")</li>
-								</ul>
-								<div>
-									@using (Html.BeginForm("ChangeCulture", "Language"))
+									@if (User.IsInRole("customer") || User.IsInRole("saler"))
 									{
-										<select name="lang">
-											<option disabled selected>@Resources.Resource.ChooseLanguage</option>
-											<option value="ru">Русский</option>
-											<option value="en">English</option>
-										</select>
-										<input type="submit" name="submit" value="@Resources.Resource.ChooseLanguage">
+										<li>@Html.ActionLink(@Resources.Resource.Profile, "GetInfo", "Profile") </li>
 									}
-								</div>
+									<li>@Html.Partial("_LoginPartial")</li>
+									<li>
+										<a href="#">@Resources.Resource.Language</a>
+										<ul>
+												<li>@Html.ActionLink("English", "ChangeCulture", "Language", new { lang = "en" }, null)</li>
+												<li>@Html.ActionLink("Русский", "ChangeCulture", "Language", new { lang = "ru" }, null)</li>
+										</ul>
+									</li>
+								</ul>
 							</nav>
 						</div>
 						<!--== Main Menu End ==-->
@@ -117,7 +113,7 @@
 				<div class="container">
 					<div class="row">
 						<!-- Single Footer Widget Start -->
-						<div class="col-lg-4 col-md-6">
+						<div class="col-lg-4 col-md-6" style="margin-right:7%; margin-left:7%">
 							<div class="single-footer-widget">
 								<h2>@Resources.Resource.FooterAboutUs</h2>
 								<div class="widget-body">
@@ -130,11 +126,9 @@
 						</div>
 						<!-- Single Footer Widget End -->
 						<!-- Single Footer Widget Start -->
-						<div class="col-lg-4 col-md-6">
-						</div>
 						<!-- Single Footer Widget End -->
 						<!-- Single Footer Widget Start -->
-						<div class="col-lg-4 col-md-6">
+						<div class="col-lg-4 col-md-6"style="margin-right:7%; margin-left:7%">
 							<div class="single-footer-widget">
 								<h2>@Resources.Resource.FooterContactUs</h2>
 								<div class="widget-body">

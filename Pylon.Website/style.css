@@ -114,8 +114,8 @@
 }
 
 .section-padding-login {
-	margin-top: 15%;
-	margin-bottom: 15%;
+	margin-top: 6%;
+	margin-bottom: 6%;
 }
 
 .section-title {
@@ -1337,7 +1337,7 @@ a.slicknav_btn {
 .footer-widget-area {
 	background-color: #1e2228;
     width: 100%; /* Ширина слоя */
-	padding: 60px 0;
+	padding: 20px 0;
 }
 
 .footer-widget-area h2,
@@ -2965,6 +2965,7 @@ body,
 	padding-bottom: 35px;
 	text-align: center;
 	border-radius: 3px;
+	margin-bottom: : 6%;
 }
 
 .login-form {
@@ -3309,11 +3310,11 @@ body,
 
 .content {
   box-sizing: border-box;
-  min-height: 100%;
+  min-height: 80%;
   padding-bottom: 80px;
 }
 .footer {
-  height: 80px;
+  height: 20%;
   margin-top: -80px;
 }
 .div-image{
@@ -3324,6 +3325,7 @@ body,
 .div-new-image{
 	padding: 10px;
 }
+
 
 .div-image img{
 	width:100%;
@@ -3337,4 +3339,20 @@ body,
 	height:100%; 
 	top: 0; right: 0; bottom: 0; left: 0; 
 	margin: auto; 
+}
+
+@media all and (min-width: 1000px)
+{
+.div-menu-image{
+	padding: 10px;
+}
+}
+
+@media all and (max-width: 1000px)
+{
+.div-menu-image{
+	width: 0px;
+	height: 0px;
+	padding: 10px;
+}
 }
