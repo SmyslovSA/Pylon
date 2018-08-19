@@ -169,6 +169,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string CloseButton {
+            get {
+                return ResourceManager.GetString("CloseButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You can contact us in the following ways:.
         /// </summary>
         public static string ContactUs {
@@ -673,6 +682,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Choose role what you want to add:.
+        /// </summary>
+        public static string RoleAddMessage {
+            get {
+                return ResourceManager.GetString("RoleAddMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose role what you want to delete:.
+        /// </summary>
+        public static string RoleDeleteMessage {
+            get {
+                return ResourceManager.GetString("RoleDeleteMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         public static string Save {
@@ -750,6 +777,15 @@ namespace Resources {
         public static string UpdateCar {
             get {
                 return ResourceManager.GetString("UpdateCar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Blocking user.
+        /// </summary>
+        public static string UserBlock {
+            get {
+                return ResourceManager.GetString("UserBlock", resourceCulture);
             }
         }
         

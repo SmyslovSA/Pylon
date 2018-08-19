@@ -357,4 +357,16 @@
   <data name="Language" xml:space="preserve">
     <value>ENGLISH</value>
   </data>
+  <data name="UserBlock" xml:space="preserve">
+    <value>Blocking user</value>
+  </data>
+  <data name="CloseButton" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="RoleAddMessage" xml:space="preserve">
+    <value>Choose role what you want to add:</value>
+  </data>
+  <data name="RoleDeleteMessage" xml:space="preserve">
+    <value>Choose role what you want to delete:</value>
+  </data>
 </root>

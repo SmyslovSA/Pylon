@@ -3356,3 +3356,27 @@ body,
 	padding: 10px;
 }
 }
+.block-btn {
+  color: #fff;
+  background: #025ea1; 
+  font-family: 'Open Sans', arial; 
+  font-size:12pt;  
+  border: 1px solid;
+  height:28pt;
+}
+
+.primary {
+	background-color:#ffd000;
+}
+
+.red{
+	background-color: #ff6666;
+}
+
+.green{
+	background-color: #70db70;
+}
+
+.purple{
+	background-color: #a3a3c2;
+}

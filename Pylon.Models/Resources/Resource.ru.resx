@@ -360,4 +360,16 @@
   <data name="Language" xml:space="preserve">
     <value>РУССКИЙ</value>
   </data>
+  <data name="UserBlock" xml:space="preserve">
+    <value>Блокировка пользователя</value>
+  </data>
+  <data name="CloseButton" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="RoleAddMessage" xml:space="preserve">
+    <value>Выберите роль, которую Вы хотите добавить:</value>
+  </data>
+  <data name="RoleDeleteMessage" xml:space="preserve">
+    <value>Выберите роль, которую Вы хотите удалить:</value>
+  </data>
 </root>

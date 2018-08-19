@@ -1,88 +1,144 @@
 ﻿@model IEnumerable<Pylon.BL.UserDTO>
 
-<h2>GetAllUsers</h2>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--=== Main Style CSS ===-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+	<link href="/style.css" rel="stylesheet">
+</head>
 
-<table class="table">
-	<tr>
-		<th>
-			@Html.DisplayNameFor(model => model.Email)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.FirstName)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.LastName)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.IsBlocked)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.IsDeleted)
-		</th>
-	</tr>
+	<table class="table">
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.Email)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.FirstName)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.LastName)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Roles)
+			</th>
+		</tr>
 
-	@foreach (var item in Model)
-	{
-		if (item.IsDeleted == false)
+		@foreach (var item in Model)
 		{
-	<tr>
-		<td>
-			@Html.DisplayFor(modelItem => item.Email)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.FirstName)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.LastName)
-		</td>
-		@if (item.IsBlocked == false)
-		{
+			if (item.IsDeleted == false)
+			{
+		<tr>
 			<td>
-				@using (Html.BeginForm("BlockUser", "Admin"))
+				@Html.DisplayFor(modelItem => item.Email)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.FirstName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.LastName)
+			</td>
+			@{ 
+				string newString = " ";
+			}
+			<td>
+				@foreach (var role in item.UserRoles.Result)
 				{
-					@Html.Hidden("id", item.Id)
-					<input type="submit" value="@Resources.Resource.BlockUser" />
+				  @role @newString
 				}
 			</td>
-		}
-		else
-		{
+			@if (item.IsBlocked == false)
+			{
+				<td>
+					<button class="btn purple" title="@Resources.Resource.BlockUser" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-ban"></i></button>
+					@using (Html.BeginForm("BlockUser", "Admin"))
+					{
+						@Html.Hidden("id", item.Id)
+						<!-- Modal -->
+						<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+							<div class="modal-dialog modal-dialog-centered" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLongTitle">@Resources.Resource.UserBlock</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="@Resources.Resource.CloseButton">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										@Resources.Resource.AreYouSure
+									</div>
+									<div class="modal-footer">
+										<div class="secondary-btn">
+											<button type="button" data-dismiss="modal">@Resources.Resource.CloseButton</button>
+										</div>
+										<input type="submit" class="rent-btn" value="@Resources.Resource.Save" />
+									</div>
+								</div>
+							</div>
+						</div>
+					}
+				</td>
+			}
+			else
+			{
+				<td>
+
+					@using (Html.BeginForm("UnblockUser", "Admin"))
+					{
+						@Html.Hidden("id", item.Id)
+						<button class="btn primary" title="@Resources.Resource.UnblockUser"><i class="fa fa-check-square-o"></i></button>
+					}
+				</td>
+			}
 			<td>
-				@using (Html.BeginForm("UnblockUser", "Admin"))
+				<button class="btn red" title="@Resources.Resource.DeleteUser" data-toggle="modal" data-target="#exampleModalCenter2"><i class="fa fa-trash-o"></i></button>
+				@using (Html.BeginForm("DeleteUser", "Admin"))
 				{
 					@Html.Hidden("id", item.Id)
-					<input type="submit" value="@Resources.Resource.UnblockUser" />
+					<div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+						<div class="modal-dialog modal-dialog-centered" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLongTitle">@Resources.Resource.DeleteUser</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="@Resources.Resource.CloseButton">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									@Resources.Resource.AreYouSure
+								</div>
+								<div class="modal-footer">
+									<div class="secondary-btn">
+										<button type="button" data-dismiss="modal">@Resources.Resource.CloseButton</button>
+									</div>
+									<input type="submit" class="rent-btn" value="@Resources.Resource.Save" />
+								</div>
+							</div>
+						</div>
+					</div>
 				}
 			</td>
-		}
-		<td>
-			@using (Html.BeginForm("DeleteUser", "Admin"))
-			{
-				@Html.Hidden("id", item.Id)
-				<input type="submit" value="@Resources.Resource.DeleteUser" />
-			}
-		</td>
-		<td>
-			@using (Html.BeginForm("RemoveRole", "Admin"))
-			{
-				@Html.DropDownList("role",
-				  new SelectList(item.UserRoles.Result),
-				  @Resources.Resource.SelectRole)
-				@Html.Hidden("id", item.Id)
-				<input type="submit" value="@Resources.Resource.RemoveRole" />
-			}
-		</td>
-		<td>
-			@using (Html.BeginForm("AddRole", "Admin"))
-			{
-				@Html.DropDownList("role",
-				  new SelectList(item.Roles),
-				  @Resources.Resource.SelectRole)
-				@Html.Hidden("id", item.Id)
-				<input type="submit" value="@Resources.Resource.AddRole" />
-			}
-		</td>
-	</tr>
+			<td>
+				@using (Html.BeginForm("AddRole", "Admin"))
+				{
+					@Html.DropDownList("role",
+						new SelectList(item.Roles),
+						@Resources.Resource.SelectRole)
+					@Html.Hidden("id", item.Id)
+					<button class="btn green" title="@Resources.Resource.AddRole"><i class="fa fa-plus-square"></i></button>
+				}
+			</td>
+			<td>
+				@using (Html.BeginForm("RemoveRole", "Admin"))
+				{
+					@Html.Hidden("id", item.Id)
+					@Html.DropDownList("role",
+						 new SelectList(item.UserRoles.Result),
+						 @Resources.Resource.SelectRole)
+					<button class="btn red" title="@Resources.Resource.RemoveRole"><i class="fa fa-minus-square"></i></button>
+				}
+				</td>
+		</tr>
 			}
 		}
-</table>
+	</table>
