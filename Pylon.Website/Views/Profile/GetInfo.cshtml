@@ -21,12 +21,12 @@
 							}
 							else
 							{
-								<img src="@Url.Action("GetImage", "Profile", new { id = User.GetUserId() })" id="image" alt="" />
+								<img src="@Url.Action("GetImage", "Profile", new { id = User.GetUserId() })" id="image" alt="" style="width:320px; height:320px" />
 							}
 
 							<div class="input-file-row-1">
 								<div class="upload-file-container-text">
-									<input type="file" name="uploadFile" class="photo" id="imgInput" hidden />
+									<input type="file" name="uploadFile" class="photo" id="imgInput" style="width:320px; height:320px" hidden />
 								</div>
 							</div>
 							<div class="login-form" style="background-color:white; padding:0px">

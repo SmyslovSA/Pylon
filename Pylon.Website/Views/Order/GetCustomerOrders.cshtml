@@ -31,7 +31,7 @@
 							<div class="row">
 								<div class="col-lg-5">
 									<div class="div-new-image">
-										<img src="@Url.Action("GetImage", "Product", new { Id = order.ProductId })" />
+										<img src="@Url.Action("GetImage", "Product", new { Id = order.ProductId })"style="width:267px; height:167px" />
 									</div>
 								</div>
 								<div class="col-lg-7">
@@ -44,9 +44,9 @@
 										@using (Html.BeginForm("RemoveOrder", "Order"))
 										{
 											@Html.Hidden("id", order.Id)
-											<div class="secondary-btn">
-												<button style="float:left">@Resources.Resource.Delete</button>
-											</div>
+										<div class="secondary-btn">
+											<button style="float:left" onclick="return confirm('@Resources.Resource.AreYouSure')">@Resources.Resource.Delete</button>
+										</div>
 										}
 									</div>
 								</div>

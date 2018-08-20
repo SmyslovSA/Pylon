@@ -7,138 +7,113 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 	<link href="/style.css" rel="stylesheet">
 </head>
+<section id="car-list-area" class="section-padding">
+	<div class="container">
+		<div class="row">
+			<table class="table">
+				<tr>
+					<th>
+						@Html.DisplayName(@Resources.Resource.Email)
+					</th>
+					<th>
+						@Html.DisplayName(@Resources.Resource.Name)
+					</th>
+					<th>
+						@Html.DisplayName(@Resources.Resource.LastName)
+					</th>
+					<th>
+						@Html.DisplayName(@Resources.Resource.Roles)
+					</th>
+					<th>
+						
+					</th>
+					<th>
+						
+					</th>
+					<th>
+						
+					</th>
+					<th>
+						
+					</th>
+				</tr>
 
-	<table class="table">
-		<tr>
-			<th>
-				@Html.DisplayNameFor(model => model.Email)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.FirstName)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.LastName)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.Roles)
-			</th>
-		</tr>
-
-		@foreach (var item in Model)
-		{
-			if (item.IsDeleted == false)
-			{
-		<tr>
-			<td>
-				@Html.DisplayFor(modelItem => item.Email)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.FirstName)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.LastName)
-			</td>
-			@{ 
-				string newString = " ";
-			}
-			<td>
-				@foreach (var role in item.UserRoles.Result)
+				@foreach (var item in Model)
 				{
-				  @role @newString
-				}
-			</td>
-			@if (item.IsBlocked == false)
-			{
-				<td>
-					<button class="btn purple" title="@Resources.Resource.BlockUser" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-ban"></i></button>
-					@using (Html.BeginForm("BlockUser", "Admin"))
+					if (item.IsDeleted == false)
 					{
-						@Html.Hidden("id", item.Id)
-						<!-- Modal -->
-						<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-							<div class="modal-dialog modal-dialog-centered" role="document">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLongTitle">@Resources.Resource.UserBlock</h5>
-										<button type="button" class="close" data-dismiss="modal" aria-label="@Resources.Resource.CloseButton">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">
-										@Resources.Resource.AreYouSure
-									</div>
-									<div class="modal-footer">
-										<div class="secondary-btn">
-											<button type="button" data-dismiss="modal">@Resources.Resource.CloseButton</button>
-										</div>
-										<input type="submit" class="rent-btn" value="@Resources.Resource.Save" />
-									</div>
-								</div>
-							</div>
-						</div>
-					}
-				</td>
-			}
-			else
-			{
-				<td>
+						<tr>
+							<td>
+								@Html.DisplayFor(modelItem => item.Email)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.FirstName)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.LastName)
+							</td>
+							@{
+								string newString = " ";
+							}
+							<td>
+								@foreach (var role in item.UserRoles.Result)
+								{
+									@role @newString
+								}
+							</td>
+							@if (item.IsBlocked == false)
+							{
+								<td>
 
-					@using (Html.BeginForm("UnblockUser", "Admin"))
-					{
-						@Html.Hidden("id", item.Id)
-						<button class="btn primary" title="@Resources.Resource.UnblockUser"><i class="fa fa-check-square-o"></i></button>
+									@using (Html.BeginForm("BlockUser", "Admin"))
+									{
+										@Html.Hidden("id", item.Id)
+										<button class="btn purple" title="@Resources.Resource.BlockUser" onclick="return confirm('@Resources.Resource.AreYouSure')"><i class="fa fa-ban fa-2x"></i></button>
+									}
+								</td>
+							}
+							else
+							{
+								<td>
+									@using (Html.BeginForm("UnblockUser", "Admin"))
+									{
+										@Html.Hidden("id", item.Id)
+										<button class="btn primary" title="@Resources.Resource.UnblockUser"><i class="fa fa-check-square-o fa-2x"></i></button>
+									}
+								</td>
+							}
+							<td>
+
+								@using (Html.BeginForm("DeleteUser", "Admin"))
+								{
+									@Html.Hidden("id", item.Id)
+									<button class="btn red" title="@Resources.Resource.DeleteUser" onclick="return confirm('@Resources.Resource.AreYouSure')"><i class="fa fa-trash-o fa-2x"></i></button>
+								}
+							</td>
+							<td>
+								@using (Html.BeginForm("AddRole", "Admin"))
+								{
+									@Html.DropDownList("role",
+										new SelectList(item.Roles),
+										@Resources.Resource.SelectRole)
+									@Html.Hidden("id", item.Id)
+									<button class="btn green" title="@Resources.Resource.AddRole"><i class="fa fa-plus-square fa-2x"></i></button>
+								}
+							</td>
+							<td>
+								@using (Html.BeginForm("RemoveRole", "Admin"))
+								{
+									@Html.Hidden("id", item.Id)
+									@Html.DropDownList("role",
+										 new SelectList(item.UserRoles.Result),
+										 @Resources.Resource.SelectRole)
+									<button class="btn red" title="@Resources.Resource.RemoveRole"><i class="fa fa-minus-square fa-2x"></i></button>
+								}
+							</td>
+						</tr>
 					}
-				</td>
-			}
-			<td>
-				<button class="btn red" title="@Resources.Resource.DeleteUser" data-toggle="modal" data-target="#exampleModalCenter2"><i class="fa fa-trash-o"></i></button>
-				@using (Html.BeginForm("DeleteUser", "Admin"))
-				{
-					@Html.Hidden("id", item.Id)
-					<div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-						<div class="modal-dialog modal-dialog-centered" role="document">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="exampleModalLongTitle">@Resources.Resource.DeleteUser</h5>
-									<button type="button" class="close" data-dismiss="modal" aria-label="@Resources.Resource.CloseButton">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="modal-body">
-									@Resources.Resource.AreYouSure
-								</div>
-								<div class="modal-footer">
-									<div class="secondary-btn">
-										<button type="button" data-dismiss="modal">@Resources.Resource.CloseButton</button>
-									</div>
-									<input type="submit" class="rent-btn" value="@Resources.Resource.Save" />
-								</div>
-							</div>
-						</div>
-					</div>
 				}
-			</td>
-			<td>
-				@using (Html.BeginForm("AddRole", "Admin"))
-				{
-					@Html.DropDownList("role",
-						new SelectList(item.Roles),
-						@Resources.Resource.SelectRole)
-					@Html.Hidden("id", item.Id)
-					<button class="btn green" title="@Resources.Resource.AddRole"><i class="fa fa-plus-square"></i></button>
-				}
-			</td>
-			<td>
-				@using (Html.BeginForm("RemoveRole", "Admin"))
-				{
-					@Html.Hidden("id", item.Id)
-					@Html.DropDownList("role",
-						 new SelectList(item.UserRoles.Result),
-						 @Resources.Resource.SelectRole)
-					<button class="btn red" title="@Resources.Resource.RemoveRole"><i class="fa fa-minus-square"></i></button>
-				}
-				</td>
-		</tr>
-			}
-		}
-	</table>
+			</table>
+			</div>
+		</div>
+	</section>

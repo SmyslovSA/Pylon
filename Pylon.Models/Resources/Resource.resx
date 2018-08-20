@@ -372,4 +372,7 @@
   <data name="OrderErrorMessage" xml:space="preserve">
     <value>You entered invalid data. Please check the data that you enter.</value>
   </data>
+  <data name="Roles" xml:space="preserve">
+    <value>Roles</value>
+  </data>
 </root>

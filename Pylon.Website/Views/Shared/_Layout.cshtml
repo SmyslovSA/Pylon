@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="~/assets/img/car-logo.png"/>
 	<title>Pylon Website</title>
 
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
@@ -78,8 +79,10 @@
 									<li>
 										<a href="#">@Resources.Resource.Language</a>
 										<ul>
-												<li>@Html.ActionLink("English", "ChangeCulture", "Language", new { lang = "en" }, null)</li>
-												<li>@Html.ActionLink("Русский", "ChangeCulture", "Language", new { lang = "ru" }, null)</li>
+											<li> 										
+											@Html.ActionLink("English", "ChangeCulture", "Language", new { lang = "en" }, null)
+											</li>
+											<li>@Html.ActionLink("Русский", "ChangeCulture", "Language", new { lang = "ru" }, null)</li>
 										</ul>
 									</li>
 								</ul>
@@ -126,7 +129,7 @@
 						<!-- Single Footer Widget Start -->
 						<!-- Single Footer Widget End -->
 						<!-- Single Footer Widget Start -->
-						<div class="col-lg-4 col-md-6"style="margin-right:7%; margin-left:7%">
+						<div class="col-lg-4 col-md-6" style="margin-right:7%; margin-left:7%">
 							<div class="single-footer-widget">
 								<h2>@Resources.Resource.FooterContactUs</h2>
 								<div class="widget-body">
@@ -135,7 +138,7 @@
 									<ul class="get-touch">
 										<li><i class="fa fa-map-marker"></i> @Resources.Resource.FooterCity</li>
 										<li><i class="fa fa-mobile"></i> +375 44 542 63 52 </li>
-										<li><i class="fa fa-envelope"></i> stepan.smyslov@gmail.com</li>
+										<li><i class="fa fa-envelope"></i><a href="mailto:stepan.smyslov@gmail.com">stepan.smyslov@gmail.com</a></li>
 									</ul>
 								</div>
 							</div>
@@ -211,15 +214,15 @@
         });
 	</script>
 	<script>
-        $(function () {
-            $('.datepickerFilterOrder').each(function () {
-                $(this).datepicker({
-                    format: "dd/mm/yyyy",
-				    autoclose: true,
-				    startDate: "01.01.2000"
-                });
-            });
-        });
+		$(function () {
+			$('.datepickerFilterOrder').each(function () {
+				$(this).datepicker({
+					format: "dd/mm/yyyy",
+					autoclose: true,
+					startDate: "01.01.2000"
+				});
+			});
+		});
 	</script>
 	<script>
 		function readURL(input) {
@@ -281,7 +284,7 @@
 
                         var productId = $element.data('myval');
                         var productIdFromOrder = data3;
-                        
+
                         for (var i = 0; i < startDate.length; i++) {
 							if ((productIdFromOrder[i] == productId) && ((startDate[i] <= date) && (date <= endDate[i]))) {
 								return false;

@@ -31,12 +31,12 @@
 									@if (product.ImageMimeType != null)
 									{
 										<div class="div-new-image">
-											<img src="@Url.Action("GetImage", "Product", new { product.Id })" />
+											<img src="@Url.Action("GetImage", "Product", new { product.Id })" style="width:430px; height:270px"/>
 										</div>
 									}
 									else
 									{
-										<div class="div-new-image">
+										<div class="div-new-image  picture-max-size">
 											<img src="/assets/img/no-image-product.jpg" />
 										</div>
 									}
@@ -89,3 +89,5 @@
 
 	@Html.PagedListPager(Model, page => Url.Action("GetSalerProducts", new { page }))
 </section>
+
+

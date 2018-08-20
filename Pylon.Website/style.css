@@ -3380,3 +3380,8 @@ body,
 .purple{
 	background-color: #a3a3c2;
 }
+
+.picture-max-size{
+	height: 270px;
+	width: 433px;
+}

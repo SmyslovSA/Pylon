@@ -375,4 +375,7 @@
   <data name="OrderErrorMessage" xml:space="preserve">
     <value>Вы ввели недопустимые данные. Пожалуйста проверьте, данные , которые вы вводите.</value>
   </data>
+  <data name="Roles" xml:space="preserve">
+    <value>Роли</value>
+  </data>
 </root>
