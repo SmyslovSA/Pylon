@@ -378,4 +378,7 @@
   <data name="Roles" xml:space="preserve">
     <value>Роли</value>
   </data>
+  <data name="WrongImageSize" xml:space="preserve">
+    <value>ОШИБКА. Можно загружать только файлы меньше 4Мб.</value>
+  </data>
 </root>

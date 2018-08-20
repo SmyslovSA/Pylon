@@ -14,7 +14,6 @@
 				<tr>
 					<th>
 						@Html.DisplayName(@Resources.Resource.Email)
-					</th>
 					<th>
 						@Html.DisplayName(@Resources.Resource.Name)
 					</th>
@@ -44,7 +43,7 @@
 					{
 						<tr>
 							<td>
-								@Html.DisplayFor(modelItem => item.Email)
+								<a href="mailto:@Html.DisplayFor(modelItem => item.Email)?subject=Greeting Message">@Html.DisplayFor(modelItem => item.Email)</a>
 							</td>
 							<td>
 								@Html.DisplayFor(modelItem => item.FirstName)

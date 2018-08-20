@@ -817,6 +817,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ERROR. Allows images less than 4mb only..
+        /// </summary>
+        public static string WrongImageSize {
+            get {
+                return ResourceManager.GetString("WrongImageSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Year.
         /// </summary>
         public static string Year {

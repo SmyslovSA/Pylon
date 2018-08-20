@@ -58,7 +58,7 @@ namespace Pylon.Website.Controllers
                     {
                         IsPersistent = true
                     }, claim);
-                    return RedirectToAction("GetAll", "Product");
+					return RedirectToAction("GetAll", "Product");
                 }
             }
             return View(model);

@@ -1,5 +1,18 @@
 ﻿@model Pylon.Models.ProductViewModel
 
+<div id="myModalBox" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+				@Resources.Resource.WrongImageSize
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">@Resources.Resource.CloseButton</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 @using (Html.BeginForm("AddProduct", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
 	@Html.AntiForgeryToken()
@@ -21,7 +34,7 @@
 									@Html.ValidationMessageFor(m => m.CarModel, "", new { @class = "text-danger" })
 								</div>
 								<div class="username">
-									@Html.TextBoxFor(m => m.Year, new {@min = 2000, @max = DateTime.Today.Year, @onkeypress = "validate(event)", @placeholder = @Resources.Resource.Year, @autocomplete = "off", @maxlength = 4})
+									@Html.TextBoxFor(m => m.Year, new { @min = 2000, @max = DateTime.Today.Year, @onkeypress = "validate(event)", @placeholder = @Resources.Resource.Year, @autocomplete = "off", @maxlength = 4 })
 									@Html.ValidationMessageFor(m => m.Year, "", new { @class = "text-danger" })
 								</div>
 								<div class="username">
@@ -80,3 +93,15 @@
 		event.returnValue = true;
 	}
 </script>
+
+<script>
+	$('#imgInput').bind('change', function () {
+		if (this.files[0].size > 4 * 1024 * 1024) {
+			$(function () {
+				$('#myModalBox').modal('show');
+			});
+			this.value = "";
+		}
+	});
+</script>
+

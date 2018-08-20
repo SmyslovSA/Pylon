@@ -375,4 +375,7 @@
   <data name="Roles" xml:space="preserve">
     <value>Roles</value>
   </data>
+  <data name="WrongImageSize" xml:space="preserve">
+    <value>ERROR. Allows images less than 4mb only.</value>
+  </data>
 </root>

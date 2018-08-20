@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" href="~/assets/img/car-logo.png"/>
+	<link rel="icon" href="~/assets/img/used-cars-icon.png"/>
 	<title>Pylon Website</title>
 
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
@@ -79,8 +79,8 @@
 									<li>
 										<a href="#">@Resources.Resource.Language</a>
 										<ul>
-											<li> 										
-											@Html.ActionLink("English", "ChangeCulture", "Language", new { lang = "en" }, null)
+											<li>
+												@Html.ActionLink("English", "ChangeCulture", "Language", new { lang = "en" }, null)
 											</li>
 											<li>@Html.ActionLink("Русский", "ChangeCulture", "Language", new { lang = "ru" }, null)</li>
 										</ul>
@@ -311,5 +311,6 @@
 			});
 		});
 	</script>
+
 </body>
 </html>

@@ -1,5 +1,18 @@
 ﻿@model Pylon.Models.ProductViewModel
 
+<div id="myModalBox" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+				@Resources.Resource.WrongImageSize
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">@Resources.Resource.CloseButton</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 @using (Html.BeginForm("UpdateProduct", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
 	@Html.AntiForgeryToken()
@@ -14,7 +27,7 @@
 							<form action="index.html">
 								@Html.HiddenFor(m => m.Id)
 								<div class="username">
-									@Html.TextBoxFor(m => m.Name, new {@placeholder = @Resources.Resource.Car, onkeypress = "return checkSpcialChar(event)" })
+									@Html.TextBoxFor(m => m.Name, new { @placeholder = @Resources.Resource.Car, onkeypress = "return checkSpcialChar(event)" })
 									@Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
 								</div>
 								<div class="username">
@@ -35,22 +48,22 @@
 								<div class="div-image">
 									@if (Model.ImageMimeType == null)
 									{
-											<img src="/assets/img/no-car.png" id="image" alt="">
+										<img src="/assets/img/no-car.png" id="image" alt="">
 									}
 									else
 									{
-											<img src="@Url.Action("GetImage", "Product", new { id = Model.Id })" id="image" alt="" />
+										<img src="@Url.Action("GetImage", "Product", new { id = Model.Id })" id="image" alt="" />
 									}
 									<div class="input-file-row-1">
-											<div class="upload-file-container-text">
-												<input type="file" name="uploadFile" class="photo" id="imgInput" hidden />
-											</div>
+										<div class="upload-file-container-text">
+											<input type="file" name="uploadFile" class="photo" id="imgInput" hidden />
+										</div>
 									</div>
 								</div>
-									<div class="log-btn">
-										<button> @Resources.Resource.Save </button>
-									</div>
-</form>
+								<div class="log-btn">
+									<button> @Resources.Resource.Save </button>
+								</div>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -62,15 +75,15 @@
 @section Scripts {
 	@Scripts.Render("~/bundles/jqueryval")
 }
-
+@Scripts.Render("~/bundles/jquery")
 <script>
-		document.querySelector("#image").addEventListener("click", function () {
-			var clickEvent = document.createEvent('MouseEvents');
+	document.querySelector("#image").addEventListener("click", function () {
+		var clickEvent = document.createEvent('MouseEvents');
 
-			clickEvent.initMouseEvent('click', true, true, window,
-				0, 0, 0, 0, 0, false, false, false, false, 0, null);
-			document.querySelector("#imgInput").dispatchEvent(clickEvent);
-		});
+		clickEvent.initMouseEvent('click', true, true, window,
+			0, 0, 0, 0, 0, false, false, false, false, 0, null);
+		document.querySelector("#imgInput").dispatchEvent(clickEvent);
+	});
 </script>
 
 <script>
@@ -81,4 +94,15 @@
 		}
 		event.returnValue = true;
 	}
+</script>
+
+<script>
+	$('#imgInput').bind('change', function () {
+		if (this.files[0].size > 4 * 1024 * 1024) {
+			$(function () {
+				$('#myModalBox').modal('show');
+			});
+			this.value = "";
+		}
+	});
 </script>

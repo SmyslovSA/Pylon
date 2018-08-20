@@ -29,9 +29,9 @@ namespace Pylon.BL
                     return new OperationDetails(false, LogicResource.BLResource.RegistrationFailedPassword, "");
                 // добавляем роль
                 await SetInitialData(new List<string> { "admin", "customer", "saler" });
-               //await _unitOfWork.UserManager.AddToRoleAsync(user.Id, "admin");
-                await _unitOfWork.UserManager.AddToRoleAsync(user.Id, "saler");
-                await _unitOfWork.UserManager.AddToRoleAsync(user.Id, "customer");
+               await _unitOfWork.UserManager.AddToRoleAsync(user.Id, "admin");
+               // await _unitOfWork.UserManager.AddToRoleAsync(user.Id, "saler");
+               // await _unitOfWork.UserManager.AddToRoleAsync(user.Id, "customer");
                 // создаем профиль клиента
                 Profile clientProfile = new Profile { Id = user.Id, FirstName = userDto.FirstName, LastName = userDto.LastName, IsBlocked = false, IsDeleted = false, Phone = userDto.Phone};
                 _unitOfWork.ProfileManager.Insert(clientProfile);
