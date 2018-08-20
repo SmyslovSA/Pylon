@@ -55,7 +55,11 @@ namespace Pylon.Website.Controllers
                 ProfileId = User.GetUserId()
             };
 
-            _orderService.Add(orderDTO);
+
+			if (orderDTO.StartDate > orderDTO.EndDate)
+				return RedirectToAction("GetAll", "Product");
+
+			_orderService.Add(orderDTO);
             return RedirectToAction("GetAll", "Product");
         }
 

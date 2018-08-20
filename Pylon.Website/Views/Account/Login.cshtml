@@ -14,11 +14,11 @@
 							<h3>@Resources.Resource.Login</h3>
 							<form action="index.html">
 								<div class="username">
-									@Html.TextBoxFor(m => m.Email, new { @placeholder = Resources.Resource.LoginForm })
+									@Html.TextBoxFor(m => m.Email, new { @placeholder = Resources.Resource.LoginForm, onkeypress = "return checkSpcialChar(event)" })
 									@Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
 								</div>
 								<div class="password">
-									@Html.PasswordFor(m => m.Password, new { @placeholder = Resources.Resource.PasswordForm })
+									@Html.PasswordFor(m => m.Password, new { @placeholder = Resources.Resource.PasswordForm, onkeypress = "return checkSpcialChar(event)" })
 									@Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
 									@Html.AntiForgeryToken()
 									@Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -42,3 +42,12 @@
 	@Scripts.Render("~/bundles/jqueryval")
 }
 
+<script>
+	function checkSpcialChar(event) {
+		if (event.key == '>' || event.key == '<') {
+			event.returnValue = false;
+			return;
+		}
+		event.returnValue = true;
+	}
+</script>

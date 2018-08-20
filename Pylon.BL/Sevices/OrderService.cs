@@ -48,6 +48,12 @@ namespace Pylon.BL.Sevices
         public int Add(OrderDTO orderDTO)
         {
             var order = AutoMapper.Mapper.Map<Order>(orderDTO);
+			var allOrders =  _unitOfWork.OrderManager.Get(x => x.ProductId == order.ProductId);
+			foreach (var ord in allOrders)
+			{
+				if (order.StartDate < ord.StartDate && order.EndDate > ord.EndDate)
+					return 0;
+			}
             _unitOfWork.OrderManager.Insert(order);
             _unitOfWork.SaveChanges();
             return order.Id;

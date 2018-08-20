@@ -18,11 +18,11 @@
 								<div class="name">
 									<div class="row">
 										<div class="col-md-6">
-											@Html.TextBoxFor(m => m.FirstName, new { @placeholder = @Resources.Resource.Name })
+											@Html.TextBoxFor(m => m.FirstName, new { @placeholder = @Resources.Resource.Name, onkeypress = "return checkSpcialChar(event)" })
 											@Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
 										</div>
 										<div class="col-md-6">
-											@Html.TextBoxFor(m => m.LastName, new { @placeholder = @Resources.Resource.LastName })
+											@Html.TextBoxFor(m => m.LastName, new { @placeholder = @Resources.Resource.LastName, onkeypress = "return checkSpcialChar(event)" })
 											@Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
 										</div>
 									</div>
@@ -32,15 +32,15 @@
 									@Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
 								</div>
 								<div class="username">
-									@Html.TextBoxFor(m => m.Email, new { @placeholder = Resources.Resource.Email })
+									@Html.TextBoxFor(m => m.Email, new { @placeholder = Resources.Resource.Email, onkeypress = "return checkSpcialChar(event)" })
 									@Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
 								</div>
 								<div class="password">
-									@Html.PasswordFor(m => m.Password, new { @placeholder = Resources.Resource.Password })
+									@Html.PasswordFor(m => m.Password, new { @placeholder = Resources.Resource.Password, onkeypress = "return checkSpcialChar(event)" })
 									@Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
 								</div>
 								<div class="password">
-									@Html.PasswordFor(m => m.ConfirmPassword, new { @placeholder = Resources.Resource.PasswordConfirm })
+									@Html.PasswordFor(m => m.ConfirmPassword, new { @placeholder = Resources.Resource.PasswordConfirm, onkeypress = "return checkSpcialChar(event)" })
 									@Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
 								</div>
 								@Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -68,4 +68,14 @@
 
 <script>
 	$("#phone").mask("+375(99) 999-99-99");
+</script>
+
+<script>
+	function checkSpcialChar(event) {
+		if (event.key == '>' || event.key == '<') {
+			event.returnValue = false;
+			return;
+		}
+		event.returnValue = true;
+	}
 </script>

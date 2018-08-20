@@ -13,11 +13,11 @@
 							<h3>@Resources.Resource.AddCar</h3>
 							<form action="index.html">
 								<div class="username">
-									@Html.TextBoxFor(m => m.Name, new { @placeholder = @Resources.Resource.Car })
+									@Html.TextBoxFor(m => m.Name, new { @placeholder = @Resources.Resource.Car, onkeypress = "return checkSpcialChar(event)" })
 									@Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
 								</div>
 								<div class="username">
-									@Html.TextBoxFor(m => m.CarModel, new { @placeholder = @Resources.Resource.Model })
+									@Html.TextBoxFor(m => m.CarModel, new { @placeholder = @Resources.Resource.Model, onkeypress = "return checkSpcialChar(event)" })
 									@Html.ValidationMessageFor(m => m.CarModel, "", new { @class = "text-danger" })
 								</div>
 								<div class="username">
@@ -69,4 +69,14 @@
 
 <script>
 	$("#datepicker").mask("9999", { placeholder: "yyyy" });
+</script>
+
+<script>
+	function checkSpcialChar(event) {
+		if (event.key == '>' || event.key == '<') {
+			event.returnValue = false;
+			return;
+		}
+		event.returnValue = true;
+	}
 </script>

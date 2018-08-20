@@ -12,10 +12,10 @@
 		<div class="login-form">
 			<input type="hidden" value=@User.GetUserId() name="userId" />
 			<div class="username">
-				@Html.TextBoxFor(m => m.ProductName, new { @placeholder = @Resources.Resource.Car })
+				@Html.TextBoxFor(m => m.ProductName, new { @placeholder = @Resources.Resource.Car, onkeypress = "return checkSpcialChar(event)" })
 			</div>
 			<div class="username">
-				@Html.TextBoxFor(m => m.ProductModel, new { @placeholder = @Resources.Resource.Model })
+				@Html.TextBoxFor(m => m.ProductModel, new { @placeholder = @Resources.Resource.Model, onkeypress = "return checkSpcialChar(event)" })
 			</div>
 			<div class="username">
 				<input type="text" id="datepicker3" class="datepickerFilterOrder" name="startDate" autocomplete="off" placeholder="@Resources.Resource.StartDate" />
@@ -37,4 +37,14 @@
 			$(this).mask("99/99/9999", { placeholder: "dd/mm/yyyy" });
 		});
 	});
+</script>
+
+<script>
+	function checkSpcialChar(event) {
+		if (event.key == '>' || event.key == '<') {
+			event.returnValue = false;
+			return;
+		}
+		event.returnValue = true;
+	}
 </script>

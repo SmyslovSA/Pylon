@@ -55,11 +55,11 @@
 											@Html.HiddenFor(m => m.ImageData)
 											@Html.HiddenFor(m => m.ImageMimeType)
 											<div class="username">
-												@Html.TextBoxFor(m => m.FirstName, new { @autocomplete = "off", @placeholder = @Resources.Resource.Name, required = "required", oninvalid = $"this.setCustomValidity('{@Resources.Resource.NameRequired}')", oninput = "this.setCustomValidity('')" })
+												@Html.TextBoxFor(m => m.FirstName, new { @autocomplete = "off", @placeholder = @Resources.Resource.Name, required = "required", oninvalid = $"this.setCustomValidity('{@Resources.Resource.NameRequired}')", oninput = "this.setCustomValidity('')", onkeypress = "return checkSpcialChar(event)" })
 												@Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
 											</div>
 											<div class="username">
-												@Html.TextBoxFor(m => m.LastName, new { @autocomplete = "off", @placeholder = @Resources.Resource.LastName, required = "required", oninvalid = $"this.setCustomValidity('{@Resources.Resource.LastNameRequired}')", oninput = "this.setCustomValidity('')" })
+												@Html.TextBoxFor(m => m.LastName, new { @autocomplete = "off", @placeholder = @Resources.Resource.LastName, required = "required", oninvalid = $"this.setCustomValidity('{@Resources.Resource.LastNameRequired}')", oninput = "this.setCustomValidity('')", onkeypress = "return checkSpcialChar(event)" })
 												@Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
 											</div>
 											<div class="username">
@@ -87,10 +87,10 @@
 										<h3>@Resources.Resource.ChangePassword</h3>
 										<form action="index.html">
 											<div class="password">
-												<input type="password" id="newPassword" name="newPassword" placeholder="@Resources.Resource.NewPassword" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" oninvalid="this.setCustomValidity('Passwords must be at least 6 characters. Passwords must have at least one digit. Passwords must have at least one uppercase.')" oninput="this.setCustomValidity('')">
+												<input type="password" id="newPassword" name="newPassword" placeholder="@Resources.Resource.NewPassword" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" oninvalid="this.setCustomValidity('Passwords must be at least 6 characters. Passwords must have at least one digit. Passwords must have at least one uppercase.')" oninput="this.setCustomValidity(''), onkeypress = "return checkSpcialChar(event)"">
 											</div>
 											<div class="password">
-												<input type="password" id="newPasswordConfirm" name="newPasswordConfirm" placeholder="@Resources.Resource.PasswordConfirm" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" oninput="check(this)">
+												<input type="password" id="newPasswordConfirm" name="newPasswordConfirm" placeholder="@Resources.Resource.PasswordConfirm" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" oninput="check(this), onkeypress = "return checkSpcialChar(event)"">
 											</div>
 											<div class="log-btn">
 												<button> @Resources.Resource.Save </button>
@@ -132,5 +132,15 @@
 		} else {
 			input.setCustomValidity('');
 		}
+	}
+</script>
+
+<script>
+	function checkSpcialChar(event) {
+		if (event.key == '>' || event.key == '<') {
+			event.returnValue = false;
+			return;
+		}
+		event.returnValue = true;
 	}
 </script>
