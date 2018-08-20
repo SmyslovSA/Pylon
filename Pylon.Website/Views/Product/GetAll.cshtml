@@ -87,6 +87,22 @@
 														<p><input type="submit" class="rent-btn" value="@Resources.Resource.BookIt" style="float:right" /></p>
 													</div>
 												</div>
+
+												if (@TempData["Error"] != null && (bool)@TempData["Error"] == true)
+												{
+													<div id="myModalBox" class="modal fade">
+														<div class="modal-dialog">
+															<div class="modal-content">
+																<div class="modal-body">
+																	@Resources.Resource.OrderErrorMessage
+																</div>
+																<div class="modal-footer">
+																	<button type="button" class="btn btn-default" data-dismiss="modal">@Resources.Resource.CloseButton</button>
+																</div>
+															</div>
+														</div>
+													</div>
+												}
 											}
 										</div>
 									</div>
@@ -105,3 +121,9 @@
 	@Html.PagedListPager(Model, page => Url.Action("GetAll", new { page }))
 </section>
 
+<script>
+
+	$(function () {
+		$('#myModalBox').modal('show');
+			});
+</script>

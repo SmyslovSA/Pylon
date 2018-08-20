@@ -529,6 +529,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You entered invalid data. Please check the data that you enter..
+        /// </summary>
+        public static string OrderErrorMessage {
+            get {
+                return ResourceManager.GetString("OrderErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Page.
         /// </summary>
         public static string Page {

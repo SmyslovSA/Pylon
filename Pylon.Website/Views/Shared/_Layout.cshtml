@@ -99,8 +99,6 @@
 				</div>
 			</div>
 		</section>
-
-
 		<div class="container body-content">
 			@RenderBody()
 		</div>
@@ -299,6 +297,16 @@
 	</script>
 	<script>
 		$('input').filter("#picker2").mask("99/99/9999", { placeholder: "dd/mm/yyyy" });
+	</script>
+
+	<script>
+		$(function () {
+			//при нажатию на любую кнопку, имеющую класс .btn
+			$("#removeId").click(function () {
+				//открыть модальное окно с id="myModal"
+				$("#myModal").modal('show');
+			});
+		});
 	</script>
 </body>
 </html>

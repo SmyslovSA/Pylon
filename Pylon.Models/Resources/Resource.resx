@@ -369,4 +369,7 @@
   <data name="RoleDeleteMessage" xml:space="preserve">
     <value>Choose role what you want to delete:</value>
   </data>
+  <data name="OrderErrorMessage" xml:space="preserve">
+    <value>You entered invalid data. Please check the data that you enter.</value>
+  </data>
 </root>

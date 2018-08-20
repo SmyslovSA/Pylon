@@ -45,7 +45,10 @@ namespace Pylon.Website.Controllers
         public ActionResult AddOrder(string startDate, string endDate, int productId)
         {
 			if (startDate == string.Empty || endDate == string.Empty)
+			{
+				TempData["Error"] = true;
 				return RedirectToAction("GetAll", "Product");
+			}
 			var date = new DateTime(2017, 05, 26);
 			OrderDTO orderDTO = new OrderDTO
             {
@@ -57,9 +60,15 @@ namespace Pylon.Website.Controllers
 
 
 			if (orderDTO.StartDate > orderDTO.EndDate)
+			{
+				TempData["Error"] = true;
 				return RedirectToAction("GetAll", "Product");
+			}
 
-			_orderService.Add(orderDTO);
+			if (_orderService.Add(orderDTO) == 0)
+			{
+				TempData["Error"] = true;
+			}
             return RedirectToAction("GetAll", "Product");
         }
 

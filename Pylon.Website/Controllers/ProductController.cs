@@ -26,6 +26,8 @@ namespace Pylon.Website.Controllers
 			if (id == 0)
 				return RedirectToAction("GetSalerProducts");
 			var productDTO = _productService.Get(id);
+			if (User.GetUserId() != productDTO.ProfileID)
+				return RedirectToAction("GetSalerProducts");
 			ProductViewModel product = new ProductViewModel
 			{
 				Id = productDTO.Id,

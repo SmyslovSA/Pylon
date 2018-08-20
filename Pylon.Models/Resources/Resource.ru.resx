@@ -372,4 +372,7 @@
   <data name="RoleDeleteMessage" xml:space="preserve">
     <value>Выберите роль, которую Вы хотите удалить:</value>
   </data>
+  <data name="OrderErrorMessage" xml:space="preserve">
+    <value>Вы ввели недопустимые данные. Пожалуйста проверьте, данные , которые вы вводите.</value>
+  </data>
 </root>
