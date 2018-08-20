@@ -25,7 +25,7 @@ namespace Pylon.BL.Sevices
         {
             var list = _unitOfWork.OrderManager.Get(
                 f => f.ProfileId == id,
-                includeProperties: $"{nameof(Profile)} , {nameof(Product)}");
+                includeProperties: $"{nameof(Profile)}");
             return AutoMapper.Mapper.Map<List<OrderDTO>>(list);
         }
 
